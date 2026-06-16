@@ -20,6 +20,21 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). Sanity Studio at [http://localhost:3000/studio](http://localhost:3000/studio).
 
+## Sanity
+
+Project: **fr7gld8d** · dataset: **production**
+
+```bash
+# optional: recreate project with clean template
+npm create sanity@latest -- --project fr7gld8d --dataset production --template clean
+
+cp .env.example .env.local
+npx sanity login
+npm run import:seeds
+```
+
+Studio: [http://localhost:3000/studio](http://localhost:3000/studio) · manage at [sanity.io/manage/project/fr7gld8d](https://sanity.io/manage/project/fr7gld8d)
+
 ## Sanity seed import
 
 Seed files live in `sanity/seed/` and mirror the homepage fallback content (5 portfolio companies, 3 ventures, 3 insights, 1 team member).

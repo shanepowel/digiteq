@@ -1,2 +1,3 @@
-export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "";
+export const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "fr7gld8d";
 export const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+export const apiVersion = "2026-06-15";
