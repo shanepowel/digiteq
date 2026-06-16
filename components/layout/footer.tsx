@@ -7,6 +7,7 @@ import { LogoWordmark } from "@/components/brand/logo-wordmark";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { contactEmail } from "@/lib/site";
 
 function SocialIcon({ d, href }: { d: string; href: string }) {
   return (
@@ -59,7 +60,7 @@ export function Footer() {
                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
               />
               <a
-                href="mailto:hello@digiteq.co"
+                href={`mailto:${contactEmail}`}
                 className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-lg border border-border"
               >
                 <Mail className="h-3.5 w-3.5 text-muted-dark" />
@@ -73,7 +74,7 @@ export function Footer() {
             </h4>
             <div className="flex flex-col gap-3.5">
               {[
-                { Icon: Mail, text: "hello@digiteq.co", href: "mailto:hello@digiteq.co" },
+                { Icon: Mail, text: contactEmail, href: `mailto:${contactEmail}` },
                 { Icon: MapPin, text: "London, UK", href: undefined },
                 { Icon: Phone, text: "+44 (0) 20 XXXX XXXX", href: undefined },
               ].map(({ Icon, text, href }) => (

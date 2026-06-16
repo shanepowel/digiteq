@@ -1,4 +1,5 @@
 import type { WithContext, Organization } from "schema-dts";
+import { siteUrl } from "@/lib/site";
 import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
@@ -22,7 +23,7 @@ export default async function HomePage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Digiteq",
-    url: "https://digiteq.com",
+    url: siteUrl,
     slogan: "Building Digital Equity",
   };
 

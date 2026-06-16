@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { contactEmail } from "@/lib/site";
 
 let resend: Resend | null = null;
 
@@ -21,7 +22,7 @@ export async function sendContactNotification(payload: {
 
   const client = getResend();
   await client.emails.send({
-    from: process.env.CONTACT_FROM_EMAIL || "Digiteq <hello@digiteq.com>",
+    from: process.env.CONTACT_FROM_EMAIL || `Digiteq <${contactEmail}>`,
     to: process.env.CONTACT_TO_EMAIL,
     subject: `Digiteq enquiry: ${payload.interest || "General Contact"}`,
     text: [
@@ -41,7 +42,7 @@ export async function subscribeNewsletter(email: string) {
 
   const client = getResend();
   await client.emails.send({
-    from: process.env.CONTACT_FROM_EMAIL || "Digiteq <hello@digiteq.com>",
+    from: process.env.CONTACT_FROM_EMAIL || `Digiteq <${contactEmail}>`,
     to: process.env.CONTACT_TO_EMAIL,
     subject: "Digiteq newsletter signup",
     text: `New newsletter subscriber: ${email}`,

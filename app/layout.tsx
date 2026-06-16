@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@/components/analytics";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -10,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://digiteq.com"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Digiteq | Building Digital Equity",
     template: "%s | Digiteq",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     title: "Digiteq | Building Digital Equity",
     description:
       "A digital holding company platform for brands, products, media and audiences.",
-    url: "https://digiteq.com",
+    url: siteUrl,
     siteName: "Digiteq",
     type: "website",
   },

@@ -1,6 +1,6 @@
-# Digiteq.com
+# Digiteq.io
 
-Marketing site for Digiteq — a digital holding company platform.
+Marketing site for Digiteq at [digiteq.io](https://digiteq.io) — a digital holding company platform.
 
 ## Stack
 
@@ -79,4 +79,5 @@ npm start
 
 1. Connect repo to Vercel
 2. Set environment variables from `.env.example`
-3. Configure Sanity webhook → `POST /api/revalidate` with `SANITY_REVALIDATE_SECRET`
+3. Configure Sanity webhook → `https://digiteq.io/api/revalidate` with `SANITY_REVALIDATE_SECRET`
+4. Point domain **digiteq.io** at Vercel; set `NEXT_PUBLIC_SITE_URL=https://digiteq.io`

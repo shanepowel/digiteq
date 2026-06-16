@@ -104,7 +104,7 @@ const ventures = [
     name: "Digiteq Ventures",
     stage: "Growth",
     industry: "Digital investments",
-    url: "https://digiteq.com/ventures",
+    url: "https://digiteq.io/ventures",
     description: "Backing and building the next generation of digital-first companies.",
     status: "Active",
   },
