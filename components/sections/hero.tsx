@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-import { Hero3DMark } from "@/components/brand/hero-3d-mark";
+import { brandAlt, brandAssets } from "@/lib/brand";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 
@@ -56,7 +57,14 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.16, duration: 0.8 }}
         >
-          <Hero3DMark />
+          <Image
+            src={brandAssets.hero3d}
+            alt={brandAlt.hero3d}
+            width={480}
+            height={480}
+            className="h-auto w-full max-w-[min(100%,420px)] object-contain"
+            priority
+          />
         </motion.div>
       </Container>
 

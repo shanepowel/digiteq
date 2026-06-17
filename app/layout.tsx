@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@/components/analytics";
+import { brandAssets } from "@/lib/brand";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -25,11 +26,20 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Digiteq",
     type: "website",
+    images: [
+      {
+        url: brandAssets.og,
+        width: 1200,
+        height: 630,
+        alt: "Digiteq 3D logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Digiteq | Building Digital Equity",
     description: "We create, acquire and scale digital brands, products and media properties.",
+    images: [brandAssets.og],
   },
 };
 

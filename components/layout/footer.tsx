@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
-import { LogoWordmark } from "@/components/brand/logo-wordmark";
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -45,7 +45,7 @@ export function Footer() {
       <Container className="border-t border-border pt-14">
         <div className="mb-12 grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.6fr] lg:gap-14">
           <div>
-            <LogoWordmark variant="footer" href={false} className="mb-3.5" />
+            <BrandLogo variant="footer" display="lockup" href={false} className="mb-3.5" />
             <p className="mb-4 max-w-[250px] text-[13px] leading-relaxed text-muted-dark">
               We create, acquire and scale digital brands, products and media properties to build
               lasting digital equity.

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { useState } from "react";
-import { LogoWordmark } from "@/components/brand/logo-wordmark";
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -18,7 +18,7 @@ export function Nav() {
   return (
     <nav className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
       <Container className="flex h-16 items-center justify-between">
-        <LogoWordmark />
+        <BrandLogo display="auto" />
 
         <div className="hidden items-center gap-9 lg:flex">
           {navigation.map((item) => (
@@ -43,7 +43,7 @@ export function Nav() {
           </SheetTrigger>
           <SheetContent>
             <div className="mt-8 flex flex-col gap-6">
-              <LogoWordmark href="/" />
+              <BrandLogo href="/" display="lockup" />
               {navigation.map((item) => (
                 <Link
                   key={item.href}
