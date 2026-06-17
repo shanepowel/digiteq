@@ -79,5 +79,7 @@ npm start
 
 1. Connect repo to Vercel
 2. Set environment variables from `.env.example`
-3. Configure Sanity webhook → `https://digiteq.io/api/revalidate` with `SANITY_REVALIDATE_SECRET`
+3. Configure Sanity webhook → `https://digiteq.io/api/revalidate` with `SANITY_REVALIDATE_SECRET` (see BMKRS `web/sanity/webhook-config.md` for the pattern)
 4. Point domain **digiteq.io** at Vercel; set `NEXT_PUBLIC_SITE_URL=https://digiteq.io`
+5. Verify Resend domain for `hello@digiteq.io`; set HubSpot and Plausible prod keys
+6. Replace footer placeholder phone and wire privacy/terms pages before announcing

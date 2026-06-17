@@ -41,8 +41,8 @@ export function Footer() {
   }
 
   return (
-    <footer className="px-6 pb-8 pt-0 sm:px-12">
-      <Container className="border-t border-border pt-14">
+    <footer className="pb-8 pt-0">
+      <Container className="border-t border-white/[0.06] pt-14">
         <div className="mb-12 grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.6fr] lg:gap-14">
           <div>
             <BrandLogo variant="footer" display="lockup" href={false} className="mb-3.5" />
@@ -99,14 +99,14 @@ export function Footer() {
             <p className="mb-4 text-[13px] leading-relaxed text-muted-dark">
               Insights on building, acquiring and scaling digital businesses.
             </p>
-            <form onSubmit={onSubscribe} className="flex flex-col gap-2 sm:flex-row">
+            <form onSubmit={onSubscribe} className="flex gap-2">
               <Input
                 type="email"
                 required
                 placeholder="Your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1"
+                className="flex-1 px-3.5 py-2.5 text-sm"
               />
               <Button type="submit" variant="rose" size="sm" disabled={status === "sending"}>
                 Subscribe <ArrowRight className="h-3.5 w-3.5" />

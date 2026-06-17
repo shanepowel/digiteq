@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
+import { Section } from "@/components/layout/section";
 import { Card } from "@/components/ui/card";
 import { EcoIcon } from "@/components/shared/eco-icon";
 import { SectionLabel } from "@/components/shared/section-label";
@@ -49,7 +50,7 @@ export function PortfolioGrid({ companies }: PortfolioGridProps) {
       : portfolioFallback;
 
   return (
-    <section className="px-6 py-24 sm:px-12">
+    <Section>
       <Container>
         <div className="mb-7 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <div>
@@ -73,23 +74,23 @@ export function PortfolioGrid({ companies }: PortfolioGridProps) {
               transition={{ delay: i * 0.05 }}
               className="min-w-[220px] shrink-0 snap-start lg:min-w-0"
             >
-              <Card className="flex min-h-[290px] flex-col justify-between p-5">
+              <Card className="flex min-h-[290px] flex-col">
                 <div>
                   <div className="mb-3.5">
-                    <EcoIcon variant={p.vi} size={38} />
+                    <EcoIcon variant={p.vi} size={44} />
                   </div>
                   <h3 className="mb-1.5 text-sm font-semibold text-foreground">{p.name}</h3>
-                  <p className="mb-4 text-xs leading-snug text-muted">{p.desc}</p>
+                  <p className="mb-4 text-xs leading-snug text-gray-400">{p.desc}</p>
                 </div>
-                <div>
-                  <div className="mb-3.5 grid grid-cols-3 gap-1 border-t border-border pt-3">
+                <div className="mt-auto">
+                  <div className="grid grid-cols-3 gap-1 border-t border-white/[0.06] pt-3">
                     {p.metrics.map(([label, val], j) => (
                       <div key={j}>
-                        <div className="mb-0.5 text-[10px] text-muted-dark">{label}</div>
+                        <div className="mb-0.5 text-[10px] text-gray-600">{label}</div>
                         <div
                           className={cn(
-                            "text-xs font-semibold",
-                            val.startsWith("+") && p.highlight ? "text-cyan" : "text-foreground",
+                            "text-[13px] font-semibold",
+                            val.startsWith("+") ? "text-[#00D4FF]" : "text-white",
                           )}
                         >
                           {val}
@@ -97,19 +98,21 @@ export function PortfolioGrid({ companies }: PortfolioGridProps) {
                       </div>
                     ))}
                   </div>
-                  <TextLink
-                    href={p.href}
-                    color={colorMap[p.color]}
-                    external={p.href.startsWith("http")}
-                  >
-                    {p.link}
-                  </TextLink>
+                  <div className="mt-3.5">
+                    <TextLink
+                      href={p.href}
+                      color={colorMap[p.color]}
+                      external={p.href.startsWith("http")}
+                    >
+                      {p.link}
+                    </TextLink>
+                  </div>
                 </div>
               </Card>
             </motion.div>
           ))}
         </div>
       </Container>
-    </section>
+    </Section>
   );
 }

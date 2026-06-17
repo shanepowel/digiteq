@@ -9,7 +9,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: "gradient-primary text-white border-0 hover:opacity-90",
-        ghost: "border border-border bg-transparent text-foreground hover:bg-white/[0.04]",
+        ghost: "border border-white/[0.06] bg-transparent text-white hover:bg-white/[0.04]",
         rose: "gradient-rose text-white border-0 hover:opacity-90",
         outline: "border border-border bg-transparent text-foreground hover:border-border-hover",
       },
