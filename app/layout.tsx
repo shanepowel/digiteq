@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@/components/analytics";
+import { OrganizationJsonLd } from "@/components/seo/json-ld";
 import { brandAssets } from "@/lib/brand";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${inter.variable} min-h-screen bg-background font-sans antialiased`}>
+        <OrganizationJsonLd />
         <Analytics />
         {children}
       </body>

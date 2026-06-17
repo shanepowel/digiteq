@@ -1,15 +1,16 @@
-import type { WithContext, Organization } from "schema-dts";
-import { siteUrl } from "@/lib/site";
-import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
-import { Hero } from "@/components/sections/hero";
+import { Nav } from "@/components/layout/nav";
 import { Ecosystem } from "@/components/sections/ecosystem";
+import { Hero } from "@/components/sections/hero";
+import { InvestmentCta } from "@/components/sections/investment-cta";
 import { Philosophy } from "@/components/sections/philosophy";
 import { PortfolioGrid } from "@/components/sections/portfolio-grid";
-import { InvestmentCta } from "@/components/sections/investment-cta";
+import { buildMetadata, pageMetadata } from "@/components/seo/metadata";
 import { getSanityClient } from "@/lib/sanity/client";
 import { PORTFOLIO_QUERY } from "@/lib/sanity/queries";
 import type { Company } from "@/lib/sanity/types";
+
+export const metadata = buildMetadata(pageMetadata.home);
 
 export default async function HomePage() {
   let companies: Company[] = [];
@@ -19,20 +20,8 @@ export default async function HomePage() {
     companies = [];
   }
 
-  const schema: WithContext<Organization> = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Digiteq",
-    url: siteUrl,
-    slogan: "Building Digital Equity",
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
       <Nav />
       <main>
         <Hero />

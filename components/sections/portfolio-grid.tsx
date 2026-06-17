@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { Reveal, Stagger, StaggerItem } from "@/components/animation/motion";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { Card } from "@/components/ui/card";
@@ -52,7 +52,7 @@ export function PortfolioGrid({ companies }: PortfolioGridProps) {
   return (
     <Section>
       <Container>
-        <div className="mb-7 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+        <Reveal className="mb-7 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <SectionLabel>Portfolio</SectionLabel>
             <h2 className="text-[30px] font-semibold text-foreground">
@@ -62,16 +62,12 @@ export function PortfolioGrid({ companies }: PortfolioGridProps) {
           <TextLink href="/portfolio" color="cyan">
             View all portfolio
           </TextLink>
-        </div>
+        </Reveal>
 
-        <div className="flex gap-3.5 overflow-x-auto pb-2 snap-x snap-mandatory lg:grid lg:grid-cols-5 lg:overflow-visible lg:pb-0">
-          {items.map((p, i) => (
-            <motion.div
+        <Stagger className="flex gap-3.5 overflow-x-auto pb-2 snap-x snap-mandatory lg:grid lg:grid-cols-5 lg:overflow-visible lg:pb-0">
+          {items.map((p) => (
+            <StaggerItem
               key={p.name}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
               className="min-w-[220px] shrink-0 snap-start lg:min-w-0"
             >
               <Card className="flex min-h-[290px] flex-col">
@@ -109,9 +105,9 @@ export function PortfolioGrid({ companies }: PortfolioGridProps) {
                   </div>
                 </div>
               </Card>
-            </motion.div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </Container>
     </Section>
   );

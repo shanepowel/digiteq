@@ -1,57 +1,58 @@
-import Link from "next/link";
-import { ContentPage } from "@/components/content-page";
-import { Container } from "@/components/layout/container";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { insightsFallback } from "@/lib/fallbacks/home";
+import { InsightsPageClient, type InsightListItem } from "@/components/pages/insights-page-client";
+import { PageShell } from "@/components/layout/page-shell";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
+import { buildMetadata, pageMetadata } from "@/components/seo/metadata";
+import { getAllInsightFrontmatter } from "@/lib/insights/markdown";
 import { getSanityClient } from "@/lib/sanity/client";
 import { ALL_INSIGHTS_QUERY } from "@/lib/sanity/queries";
 import type { Insight } from "@/lib/sanity/types";
-import { formatDate } from "@/lib/utils";
 
-export const metadata = { title: "Insights" };
+export const metadata = buildMetadata(pageMetadata.insights);
+
+function mapSanityInsight(item: Insight): InsightListItem {
+  return {
+    title: item.title,
+    slug: item.slug,
+    excerpt: item.excerpt || "",
+    category: item.category || "Strategy",
+    publishedAt: item.publishedAt || new Date().toISOString(),
+  };
+}
 
 export default async function InsightsPage() {
-  let insights: Insight[] = [];
-  try {
-    insights = await getSanityClient().fetch<Insight[]>(ALL_INSIGHTS_QUERY);
-  } catch {
-    insights = [];
+  const bySlug = new Map<string, InsightListItem>();
+
+  for (const item of getAllInsightFrontmatter()) {
+    bySlug.set(item.slug, {
+      ...item,
+      readTime: item.readTime || "8 min read",
+    });
   }
 
-  const items =
-    insights.length > 0
-      ? insights
-      : insightsFallback.map((i) => ({
-          _id: i.slug,
-          title: i.title,
-          slug: i.slug,
-          excerpt: i.excerpt,
-          category: i.category,
-        }));
+  try {
+    const sanityInsights = await getSanityClient().fetch<Insight[]>(ALL_INSIGHTS_QUERY);
+    for (const item of sanityInsights) {
+      if (!bySlug.has(item.slug)) {
+        bySlug.set(item.slug, mapSanityInsight(item));
+      }
+    }
+  } catch {
+    // markdown only
+  }
+
+  const items = Array.from(bySlug.values()).sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+  );
 
   return (
-    <ContentPage page="insights">
-      <section className="px-6 pb-24 sm:px-12">
-        <Container>
-          <div className="grid gap-4">
-            {items.map((item) => (
-              <Card key={item._id} className="p-6">
-                {item.category && <Badge variant="violet">{item.category}</Badge>}
-                <h3 className="mt-3 text-xl font-semibold text-foreground">
-                  <Link href={`/insights/${item.slug}`} className="hover:text-cyan">
-                    {item.title}
-                  </Link>
-                </h3>
-                {item.excerpt && <p className="mt-2 text-sm text-muted">{item.excerpt}</p>}
-                {"publishedAt" in item && item.publishedAt && (
-                  <p className="mt-2 text-xs text-muted-dark">{formatDate(item.publishedAt)}</p>
-                )}
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-    </ContentPage>
+    <PageShell>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Insights", href: "/insights" },
+        ]}
+      />
+      <InsightsPageClient insights={items} />
+    </PageShell>
   );
 }

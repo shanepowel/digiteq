@@ -1,8 +1,9 @@
 import { ContentPage } from "@/components/content-page";
 import { ContactForm } from "@/components/contact-form";
 import { Container } from "@/components/layout/container";
+import { buildMetadata, pageMetadata } from "@/components/seo/metadata";
 
-export const metadata = { title: "Contact" };
+export const metadata = buildMetadata(pageMetadata.contact);
 
 export default function ContactPage() {
   return (

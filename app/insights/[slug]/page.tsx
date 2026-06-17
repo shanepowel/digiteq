@@ -1,96 +1,68 @@
 import { notFound } from "next/navigation";
-import { Nav } from "@/components/layout/nav";
-import { Footer } from "@/components/layout/footer";
-import { Container } from "@/components/layout/container";
-import { Badge } from "@/components/ui/badge";
-import { insightsFallback } from "@/lib/fallbacks/home";
+import { InsightArticle } from "@/components/pages/insight-article";
+import { PageShell } from "@/components/layout/page-shell";
+import { buildMetadata } from "@/components/seo/metadata";
+import { getInsightMarkdown, getInsightSlugs } from "@/lib/insights/markdown";
 import { getSanityClient } from "@/lib/sanity/client";
-import { INSIGHT_BY_SLUG } from "@/lib/sanity/queries";
+import { ALL_INSIGHT_SLUGS, INSIGHT_BY_SLUG } from "@/lib/sanity/queries";
 import type { Insight } from "@/lib/sanity/types";
-import { formatDate } from "@/lib/utils";
 
 type Props = { params: Promise<{ slug: string }> };
 
-const staticInsights = Object.fromEntries(
-  insightsFallback.map((item) => [item.slug, item]),
-);
+export async function generateStaticParams() {
+  const slugs = new Set(getInsightSlugs());
+
+  try {
+    const sanitySlugs = await getSanityClient().fetch<{ slug: string }[]>(ALL_INSIGHT_SLUGS);
+    for (const { slug } of sanitySlugs) slugs.add(slug);
+  } catch {
+    // markdown slugs only
+  }
+
+  return Array.from(slugs).map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const fallback = staticInsights[slug];
-  if (fallback) {
-    return { title: fallback.title, description: fallback.excerpt };
+  const markdown = getInsightMarkdown(slug);
+
+  if (markdown) {
+    return buildMetadata({
+      title:
+        markdown.frontmatter.seo?.title?.replace(" | Digiteq Insights", "") ||
+        markdown.frontmatter.title,
+      description: markdown.frontmatter.seo?.description || markdown.frontmatter.excerpt,
+      path: `/insights/${slug}`,
+    });
   }
 
   try {
     const insight = await getSanityClient().fetch<Insight | null>(INSIGHT_BY_SLUG, { slug });
-    return {
-      title: insight?.seo?.title || insight?.title || "Insight",
-      description: insight?.seo?.description || insight?.excerpt,
-    };
+    if (insight) {
+      return buildMetadata({
+        title: insight.seo?.title || insight.title,
+        description: insight.seo?.description || insight.excerpt || "",
+        path: `/insights/${slug}`,
+      });
+    }
   } catch {
-    return { title: "Insight" };
-  }
-}
-
-export async function generateStaticParams() {
-  try {
-    const slugs = await getSanityClient().fetch<{ slug: string }[]>(
-      `*[_type == "insight" && defined(slug.current)]{ "slug": slug.current }`,
-    );
-    if (slugs.length > 0) return slugs.map(({ slug }) => ({ slug }));
-  } catch {
-    // Sanity not configured
-  }
-  return insightsFallback.map((item) => ({ slug: item.slug }));
-}
-
-async function getInsight(slug: string): Promise<Insight | null> {
-  const fallback = staticInsights[slug];
-  if (fallback) {
-    return {
-      _id: fallback.slug,
-      title: fallback.title,
-      slug: fallback.slug,
-      excerpt: fallback.excerpt,
-      category: fallback.category,
-    };
+    // fall through
   }
 
-  try {
-    return await getSanityClient().fetch<Insight | null>(INSIGHT_BY_SLUG, { slug });
-  } catch {
-    return null;
-  }
+  return { title: "Insight" };
 }
 
 export default async function InsightPage({ params }: Props) {
   const { slug } = await params;
-  const insight = await getInsight(slug);
+  const markdown = getInsightMarkdown(slug);
 
-  if (!insight) notFound();
+  if (!markdown) {
+    notFound();
+  }
 
   return (
-    <>
-      <Nav />
-      <main className="pt-16">
-        <article className="px-6 py-24 sm:px-12">
-          <Container className="max-w-3xl">
-            {insight.category && <Badge variant="violet">{insight.category}</Badge>}
-            <h1 className="mt-4 text-4xl font-bold text-foreground">{insight.title}</h1>
-            {insight.publishedAt && (
-              <p className="mt-4 text-sm text-muted-dark">{formatDate(insight.publishedAt)}</p>
-            )}
-            {insight.excerpt && (
-              <p className="mt-6 text-lg text-muted">{insight.excerpt}</p>
-            )}
-            {insight.author?.name && (
-              <p className="mt-8 text-sm text-muted">By {insight.author.name}</p>
-            )}
-          </Container>
-        </article>
-      </main>
-      <Footer />
-    </>
+    <PageShell>
+      <InsightArticle frontmatter={markdown.frontmatter} content={markdown.content} />
+    </PageShell>
   );
 }
