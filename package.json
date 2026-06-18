@@ -9,7 +9,10 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "generate:seeds": "node scripts/generate-sanity-seeds.js",
-    "import:seeds": "bash scripts/import-seeds.sh"
+    "import:seeds": "bash scripts/import-seeds.sh",
+    "test:e2e": "playwright test",
+    "portal:dev": "npm run dev --prefix apps/portal",
+    "portal:build": "npm run build --prefix apps/portal"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",

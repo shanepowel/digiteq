@@ -83,3 +83,13 @@ npm start
 4. Point domain **digiteq.io** at Vercel; set `NEXT_PUBLIC_SITE_URL=https://digiteq.io`
 5. Verify Resend domain for `hello@digiteq.io`; set HubSpot and Plausible prod keys
 6. Replace footer placeholder phone and wire privacy/terms pages before announcing
+
+## Phase 2 — operating platform
+
+See [`docs/PHASE2.md`](docs/PHASE2.md) for the authenticated portal at **app.digiteq.io** (`apps/portal`).
+
+```bash
+npm run portal:dev    # localhost:3001
+npm run portal:build
+npm run test:e2e      # marketing site smoke tests
+```
