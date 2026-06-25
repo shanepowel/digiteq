@@ -7,9 +7,21 @@ One-time setup to bring the Phase 2 portal live. The marketing site (`digiteq.io
 | Item | Status |
 |------|--------|
 | Vercel project `digiteq` (marketing) | Live — `digiteq.io` |
-| Vercel project `digiteq-portal` | **Does not exist** |
-| `app.digiteq.io` DNS | **No record** (NXDOMAIN) |
+| Vercel project `digiteqapp` (portal) | Deployed — add `app.digiteq.io` in Domains if missing |
+| `app.digiteq.io` DNS | Resolves to Vercel |
 | Neon DB `digiteq-portal` | Created — project `lucky-king-95684613` |
+| Clerk env on portal | **Required** — missing keys cause `MIDDLEWARE_INVOCATION_FAILED` / HTTP 500 |
+
+## Troubleshooting
+
+**HTTP 500 / `MIDDLEWARE_INVOCATION_FAILED`:** Set both Clerk keys on the portal Vercel project, then redeploy:
+
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
+- `CLERK_SECRET_KEY`
+
+Also add `app.digiteq.io` under Clerk → Domains.
+
+**Without Clerk keys:** the portal shows a public landing page (no auth). Login and protected routes need Clerk configured.
 
 ## 1. Create the Vercel portal project (≈2 min)
 
