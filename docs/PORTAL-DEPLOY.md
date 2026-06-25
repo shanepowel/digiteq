@@ -58,7 +58,13 @@ Or run locally:
 VERCEL_TOKEN=... node scripts/reconnect-portal-vercel.mjs
 ```
 
-After reconnecting, you can delete the orphan private repo **`shanepowel/digiteqapp`** on GitHub (created by Vercel's "New Project" flow). It is no longer used once **digiteqapp** points at the monorepo.
+After reconnecting, delete the orphan private repo **`shanepowel/digiteqapp`** if it still exists (created by Vercel's "New Project" flow):
+
+```bash
+./scripts/delete-orphan-digiteqapp-repo.sh
+```
+
+If the repo is already gone, the script exits successfully. The Vercel project name **digiteqapp** stays — only the orphan GitHub repo is removed.
 
 ## Troubleshooting
 
