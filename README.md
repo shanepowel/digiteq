@@ -84,6 +84,12 @@ npm start
 5. Verify Resend domain for `hello@digiteq.io`; set HubSpot and Plausible prod keys
 6. Replace footer placeholder phone and wire privacy/terms pages before announcing
 
+## Docs
+
+- [`docs/ROADMAP.md`](docs/ROADMAP.md) — tracked checklist (prod, polish, Phase 2.1)
+- [`docs/PRODUCTION.md`](docs/PRODUCTION.md) — Vercel, env vars, webhooks, portal DB
+- [`AGENTS.md`](AGENTS.md) — repo conventions for agents and contributors
+
 ## Phase 2 — operating platform
 
 See [`docs/PHASE2.md`](docs/PHASE2.md) for the authenticated portal at **app.digiteq.io** (`apps/portal`).
