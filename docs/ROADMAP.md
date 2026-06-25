@@ -59,7 +59,7 @@ From `INTEGRATION-GUIDE.md` §11 — run after production env is set:
 | Item | Status | Notes |
 |------|--------|-------|
 | `/ventures` page treatment | [x] | `PageShell`, `buildMetadata`, `VenturesPageContent` (parity with about/portfolio) |
-| Case studies | [ ] | `sanity/schemas/caseStudy.ts` exists; no `app/case-studies/` routes |
+| Case studies | [x] | `sanity/schemas/caseStudy.ts` exists; `app/case-studies/` routes implemented |
 | Interactive hero | [ ] | Static `hero-3d.png`; Spline/R3F not implemented (`Hero3DMark` unused) |
 | `AGENTS.md` + `docs/PRODUCTION.md` | [x] | Agent + production runbooks in repo |
 | Playwright in CI | [x] | `.github/workflows/e2e.yml` on PR + `main` |

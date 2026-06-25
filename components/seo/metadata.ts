@@ -65,6 +65,12 @@ export const pageMetadata = {
       "Operator notes on building, acquiring and scaling digital businesses. Strategy, technology and acquisition thinking from the Digiteq team.",
     path: "/insights",
   },
+  caseStudies: {
+    title: "Case Studies",
+    description:
+      "Case studies from the Digiteq portfolio — operating work, product launches and growth systems applied across digital assets.",
+    path: "/case-studies",
+  },
   investment: {
     title: "Investment",
     description:

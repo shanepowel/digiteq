@@ -1,3 +1,5 @@
+import type { PortableTextBlock } from "next-sanity";
+
 export type CompanyMetric = { label: string; value: string };
 
 export type Company = {
@@ -41,4 +43,18 @@ export type TeamMember = {
   bio?: string;
   photo?: string;
   linkedin?: string;
+};
+
+export type CaseStudyResult = { metric?: string; value?: string };
+
+export type CaseStudy = {
+  _id: string;
+  title: string;
+  slug: string;
+  client?: { name?: string; slug?: string };
+  challenge?: string;
+  solution?: string;
+  results?: CaseStudyResult[];
+  featuredImage?: string;
+  content?: PortableTextBlock[];
 };
