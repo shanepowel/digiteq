@@ -18,6 +18,9 @@ test.describe("marketing site smoke", () => {
     await expect(page.getByRole("heading", { level: 1 })).toContainText(/venture formation/i);
     await page.getByRole("link", { name: "Insights", exact: true }).click();
     await expect(page).toHaveURL(/\/insights/);
+    await page.getByRole("navigation").getByRole("link", { name: "Case Studies", exact: true }).click();
+    await expect(page).toHaveURL(/\/case-studies/);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(/proof in operating systems/i);
   });
 
   test("insight article renders body", async ({ page }) => {
