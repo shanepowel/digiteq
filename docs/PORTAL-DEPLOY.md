@@ -40,7 +40,7 @@ Deploy from `main`.
 
 ## 2. Add environment variables (portal project)
 
-In Vercel → **digiteq-portal** → Settings → Environment Variables:
+In Vercel → **digiteqapp** → Settings → Environment Variables:
 
 | Variable | Value |
 |----------|-------|

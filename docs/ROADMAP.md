@@ -97,6 +97,7 @@ Explicitly out of Phase 2 v1 scope (`docs/PHASE2.md`).
 
 ## Related docs
 
+- [`docs/PORTAL-DEPLOY.md`](./PORTAL-DEPLOY.md) — step-by-step to bring `app.digiteq.io` live
 - [`docs/PRODUCTION.md`](./PRODUCTION.md) — Vercel, env vars, webhooks, portal DB
 - [`docs/PHASE2.md`](./PHASE2.md) — Portal architecture and v1 scope
 - [`AGENTS.md`](../AGENTS.md) — Repo conventions for agents and contributors
