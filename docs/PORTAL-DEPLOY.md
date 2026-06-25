@@ -16,6 +16,16 @@ One-time setup to bring the Phase 2 portal live. The marketing site (`digiteq.io
 
 If `digiteqapp` was created from a standalone repo, it will **not** deploy portal code from the monorepo.
 
+### Automated (recommended)
+
+```bash
+VERCEL_TOKEN=... node scripts/reconnect-portal-vercel.mjs
+```
+
+This updates project settings, disconnects `shanepowel/digiteqapp`, connects `shanepowel/digiteq`, and deploys `main` from `apps/portal`.
+
+### Manual (Vercel dashboard)
+
 In Vercel → **digiteqapp** → **Settings** → **Git**:
 
 1. Connect repository **`shanepowel/digiteq`**
@@ -29,7 +39,12 @@ Domain `app.digiteq.io` stays on this project — no DNS change needed.
 
 ## GitHub Actions deploy (alternative)
 
-Workflow `.github/workflows/deploy-portal.yml` builds `apps/portal` and deploys to **digiteqapp** on every push to `main` that touches `apps/portal/`.
+Workflow `.github/workflows/deploy-portal.yml` runs `scripts/reconnect-portal-vercel.mjs` on pushes to `main` that touch `apps/portal/`. The script:
+
+1. Sets **Root Directory** to `apps/portal` on **digiteqapp**
+2. Disconnects the stale `shanepowel/digiteqapp` Git link
+3. Connects **`shanepowel/digiteq`**
+4. Triggers a production deployment from `main`
 
 Add one repository secret in GitHub → **Settings → Secrets → Actions**:
 
@@ -37,7 +52,13 @@ Add one repository secret in GitHub → **Settings → Secrets → Actions**:
 |--------|-------|
 | `VERCEL_TOKEN` | [Vercel account token](https://vercel.com/account/tokens) |
 
-Org/project IDs are set in the workflow (`team_IHWxUj2cbcDUdNNfcXE8BroH` / `prj_WaVDsv1bh3ZjUXbdaBRyhEwV5Hdi`). After adding the token, run **Actions → Deploy Portal → Run workflow** or push to `main`.
+Or run locally:
+
+```bash
+VERCEL_TOKEN=... node scripts/reconnect-portal-vercel.mjs
+```
+
+After reconnecting, you can delete the orphan private repo **`shanepowel/digiteqapp`** on GitHub (created by Vercel's "New Project" flow). It is no longer used once **digiteqapp** points at the monorepo.
 
 ## Troubleshooting
 

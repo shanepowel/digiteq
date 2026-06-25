@@ -7,6 +7,7 @@ on:
     paths:
       - "apps/portal/**"
       - ".github/workflows/deploy-portal.yml"
+      - "scripts/reconnect-portal-vercel.mjs"
   workflow_dispatch:
 
 concurrency:
@@ -16,10 +17,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    defaults:
-      run:
-        working-directory: apps/portal
+    timeout-minutes: 25
 
     steps:
       - uses: actions/checkout@v4
@@ -27,29 +25,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: apps/portal/package-lock.json
 
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
-
-      - name: Install Vercel CLI
-        run: npm install -g vercel@54.17.2
-
-      - name: Pull Vercel environment
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Reconnect digiteqapp to monorepo and deploy
         env:
-          VERCEL_ORG_ID: team_IHWxUj2cbcDUdNNfcXE8BroH
-          VERCEL_PROJECT_ID: prj_WaVDsv1bh3ZjUXbdaBRyhEwV5Hdi
-
-      - name: Build
-        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: team_IHWxUj2cbcDUdNNfcXE8BroH
-          VERCEL_PROJECT_ID: prj_WaVDsv1bh3ZjUXbdaBRyhEwV5Hdi
-
-      - name: Deploy to production
-        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: team_IHWxUj2cbcDUdNNfcXE8BroH
-          VERCEL_PROJECT_ID: prj_WaVDsv1bh3ZjUXbdaBRyhEwV5Hdi
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          GITHUB_REPO: shanepowel/digiteq
+          ROOT_DIRECTORY: apps/portal
+          GIT_REF: ${{ github.ref_name }}
+        run: node scripts/reconnect-portal-vercel.mjs
