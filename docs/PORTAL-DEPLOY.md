@@ -6,11 +6,26 @@ One-time setup to bring the Phase 2 portal live. The marketing site (`digiteq.io
 
 | Item | Status |
 |------|--------|
-| Vercel project `digiteq` (marketing) | Live — `digiteq.io` |
-| Vercel project `digiteqapp` (portal) | Deployed — add `app.digiteq.io` in Domains if missing |
+| Vercel project `digiteq` (marketing) | Deploys from `shanepowel/digiteq` → `digiteq.io` |
+| Vercel project `digiteqapp` (portal) | **Must use `shanepowel/digiteq` + root `apps/portal`** (not a separate `digiteqapp` repo) |
 | `app.digiteq.io` DNS | Resolves to Vercel |
 | Neon DB `digiteq-portal` | Created — project `lucky-king-95684613` |
-| Clerk env on portal | **Required** — missing keys cause `MIDDLEWARE_INVOCATION_FAILED` / HTTP 500 |
+| Clerk env on portal | **Required** — `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` + `CLERK_SECRET_KEY` |
+
+## Fix Git connection (required for deploys after PR merge)
+
+If `digiteqapp` was created from a standalone repo, it will **not** deploy portal code from the monorepo.
+
+In Vercel → **digiteqapp** → **Settings** → **Git**:
+
+1. Connect repository **`shanepowel/digiteq`**
+2. Set **Root Directory** to `apps/portal`
+3. Set **Production Branch** to `main`
+4. Install command: `npm install --legacy-peer-deps`
+5. Build command: `npm run build` (runs `prisma db push` + Next build)
+6. Click **Redeploy** on `main` after saving
+
+Domain `app.digiteq.io` stays on this project — no DNS change needed.
 
 ## Troubleshooting
 
