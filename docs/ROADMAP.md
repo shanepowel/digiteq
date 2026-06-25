@@ -31,8 +31,8 @@ Mostly ops and env configuration. Code paths exist; production wiring is outstan
 | Sanity webhook → `/api/revalidate` in prod | [ ] | Set webhook + `SANITY_REVALIDATE_SECRET` on Vercel |
 | HubSpot + Resend + Plausible prod env | [ ] | Keys on Vercel; verify Resend domain for `hello@digiteq.io` |
 | HubSpot investment form + custom properties | [ ] | `HUBSPOT_INVESTMENT_FORM_ID` + properties in HubSpot |
-| Portal deploy (`app.digiteq.io`, root `apps/portal`) | [ ] | Separate Vercel project; see `docs/PRODUCTION.md` |
-| Neon `DATABASE_URL` + `db:push` / `db:seed` on portal | [ ] | Required for pipeline data |
+| Neon `DATABASE_URL` + `db:push` / `db:seed` on portal | [x] | Neon project `digiteq-portal` (`lucky-king-95684613`); schema seeded |
+| Portal deploy (`app.digiteq.io`, root `apps/portal`) | [ ] | **Vercel project not created**; see `docs/PORTAL-DEPLOY.md` |
 | Clerk app + roles (`INTERNAL` / `FOUNDER` / `INVESTOR`) | [ ] | `publicMetadata.role` on users |
 | `PORTAL_INBOUND_SECRET` on marketing + portal | [ ] | Wires investment form → pipeline webhook |
 | Integration guide §11 verification checklist | [ ] | Manual post-deploy; see below |
