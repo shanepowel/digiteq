@@ -16,6 +16,16 @@ One-time setup to bring the Phase 2 portal live. The marketing site (`digiteq.io
 
 If `digiteqapp` was created from a standalone repo, it will **not** deploy portal code from the monorepo.
 
+### Automated (recommended)
+
+```bash
+VERCEL_TOKEN=... node scripts/reconnect-portal-vercel.mjs
+```
+
+This updates project settings, disconnects `shanepowel/digiteqapp`, connects `shanepowel/digiteq`, and deploys `main` from `apps/portal`.
+
+### Manual (Vercel dashboard)
+
 In Vercel → **digiteqapp** → **Settings** → **Git**:
 
 1. Connect repository **`shanepowel/digiteq`**
@@ -26,6 +36,35 @@ In Vercel → **digiteqapp** → **Settings** → **Git**:
 6. Click **Redeploy** on `main` after saving
 
 Domain `app.digiteq.io` stays on this project — no DNS change needed.
+
+## GitHub Actions deploy (alternative)
+
+Workflow `.github/workflows/deploy-portal.yml` runs `scripts/reconnect-portal-vercel.mjs` on pushes to `main` that touch `apps/portal/`. The script:
+
+1. Sets **Root Directory** to `apps/portal` on **digiteqapp**
+2. Disconnects the stale `shanepowel/digiteqapp` Git link
+3. Connects **`shanepowel/digiteq`**
+4. Triggers a production deployment from `main`
+
+Add one repository secret in GitHub → **Settings → Secrets → Actions**:
+
+| Secret | Value |
+|--------|-------|
+| `VERCEL_TOKEN` | [Vercel account token](https://vercel.com/account/tokens) |
+
+Or run locally:
+
+```bash
+VERCEL_TOKEN=... node scripts/reconnect-portal-vercel.mjs
+```
+
+After reconnecting, delete the orphan private repo **`shanepowel/digiteqapp`** if it still exists (created by Vercel's "New Project" flow):
+
+```bash
+./scripts/delete-orphan-digiteqapp-repo.sh
+```
+
+If the repo is already gone, the script exits successfully. The Vercel project name **digiteqapp** stays — only the orphan GitHub repo is removed.
 
 ## Troubleshooting
 

@@ -1,0 +1,35 @@
+name: Deploy Portal
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/portal/**"
+      - ".github/workflows/deploy-portal.yml"
+      - "scripts/reconnect-portal-vercel.mjs"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-portal-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Reconnect digiteqapp to monorepo and deploy
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          GITHUB_REPO: shanepowel/digiteq
+          ROOT_DIRECTORY: apps/portal
+          GIT_REF: ${{ github.ref_name }}
+        run: node scripts/reconnect-portal-vercel.mjs
