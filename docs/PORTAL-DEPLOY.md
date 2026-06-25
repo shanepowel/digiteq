@@ -45,8 +45,8 @@ In Vercel → **digiteqapp** → Settings → Environment Variables:
 | Variable | Value |
 |----------|-------|
 | `DATABASE_URL` | Neon connection string (project `digiteq-portal` / `lucky-king-95684613`) |
-| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | From Clerk dashboard |
-| `CLERK_SECRET_KEY` | From Clerk dashboard |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | From Clerk dashboard (app `app_3FdI5bXQm3FVFVq4PkHRjHrmBE4`) |
+| `CLERK_SECRET_KEY` | From Clerk dashboard (same application) |
 | `NEXT_PUBLIC_CLERK_SIGN_IN_URL` | `/login` |
 | `NEXT_PUBLIC_CLERK_SIGN_UP_URL` | `/login` |
 | `NEXT_PUBLIC_SANITY_PROJECT_ID` | `fr7gld8d` |
@@ -75,7 +75,20 @@ Cloudflare → **digiteq.io** → DNS → add:
 
 ## 5. Clerk
 
+Linked Clerk application: **`app_3FdI5bXQm3FVFVq4PkHRjHrmBE4`**
+
 In Clerk → **Domains**, add `app.digiteq.io`.
+
+To pull keys into local `.env.local` from the CLI:
+
+```bash
+cd apps/portal
+clerk auth login
+clerk init --app app_3FdI5bXQm3FVFVq4PkHRjHrmBE4
+clerk doctor
+```
+
+Copy the same keys to Vercel → **digiteqapp** → Environment Variables, then redeploy.
 
 ## 6. Marketing webhook (optional)
 
