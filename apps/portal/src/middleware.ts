@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const isPublic = createRouteMatcher([
+  "/",
   "/login(.*)",
   "/api/webhooks/investment-inbound(.*)",
   "/ventures-site(.*)",
