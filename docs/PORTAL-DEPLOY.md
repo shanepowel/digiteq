@@ -55,7 +55,14 @@ In Vercel → **digiteqapp** → Settings → Environment Variables:
 | `NEXT_PUBLIC_MARKETING_URL` | `https://digiteq.io` |
 | `PORTAL_INBOUND_SECRET` | Generate a random secret (same on marketing project) |
 
-Redeploy after setting env vars.
+Redeploy after setting env vars. The build runs `prisma db push` automatically when `DATABASE_URL` is set.
+
+Optional: seed sample pipeline data once:
+
+```bash
+cd apps/portal
+npm run db:seed
+```
 
 ## 3. Add domain in Vercel
 
