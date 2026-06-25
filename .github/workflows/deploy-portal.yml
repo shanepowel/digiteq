@@ -39,17 +39,17 @@ jobs:
       - name: Pull Vercel environment
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
         env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: team_IHWxUj2cbcDUdNNfcXE8BroH
+          VERCEL_PROJECT_ID: prj_WaVDsv1bh3ZjUXbdaBRyhEwV5Hdi
 
       - name: Build
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
         env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: team_IHWxUj2cbcDUdNNfcXE8BroH
+          VERCEL_PROJECT_ID: prj_WaVDsv1bh3ZjUXbdaBRyhEwV5Hdi
 
       - name: Deploy to production
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
         env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: team_IHWxUj2cbcDUdNNfcXE8BroH
+          VERCEL_PROJECT_ID: prj_WaVDsv1bh3ZjUXbdaBRyhEwV5Hdi

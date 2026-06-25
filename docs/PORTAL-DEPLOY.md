@@ -27,6 +27,18 @@ In Vercel → **digiteqapp** → **Settings** → **Git**:
 
 Domain `app.digiteq.io` stays on this project — no DNS change needed.
 
+## GitHub Actions deploy (alternative)
+
+Workflow `.github/workflows/deploy-portal.yml` builds `apps/portal` and deploys to **digiteqapp** on every push to `main` that touches `apps/portal/`.
+
+Add one repository secret in GitHub → **Settings → Secrets → Actions**:
+
+| Secret | Value |
+|--------|-------|
+| `VERCEL_TOKEN` | [Vercel account token](https://vercel.com/account/tokens) |
+
+Org/project IDs are set in the workflow (`team_IHWxUj2cbcDUdNNfcXE8BroH` / `prj_WaVDsv1bh3ZjUXbdaBRyhEwV5Hdi`). After adding the token, run **Actions → Deploy Portal → Run workflow** or push to `main`.
+
 ## Troubleshooting
 
 **HTTP 500 / `MIDDLEWARE_INVOCATION_FAILED`:** Set both Clerk keys on the portal Vercel project, then redeploy:
