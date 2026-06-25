@@ -131,6 +131,9 @@ export function Footer() {
             <Link href="/terms" className="text-xs text-muted-dark hover:text-muted">
               Terms of Service
             </Link>
+            <Link href="/case-studies" className="text-xs text-muted-dark hover:text-muted">
+              Case Studies
+            </Link>
             <Link href="/sitemap.xml" className="text-xs text-muted-dark hover:text-muted">
               Sitemap
             </Link>

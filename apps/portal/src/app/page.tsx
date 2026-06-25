@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { PortalAuthHeader } from "@/components/portal-auth-header";
 import { defaultRouteForRole, getSessionUser } from "@/lib/auth";
-import { Card, PageHeader, PortalShell } from "@/components/portal-shell";
+import { Card, PageHeader } from "@/components/portal-shell";
 import { marketingUrl } from "@/lib/utils";
 
 export default async function PortalHomePage() {
@@ -14,6 +15,7 @@ export default async function PortalHomePage() {
   return (
     <div className="min-h-screen px-6 py-16 lg:px-12">
       <div className="mx-auto max-w-[640px]">
+        <PortalAuthHeader />
         <PageHeader
           kicker="operating platform"
           title="Digiteq portal."

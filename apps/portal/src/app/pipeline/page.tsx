@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { requireRole } from "@/lib/auth";
-import { prisma, hasDatabase } from "@/lib/db";
+import { prisma, hasDatabase, isMissingSchemaError } from "@/lib/db";
 import { dealStageLabels, dealStages } from "@/lib/constants";
 import { Badge, Card, PageHeader, PortalShell } from "@/components/portal-shell";
 import { formatDate } from "@/lib/utils";
@@ -12,9 +12,20 @@ export default async function PipelinePage() {
   const gate = await requireRole(["INTERNAL"]);
   if (!gate.ok) redirect("/login");
 
-  const deals = hasDatabase()
-    ? await prisma.pipelineDeal.findMany({ orderBy: { updatedAt: "desc" } })
-    : [];
+  let deals: Awaited<ReturnType<typeof prisma.pipelineDeal.findMany>> = [];
+  let schemaMissing = false;
+
+  if (hasDatabase()) {
+    try {
+      deals = await prisma.pipelineDeal.findMany({ orderBy: { updatedAt: "desc" } });
+    } catch (error) {
+      if (isMissingSchemaError(error)) {
+        schemaMissing = true;
+      } else {
+        throw error;
+      }
+    }
+  }
 
   const grouped = dealStages.map((stage) => ({
     stage,
@@ -30,11 +41,23 @@ export default async function PipelinePage() {
         description="Track inbound opportunities from first conversation through diligence and close."
       />
 
-      {!hasDatabase() ? (
+      {!hasDatabase() || schemaMissing ? (
         <Card>
           <p className="text-sm text-muted">
-            Set <code className="text-cyan">DATABASE_URL</code> and run{" "}
-            <code className="text-cyan">npm run db:push</code> to enable the pipeline.
+            {schemaMissing ? (
+              <>
+                Database is connected but tables are missing. Redeploy the portal (build runs{" "}
+                <code className="text-cyan">prisma db push</code>) or run{" "}
+                <code className="text-cyan">npm run db:push</code> against your production{" "}
+                <code className="text-cyan">DATABASE_URL</code>, then{" "}
+                <code className="text-cyan">npm run db:seed</code> for sample deals.
+              </>
+            ) : (
+              <>
+                Set <code className="text-cyan">DATABASE_URL</code> and run{" "}
+                <code className="text-cyan">npm run db:push</code> to enable the pipeline.
+              </>
+            )}
           </p>
         </Card>
       ) : (
