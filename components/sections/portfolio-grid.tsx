@@ -9,28 +9,8 @@ import { EcoIcon } from "@/components/shared/eco-icon";
 import { SectionLabel } from "@/components/shared/section-label";
 import { TextLink } from "@/components/shared/text-link";
 import { portfolioFallback, type PortfolioFallbackItem } from "@/lib/fallbacks/home";
+import { portfolioCompanyBySlug } from "@/lib/portfolio/companies";
 import type { Company } from "@/lib/sanity/types";
-
-const companyMeta: Record<string, { badge: string; href: string; link: string; desc: string }> = {
-  konduit: {
-    badge: "Supply",
-    href: "https://konduit.tech",
-    link: "konduit.tech",
-    desc: "European-sourced hardware and infrastructure delivered to businesses across Southern Africa with full warranty and in-region support.",
-  },
-  bmkrs: {
-    badge: "Brand studio",
-    href: "https://bmkrs.com",
-    link: "bmkrs.com",
-    desc: "A brand company run by builders. Full-service brand development from naming through to digital presence.",
-  },
-  "freelance-near-me": {
-    badge: "Marketplace",
-    href: "https://freelancenearme.com",
-    link: "freelancenearme.com",
-    desc: "A marketplace connecting businesses with vetted local freelancers. Faster, more transparent hiring for both sides.",
-  },
-};
 
 const colorMap = {
   cyan: "cyan",
@@ -43,21 +23,14 @@ const colors: PortfolioFallbackItem["color"][] = ["cyan", "violet", "magenta"];
 
 function mapCompanyToCard(company: Company, index: number): PortfolioFallbackItem {
   const slug = company.slug || "";
-  const meta = companyMeta[slug];
-  const badge =
-    meta?.badge ??
-    (company.services?.[0] === "Marketplace"
-      ? "Marketplace"
-      : company.services?.[0] === "Supply"
-        ? "Supply"
-        : "Brand studio");
+  const meta = portfolioCompanyBySlug[slug as keyof typeof portfolioCompanyBySlug];
 
   return {
     name: company.name,
-    desc: meta?.desc ?? company.description ?? "",
-    badge,
+    desc: meta?.description ?? company.description ?? "",
+    badge: company.category ?? meta?.badge ?? "Brand studio",
     link: meta?.link ?? company.website?.replace(/^https?:\/\//, "") ?? "Visit site",
-    href: meta?.href ?? company.website ?? `/portfolio/${slug}`,
+    href: company.website ?? meta?.website ?? `/portfolio/${slug}`,
     color: colors[index % colors.length],
     vi: index % 3,
   };
@@ -68,14 +41,8 @@ type PortfolioGridProps = {
 };
 
 export function PortfolioGrid({ companies }: PortfolioGridProps) {
-  const featuredSlugs = new Set(["konduit", "bmkrs", "freelance-near-me"]);
   const sanityItems =
-    companies && companies.length > 0
-      ? companies
-          .filter((c) => featuredSlugs.has(c.slug ?? ""))
-          .sort((a, b) => (a.order ?? 99) - (b.order ?? 99))
-          .map(mapCompanyToCard)
-      : [];
+    companies && companies.length > 0 ? companies.map(mapCompanyToCard) : [];
 
   const items = sanityItems.length > 0 ? sanityItems : portfolioFallback;
 

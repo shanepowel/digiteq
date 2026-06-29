@@ -26,6 +26,7 @@ const companies = [
     website: "https://konduit.tech",
     description:
       "Enterprise technology supply for Southern Africa. European-sourced hardware and infrastructure delivered with full warranty and in-region support.",
+    category: "Supply",
     services: ["Supply", "Enterprise hardware", "Infrastructure"],
     featured: true,
     order: 1,
@@ -43,6 +44,7 @@ const companies = [
     website: "https://bmkrs.com",
     description:
       "A brand company run by builders. Full-service brand development from naming through to digital presence.",
+    category: "Brand",
     services: ["Brand studio", "Brand development", "Digital presence"],
     featured: true,
     order: 2,
@@ -59,6 +61,7 @@ const companies = [
     slug: { _type: "slug", current: "freelance-near-me" },
     website: "https://freelancenearme.com",
     description: "A marketplace connecting businesses with vetted local freelancers.",
+    category: "Marketplace",
     services: ["Marketplace", "Talent matching", "Local discovery"],
     featured: true,
     order: 3,

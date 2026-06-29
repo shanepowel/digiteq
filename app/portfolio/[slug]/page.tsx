@@ -5,9 +5,9 @@ import { Footer } from "@/components/layout/footer";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { portfolioFallback } from "@/lib/fallbacks/home";
+import { portfolioCompanyBySlug, isPortfolioSlug, PORTFOLIO_SLUGS } from "@/lib/portfolio/companies";
 import { getSanityClient } from "@/lib/sanity/client";
-import { COMPANY_BY_SLUG } from "@/lib/sanity/queries";
+import { ALL_COMPANY_SLUGS, COMPANY_BY_SLUG } from "@/lib/sanity/queries";
 import type { Company } from "@/lib/sanity/types";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -20,30 +20,42 @@ export async function generateMetadata({ params }: Props) {
   } catch {
     // fall through
   }
-  const fallback = portfolioFallback.find((p) => p.href === `/portfolio/${slug}`);
+  const fallback = isPortfolioSlug(slug) ? portfolioCompanyBySlug[slug] : undefined;
   return { title: fallback?.name || "Company" };
 }
 
 export async function generateStaticParams() {
+  const slugSet = new Set<string>(PORTFOLIO_SLUGS);
+
   try {
-    const slugs = await getSanityClient().fetch<{ slug: string }[]>(
-      `*[_type == "company" && defined(slug.current)]{ "slug": slug.current }`,
-    );
-    if (slugs.length > 0) return slugs.map(({ slug }) => ({ slug }));
+    const slugs = await getSanityClient().fetch<{ slug: string }[]>(ALL_COMPANY_SLUGS);
+    slugs.forEach(({ slug }) => slugSet.add(slug));
   } catch {
     // Sanity not configured
   }
-  return [];
+
+  return [...slugSet].map((slug) => ({ slug }));
 }
 
 async function getCompany(slug: string): Promise<Company | null> {
+  if (!isPortfolioSlug(slug)) return null;
+
   try {
     const company = await getSanityClient().fetch<Company | null>(COMPANY_BY_SLUG, { slug });
     if (company) return company;
   } catch {
     // Sanity not configured
   }
-  return null;
+
+  const fallback = portfolioCompanyBySlug[slug];
+  return {
+    _id: `fallback-${slug}`,
+    name: fallback.name,
+    slug,
+    description: fallback.description,
+    website: fallback.website,
+    category: fallback.category,
+  };
 }
 
 export default async function CompanyPage({ params }: Props) {

@@ -1,3 +1,5 @@
+import { portfolioCompanies } from "@/lib/portfolio/companies";
+
 export const pillars = [
   {
     title: "Build",
@@ -27,35 +29,17 @@ export type PortfolioFallbackItem = {
   vi: number;
 };
 
-export const portfolioFallback: PortfolioFallbackItem[] = [
-  {
-    name: "Konduit",
-    desc: "European-sourced hardware and infrastructure delivered to businesses across Southern Africa with full warranty and in-region support.",
-    badge: "Supply",
-    link: "konduit.tech",
-    href: "https://konduit.tech",
-    color: "cyan",
-    vi: 0,
-  },
-  {
-    name: "BMKRS",
-    desc: "A brand company run by builders. Full-service brand development from naming through to digital presence.",
-    badge: "Brand studio",
-    link: "bmkrs.com",
-    href: "https://bmkrs.com",
-    color: "violet",
-    vi: 1,
-  },
-  {
-    name: "FreelanceNearMe",
-    desc: "A marketplace connecting businesses with vetted local freelancers. Faster, more transparent hiring for both sides.",
-    badge: "Marketplace",
-    link: "freelancenearme.com",
-    href: "https://freelancenearme.com",
-    color: "magenta",
-    vi: 2,
-  },
-];
+const fallbackColors: PortfolioFallbackItem["color"][] = ["cyan", "violet", "magenta"];
+
+export const portfolioFallback: PortfolioFallbackItem[] = portfolioCompanies.map((company, index) => ({
+  name: company.name,
+  desc: company.description,
+  badge: company.badge,
+  link: company.link,
+  href: company.website,
+  color: fallbackColors[index % fallbackColors.length],
+  vi: index,
+}));
 
 export const insightsFallback = [
   {

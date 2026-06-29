@@ -11,6 +11,7 @@ export type Company = {
   logo?: string;
   metrics?: CompanyMetric[];
   services?: string[];
+  category?: string;
   order?: number;
 };
 

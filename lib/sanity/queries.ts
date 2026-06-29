@@ -1,7 +1,11 @@
-export const PORTFOLIO_QUERY = `*[_type == "company" && featured == true] | order(order asc) {
-  _id, name, "slug": slug.current, description, website,
+import { PORTFOLIO_SLUGS } from "@/lib/portfolio/companies";
+
+const portfolioSlugFilter = PORTFOLIO_SLUGS.map((slug) => `"${slug}"`).join(", ");
+
+export const PORTFOLIO_QUERY = `*[_type == "company" && featured == true && slug.current in [${portfolioSlugFilter}]] | order(order asc) {
+  _id, name, "slug": slug.current, description, website, order,
   "logo": logo.asset->url,
-  metrics, services
+  metrics, services, category
 }`;
 
 export const INSIGHTS_QUERY = `*[_type == "insight"] | order(publishedAt desc) [0...6] {
@@ -45,12 +49,13 @@ export const INSIGHT_BY_SLUG = `*[_type == "insight" && slug.current == $slug][0
   "author": author->{ name, role, "photo": photo.asset->url }
 }`;
 
-export const COMPANY_BY_SLUG = `*[_type == "company" && slug.current == $slug][0] {
+export const COMPANY_BY_SLUG = `*[_type == "company" && slug.current == $slug && slug.current in [${portfolioSlugFilter}]][0] {
   ..., "slug": slug.current,
   "logo": logo.asset->url
 }`;
 
-export const ALL_COMPANY_SLUGS = `*[_type == "company" && defined(slug.current)]{ "slug": slug.current }`;
+export const ALL_COMPANY_SLUGS = `*[_type == "company" && defined(slug.current) && slug.current in [${portfolioSlugFilter}]]{ "slug": slug.current }`;
+
 export const ALL_INSIGHT_SLUGS = `*[_type == "insight" && defined(slug.current)]{ "slug": slug.current }`;
 export const ALL_CASE_STUDY_SLUGS =
   `*[_type == "caseStudy" && defined(slug.current)]{ "slug": slug.current }`;
