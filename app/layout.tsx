@@ -15,15 +15,15 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Digiteq | Building Digital Equity",
+    default: "Digiteq | Technology holding company",
     template: "%s | Digiteq",
   },
   description:
-    "Digiteq creates, acquires and scales digital brands, products and media properties.",
+    "Digiteq builds, acquires, supplies, and invests in technology across digital brands and enterprise supply chains.",
   openGraph: {
-    title: "Digiteq | Building Digital Equity",
+    title: "Digiteq | Technology holding company",
     description:
-      "A digital holding company platform for brands, products, media and audiences.",
+      "A UK technology holding company building, acquiring, supplying, and investing across the technology spectrum.",
     url: siteUrl,
     siteName: "Digiteq",
     type: "website",
@@ -38,8 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digiteq | Building Digital Equity",
-    description: "We create, acquire and scale digital brands, products and media properties.",
+    title: "Digiteq | Technology holding company",
+    description:
+      "Digiteq builds, acquires, supplies, and invests in technology across digital brands and enterprise supply chains.",
     images: [brandAssets.og],
   },
 };

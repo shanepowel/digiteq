@@ -33,6 +33,9 @@ npx sanity dataset import sanity/seed/team-members.ndjson "$DATASET" "${REPLACE[
 echo "→ importing companies"
 npx sanity dataset import sanity/seed/companies.ndjson "$DATASET" "${REPLACE[@]}"
 
+echo "→ removing legacy portfolio companies"
+node scripts/cleanup-legacy-companies.js "$DATASET"
+
 echo "→ importing ventures"
 npx sanity dataset import sanity/seed/ventures.ndjson "$DATASET" "${REPLACE[@]}"
 

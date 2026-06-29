@@ -36,21 +36,21 @@ export function buildMetadata(page: {
 
 export const pageMetadata = {
   home: {
-    title: "Building Digital Equity",
+    title: "Technology holding company",
     description:
-      "Digiteq creates, acquires and scales digital brands, products and media properties to build lasting digital equity.",
+      "Digiteq builds, acquires, supplies, and invests in technology. From digital brands to enterprise hardware supply chains across high-growth markets.",
     path: "/",
   },
   about: {
     title: "About",
     description:
-      "Digiteq is the holding company layer for digital brands, products and media. We create, acquire, scale and integrate assets that compound into durable digital equity.",
+      "Digiteq is a UK-registered technology holding company. We build, acquire, supply, and invest in technology businesses across digital brands and enterprise supply.",
     path: "/about",
   },
   portfolio: {
     title: "Portfolio",
     description:
-      "The Digiteq portfolio combines agency capability, marketplace products, media assets and acquisition opportunities into a single operating group.",
+      "Digiteq portfolio companies spanning brand development, marketplace platforms, and enterprise technology supply for Southern Africa.",
     path: "/portfolio",
   },
   ventures: {
@@ -62,19 +62,19 @@ export const pageMetadata = {
   insights: {
     title: "Insights",
     description:
-      "Operator notes on building, acquiring and scaling digital businesses. Strategy, technology and acquisition thinking from the Digiteq team.",
+      "Operator notes on building, acquiring, supplying, and investing in technology businesses. Strategy, supply chains, and acquisition thinking from the Digiteq team.",
     path: "/insights",
   },
   caseStudies: {
     title: "Case Studies",
     description:
-      "Case studies from the Digiteq portfolio — operating work, product launches and growth systems applied across digital assets.",
+      "Case studies from the Digiteq portfolio: operating work, product launches and growth systems applied across technology businesses.",
     path: "/case-studies",
   },
   investment: {
-    title: "Investment",
+    title: "Invest",
     description:
-      "Looking to sell your digital business? Digiteq acquires profitable digital brands, media assets and online businesses. Fair process, fast decisions.",
+      "Invest with Digiteq. We deploy capital into technology businesses and supply chains where the opportunity is clear and the competition is thin.",
     path: "/investment",
   },
   contact: {

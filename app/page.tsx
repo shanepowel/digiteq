@@ -26,8 +26,8 @@ export default async function HomePage() {
       <main>
         <Hero />
         <Ecosystem />
-        <Philosophy />
         <PortfolioGrid companies={companies} />
+        <Philosophy />
         <InvestmentCta />
       </main>
       <Footer />
