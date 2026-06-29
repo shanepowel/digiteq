@@ -19,23 +19,27 @@ Conventions for AI agents and contributors working in this monorepo.
 apps/portal/               # Operating platform (app.digiteq.io)
   src/app/                 # Portal routes + API
   prisma/                  # Postgres schema + seed
+
+apps/konduit/              # Enterprise tech supply (konduit.tech)
+  src/app/                 # Konduit routes + API
+  sanity/                  # Konduit CMS schemas
 ```
 
-**Two deployable apps, one repo.** Marketing builds from root; portal builds from `apps/portal` (separate Vercel project).
+**Three deployable apps, one repo.** Marketing builds from root; portal builds from `apps/portal`; Konduit builds from `apps/konduit` (each a separate Vercel project).
 
 ---
 
 ## Stack
 
-| Layer | Marketing | Portal |
-|-------|-----------|--------|
-| Framework | Next.js 15 | Next.js 15 |
-| Styling | Tailwind 4 | Tailwind 4 |
-| CMS | Sanity 3 | Sanity (read-only) |
-| Auth | — | Clerk |
-| DB | — | Postgres (Neon) + Prisma |
-| Forms | HubSpot + Resend | Webhook from marketing |
-| Analytics | Plausible | — |
+| Layer | Marketing | Portal | Konduit |
+|-------|-----------|--------|---------|
+| Framework | Next.js 15 | Next.js 15 | Next.js 15 |
+| Styling | Tailwind 4 | Tailwind 4 | Tailwind 4 |
+| CMS | Sanity 3 | Sanity (read-only) | Sanity 3 |
+| Auth | — | Clerk | — |
+| DB | — | Postgres (Neon) + Prisma | — |
+| Forms | HubSpot + Resend | Webhook from marketing | HubSpot + Resend |
+| Analytics | Plausible | — | Plausible |
 
 Install with `npm install --legacy-peer-deps` (peer dep conflicts with Sanity/Next).
 
@@ -84,6 +88,7 @@ export default function Page() {
 
 - Marketing: [`.env.example`](./.env.example)
 - Portal: [`apps/portal/.env.example`](./apps/portal/.env.example)
+- Konduit: [`apps/konduit/.env.example`](./apps/konduit/.env.example)
 - Production wiring: [`docs/PRODUCTION.md`](./docs/PRODUCTION.md)
 
 Site renders with **static fallbacks** when Sanity is not configured (see `lib/fallbacks/`).
@@ -100,6 +105,8 @@ npm run typecheck
 npm run test:e2e         # Playwright smoke
 npm run portal:dev       # Portal localhost:3001
 npm run portal:build
+npm run konduit:dev      # Konduit localhost:3002
+npm run konduit:build
 npm run import:seeds     # Sanity seed import
 ```
 
