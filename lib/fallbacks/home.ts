@@ -1,88 +1,59 @@
-export const ecoCards = [
+export const pillars = [
   {
-    name: "BMKRS",
-    desc: "Data-driven performance marketing and lead generation at scale.",
-    link: "Visit BMKRS",
-    href: "https://bmkrs.com",
-    color: "cyan" as const,
+    title: "Build",
+    desc: "We create digital products, brands, and platforms from scratch. Our portfolio companies start as ideas and ship as revenue-generating businesses.",
   },
   {
-    name: "FreelanceNearMe",
-    desc: "Connecting businesses with freelance talent across industries.",
-    link: "Visit FreelanceNearMe",
-    href: "https://freelancenearme.com",
-    color: "violet" as const,
+    title: "Acquire",
+    desc: "We identify businesses with strong fundamentals and unrealised growth potential. We acquire them, apply operational discipline, and scale them within the group.",
   },
   {
-    name: "Digiteq Ventures",
-    desc: "Backing and building the next generation of digital-first companies.",
-    link: "Explore Ventures",
-    href: "/ventures",
-    color: "magenta" as const,
+    title: "Supply",
+    desc: "We source enterprise hardware and infrastructure from authorised European distributors and supply it into Southern African markets. Full warranty, compliance documentation, in-region support.",
   },
-];
+  {
+    title: "Invest",
+    desc: "We deploy capital into technology opportunities in high-growth markets, starting with Southern Africa. Where we see a gap between demand and supply, we build or back the solution.",
+  },
+] as const;
 
 export type PortfolioFallbackItem = {
   name: string;
   desc: string;
-  metrics: [string, string][];
+  badge: string;
   link: string;
   href: string;
   color: "cyan" | "violet" | "magenta" | "muted";
   vi: number;
-  highlight: boolean;
 };
 
 export const portfolioFallback: PortfolioFallbackItem[] = [
   {
-    name: "BMKRS",
-    desc: "Performance marketing engine driving qualified leads and growth.",
-    metrics: [["Revenue Growth", "+186%"], ["YoY", "3.2x"], ["Markets", "4"]],
-    link: "View Company",
-    href: "/portfolio/bmkrs",
+    name: "Konduit",
+    desc: "European-sourced hardware and infrastructure delivered to businesses across Southern Africa with full warranty and in-region support.",
+    badge: "Supply",
+    link: "konduit.tech",
+    href: "https://konduit.tech",
     color: "cyan",
     vi: 0,
-    highlight: true,
+  },
+  {
+    name: "BMKRS",
+    desc: "A brand company run by builders. Full-service brand development from naming through to digital presence.",
+    badge: "Brand studio",
+    link: "bmkrs.com",
+    href: "https://bmkrs.com",
+    color: "violet",
+    vi: 1,
   },
   {
     name: "FreelanceNearMe",
-    desc: "Marketplace connecting businesses with vetted freelance talent.",
-    metrics: [["GMV Growth", "+142%"], ["Freelancers", "18K+"], ["Clients", "8K+"]],
-    link: "View Company",
-    href: "/portfolio/freelance-near-me",
-    color: "violet",
-    vi: 1,
-    highlight: true,
-  },
-  {
-    name: "Future Venture",
-    desc: "Incubating a next-gen SaaS platform in stealth.",
-    metrics: [["Stage", "Pre-Seed"], ["Team", "7"], ["Launch", "Soon"]],
-    link: "Learn More",
-    href: "/portfolio/future-venture",
-    color: "muted",
-    vi: 2,
-    highlight: false,
-  },
-  {
-    name: "Media Brand",
-    desc: "Digital media property reaching high-intent audiences.",
-    metrics: [["Monthly Visitors", "1.2M+"], ["Engagement", "3:48"], ["DR", "78"]],
-    link: "View Company",
-    href: "/portfolio/media-brand",
+    desc: "A marketplace connecting businesses with vetted local freelancers. Faster, more transparent hiring for both sides.",
+    badge: "Marketplace",
+    link: "freelancenearme.com",
+    href: "https://freelancenearme.com",
     color: "magenta",
-    vi: 1,
-    highlight: true,
-  },
-  {
-    name: "Acquisition",
-    desc: "Actively evaluating acquisitions in attractive niches.",
-    metrics: [["Criteria", "Profitable"], ["", "Content, SaaS,"], ["Focus", "Marketplaces"]],
-    link: "Learn More",
-    href: "/portfolio/acquisition-pipeline",
-    color: "violet",
     vi: 2,
-    highlight: false,
   },
 ];
 

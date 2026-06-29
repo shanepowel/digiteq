@@ -10,7 +10,7 @@ export function OrganizationJsonLd() {
     url: siteUrl,
     logo: `${siteUrl}${brandAssets.icon}`,
     description:
-      "Digiteq creates, acquires and scales digital brands, products and media properties to build lasting digital equity.",
+      "Digiteq Holdings Limited builds, acquires, supplies, and invests in technology across digital brands and enterprise supply chains.",
     foundingDate: "2026",
     address: {
       "@type": "PostalAddress",
@@ -24,6 +24,7 @@ export function OrganizationJsonLd() {
     },
     sameAs: ["https://linkedin.com/company/digiteq", "https://x.com/digiteqhq"],
     owns: [
+      { "@type": "Organization", name: "Konduit", url: "https://konduit.tech" },
       { "@type": "Organization", name: "BMKRS", url: "https://bmkrs.com" },
       { "@type": "Organization", name: "FreelanceNearMe", url: "https://freelancenearme.com" },
     ],
