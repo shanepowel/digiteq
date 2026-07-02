@@ -11,14 +11,15 @@ test.describe("marketing site smoke", () => {
 
   test("navigation reaches key pages", async ({ page }) => {
     await page.goto("/");
-    await page.getByRole("link", { name: "About", exact: true }).click();
+    const nav = page.getByRole("navigation");
+    await nav.getByRole("link", { name: "About", exact: true }).click();
     await expect(page).toHaveURL(/\/about/);
-    await page.getByRole("link", { name: "Ventures", exact: true }).click();
+    await nav.getByRole("link", { name: "Ventures", exact: true }).click();
     await expect(page).toHaveURL(/\/ventures/);
     await expect(page.getByRole("heading", { level: 1 })).toContainText(/venture formation/i);
-    await page.getByRole("link", { name: "Insights", exact: true }).click();
+    await nav.getByRole("link", { name: "Insights", exact: true }).click();
     await expect(page).toHaveURL(/\/insights/);
-    await page.getByRole("link", { name: "Portfolio", exact: true }).click();
+    await nav.getByRole("link", { name: "Portfolio", exact: true }).click();
     await expect(page).toHaveURL(/\/portfolio/);
     await expect(page.getByRole("heading", { level: 1 })).toContainText(/companies we build/i);
   });

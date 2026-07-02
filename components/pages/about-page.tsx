@@ -1,6 +1,5 @@
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { Reveal } from "@/components/animation/motion";
+import { DhCard, DhCtaBand, DhPageHero, DhSection } from "@/components/layout/dh-primitives";
 
 const narrative = [
   "Digiteq is a technology holding company registered in the UK. We build, acquire, supply, and invest in technology businesses.",
@@ -19,106 +18,80 @@ const portfolioList = [
 export function AboutPageContent() {
   return (
     <>
-      <section className="px-12 pb-24 pt-32">
-        <div className="mx-auto max-w-[1200px]">
-          <Reveal>
-            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#00D4FF]">
-              About Digiteq
-            </p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h1 className="mb-8 max-w-[700px] text-[52px] font-bold leading-[1.1] tracking-[-0.02em] text-white">
-              A technology holding company.
-            </h1>
-          </Reveal>
-          <div className="max-w-[640px] space-y-5">
-            {narrative.map((paragraph, i) => (
-              <Reveal key={i} delay={0.15 + i * 0.05}>
-                <p className="text-[15px] leading-[1.7] text-gray-400">{paragraph}</p>
-              </Reveal>
-            ))}
+      <DhPageHero
+        eyebrow="About Digiteq"
+        title="A technology holding company."
+        titleClassName="max-w-[20ch]"
+      />
+
+      <DhSection className="!pt-0">
+        <div className="max-w-[640px] space-y-5">
+          {narrative.map((paragraph, i) => (
+            <Reveal key={i} delay={0.05 * i}>
+              <p className="text-[15px] leading-[1.7] text-[var(--ink-dim)]">{paragraph}</p>
+            </Reveal>
+          ))}
+        </div>
+      </DhSection>
+
+      <DhSection tinted>
+        <Reveal>
+          <div className="dh-eyebrow">
+            <span className="dh-mono">How we are structured</span>
           </div>
-        </div>
-      </section>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <p className="mb-8 max-w-[640px] text-[15px] leading-[1.7] text-[var(--ink-dim)]">
+            Digiteq Holdings Limited is the parent company. Portfolio companies operate as
+            independent brands with their own identities, websites, and customer relationships.
+            The holding company provides capital allocation, strategic oversight, and shared
+            services including technology infrastructure, legal, and finance.
+          </p>
+        </Reveal>
+        <Reveal delay={0.12}>
+          <p className="mb-4 text-[14px] font-semibold text-[var(--ink)]">Current portfolio:</p>
+          <ul className="max-w-[640px] space-y-3">
+            {portfolioList.map((item) => (
+              <li key={item.name} className="text-[15px] leading-[1.7] text-[var(--ink-dim)]">
+                <span className="font-medium text-[var(--ink)]">{item.name}:</span> {item.description}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </DhSection>
 
-      <section className="px-12 py-[100px]">
-        <div className="mx-auto max-w-[1200px]">
-          <Reveal>
-            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#00D4FF]">
-              How we are structured
+      <DhSection>
+        <Reveal>
+          <div className="dh-eyebrow">
+            <span className="dh-mono">Team</span>
+          </div>
+          <h2 className="dh-page-h2 mb-8">Built by operators.</h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <DhCard className="max-w-[480px]">
+            <h3 className="dh-page-h2 mb-1 text-[1.25rem]">Shane Powell</h3>
+            <p className="dh-mono mb-4 !text-[var(--brass)]">Founder</p>
+            <p className="mb-4 text-[14px] leading-[1.65] text-[var(--ink-dim)]">
+              17 years across product delivery, consulting and digital transformation. Director at
+              Turner and Townsend. Previously held directorial roles at AND Digital and RAD
+              Consulting Group. Built and scaled teams across public sector, utilities,
+              infrastructure and regulated industries.
             </p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mb-8 max-w-[640px] text-[15px] leading-[1.7] text-gray-400">
-              Digiteq Holdings Limited is the parent company. Portfolio companies operate as
-              independent brands with their own identities, websites, and customer relationships.
-              The holding company provides capital allocation, strategic oversight, and shared
-              services including technology infrastructure, legal, and finance.
+            <p className="text-[14px] leading-[1.65] text-[var(--ink-dim)]">
+              Building Digiteq as a technology holding company across digital brands, marketplace
+              platforms, and enterprise technology supply.
             </p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <p className="mb-4 text-[14px] font-semibold text-white">Current portfolio:</p>
-            <ul className="max-w-[640px] space-y-3">
-              {portfolioList.map((item) => (
-                <li key={item.name} className="text-[15px] leading-[1.7] text-gray-400">
-                  <span className="font-medium text-white">{item.name}:</span> {item.description}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
-      </section>
+          </DhCard>
+        </Reveal>
+      </DhSection>
 
-      <section className="px-12 py-[100px]">
-        <div className="mx-auto max-w-[1200px]">
-          <Reveal>
-            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#00D4FF]">
-              Team
-            </p>
-            <h2 className="mb-12 text-[30px] font-semibold text-white">Built by operators.</h2>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="max-w-[480px] rounded-xl border border-white/[0.06] bg-[#0E1020] p-8">
-              <h3 className="mb-1 text-[18px] font-semibold text-white">Shane Powell</h3>
-              <p className="mb-4 text-[13px] text-[#00D4FF]">Founder</p>
-              <p className="mb-4 text-[14px] leading-[1.65] text-gray-400">
-                17 years across product delivery, consulting and digital transformation. Director at
-                Turner and Townsend. Previously held directorial roles at AND Digital and RAD
-                Consulting Group. Built and scaled teams across public sector, utilities,
-                infrastructure and regulated industries.
-              </p>
-              <p className="text-[14px] leading-[1.65] text-gray-400">
-                Building Digiteq as a technology holding company across digital brands, marketplace
-                platforms, and enterprise technology supply.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="px-12 py-[100px]">
-        <div className="mx-auto max-w-[1200px]">
-          <Reveal>
-            <div className="rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#0C0D1A] to-[#111330] p-16">
-              <h2 className="mb-4 text-[32px] font-bold text-white">
-                Interested in what we are building?
-              </h2>
-              <p className="mb-8 max-w-[400px] text-[15px] text-gray-400">
-                Whether you are a founder, an investor, or a potential partner, we are always open
-                to the right conversation.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2.5 rounded-[10px] px-7 py-3.5 text-sm font-medium text-white"
-                style={{ background: "linear-gradient(135deg, #00D4FF, #8B5CF6)" }}
-              >
-                Start a Conversation <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <DhCtaBand
+        eyebrow="Contact"
+        title="Interested in what we are building?"
+        body="Whether you are a founder, an investor, or a potential partner, we are always open to the right conversation."
+        href="/contact"
+        linkLabel="Start a conversation"
+      />
     </>
   );
 }

@@ -1,12 +1,5 @@
-import { Footer } from "@/components/layout/footer";
-import { Nav } from "@/components/layout/nav";
+import { RegisterShell } from "@/components/layout/register-shell";
 
 export function PageShell({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <Nav />
-      <main>{children}</main>
-      <Footer />
-    </>
-  );
+  return <RegisterShell>{children}</RegisterShell>;
 }

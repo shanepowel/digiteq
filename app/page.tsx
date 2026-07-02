@@ -1,13 +1,10 @@
-import "./home.css";
+import { RegisterShell } from "@/components/layout/register-shell";
 import { HomeEcosystem } from "@/components/home/home-ecosystem";
-import { HomeFooter } from "@/components/home/home-footer";
+import { EquityRegister } from "@/components/home/equity-register";
 import { HomeHero } from "@/components/home/home-hero";
 import { HomeInsights } from "@/components/home/home-insights";
-import { HomeNav } from "@/components/home/home-nav";
 import { HomePhilosophy } from "@/components/home/home-philosophy";
 import { HomeVault } from "@/components/home/home-vault";
-import { HomeSvgDefs } from "@/components/home/home-svg";
-import { EquityRegister } from "@/components/home/equity-register";
 import { buildMetadata, pageMetadata } from "@/components/seo/metadata";
 import { mapCompaniesToRegister } from "@/lib/home/register";
 import { getSanityClient } from "@/lib/sanity/client";
@@ -31,19 +28,13 @@ export default async function HomePage() {
   const registerRows = mapCompaniesToRegister(companies);
 
   return (
-    <div className="digiteq-home min-h-screen">
-      <div className="dh-grain" aria-hidden="true" />
-      <HomeSvgDefs />
-      <HomeNav />
-      <main>
-        <HomeHero holdingsCount={registerRows.length} />
-        <HomeEcosystem />
-        <HomePhilosophy />
-        <EquityRegister rows={registerRows} />
-        <HomeVault />
-        <HomeInsights insights={insights} />
-      </main>
-      <HomeFooter />
-    </div>
+    <RegisterShell>
+      <HomeHero holdingsCount={registerRows.length} />
+      <HomeEcosystem />
+      <HomePhilosophy />
+      <EquityRegister rows={registerRows} />
+      <HomeVault />
+      <HomeInsights insights={insights} />
+    </RegisterShell>
   );
 }

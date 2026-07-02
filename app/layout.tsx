@@ -5,6 +5,7 @@ import { Analytics } from "@/components/analytics";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
 import { brandAssets } from "@/lib/brand";
 import { siteUrl } from "@/lib/site";
+import "./home.css";
 import "./globals.css";
 
 const inter = Inter({
@@ -66,7 +67,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${newsreader.variable} ${instrument.variable} ${splineMono.variable} min-h-screen bg-background font-sans antialiased`}
+        className={`${inter.variable} ${newsreader.variable} ${instrument.variable} ${splineMono.variable} min-h-screen antialiased`}
       >
         <OrganizationJsonLd />
         <Analytics />

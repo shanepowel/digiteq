@@ -1,10 +1,8 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
-import { Nav } from "@/components/layout/nav";
-import { Footer } from "@/components/layout/footer";
-import { Container } from "@/components/layout/container";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { DhCard, DhPageHero, DhSection } from "@/components/layout/dh-primitives";
+import { PageShell } from "@/components/layout/page-shell";
 import { REGISTER_SLUGS, registerFallback } from "@/lib/home/register";
 import { isPortfolioSlug, portfolioCompanyBySlug } from "@/lib/portfolio/companies";
 import { getSanityClient } from "@/lib/sanity/client";
@@ -85,45 +83,59 @@ export default async function CompanyPage({ params }: Props) {
   if (!company) notFound();
 
   return (
-    <>
-      <Nav />
-      <main className="pt-16">
-        <section className="px-6 py-24 sm:px-12">
-          <Container>
-            <h1 className="text-4xl font-bold text-foreground">{company.name}</h1>
-            {company.description && (
-              <p className="mt-6 max-w-2xl text-lg text-muted">{company.description}</p>
-            )}
-            {company.services && company.services.length > 0 && (
-              <div className="mt-8 flex flex-wrap gap-2">
-                {company.services.map((s) => (
-                  <Badge key={s} variant="cyan">
-                    {s}
-                  </Badge>
-                ))}
-              </div>
-            )}
-            {company.metrics && company.metrics.length > 0 && (
-              <div className="mt-10 grid max-w-lg grid-cols-3 gap-4">
-                {company.metrics.map((m) => (
-                  <div key={m.label}>
-                    <div className="text-xs text-muted-dark">{m.label}</div>
-                    <div className="text-sm font-semibold text-foreground">{m.value}</div>
-                  </div>
-                ))}
-              </div>
-            )}
-            {company.website && (
-              <Button className="mt-10" asChild>
-                <Link href={company.website} target="_blank" rel="noopener noreferrer">
-                  Visit website
-                </Link>
-              </Button>
-            )}
-          </Container>
-        </section>
-      </main>
-      <Footer />
-    </>
+    <PageShell>
+      <DhPageHero eyebrow="Portfolio" title={company.name} titleClassName="max-w-[20ch]" />
+
+      <DhSection className="!pt-0">
+        <div className="max-w-[720px]">
+          {company.category ? (
+            <p className="dh-mono mb-6 !text-[var(--brass)]">{company.category}</p>
+          ) : null}
+          {company.description && (
+            <p className="text-lg leading-relaxed text-[var(--ink-dim)]">{company.description}</p>
+          )}
+          {company.services && company.services.length > 0 && (
+            <div className="mt-8 flex flex-wrap gap-2">
+              {company.services.map((s) => (
+                <span key={s} className="dh-badge">
+                  {s}
+                </span>
+              ))}
+            </div>
+          )}
+          {company.metrics && company.metrics.length > 0 && (
+            <div className="mt-10 grid max-w-lg grid-cols-3 gap-4">
+              {company.metrics.map((m) => (
+                <DhCard key={m.label} className="!p-4">
+                  <div className="dh-mono mb-1 !text-[var(--ink-faint)]">{m.label}</div>
+                  <div className="text-sm font-semibold text-[var(--ink)]">{m.value}</div>
+                </DhCard>
+              ))}
+            </div>
+          )}
+          {company.keyFigure?.value ? (
+            <DhCard className="mt-10 max-w-sm">
+              <div className="dh-mono mb-1 !text-[var(--ink-faint)]">{company.keyFigure.label}</div>
+              <div className="text-2xl font-semibold text-[var(--ink)]">{company.keyFigure.value}</div>
+            </DhCard>
+          ) : null}
+          {company.website && (
+            <a
+              href={company.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="dh-btn dh-btn-fill mt-10 inline-flex items-center gap-2"
+            >
+              Visit website <ArrowRight className="h-4 w-4" />
+            </a>
+          )}
+          <div className="mt-12">
+            <Link href="/portfolio" className="dh-tlink inline-flex items-center gap-1.5 text-[13px]">
+              ← Back to portfolio
+            </Link>
+          </div>
+        </div>
+      </DhSection>
+    </PageShell>
   );
 }

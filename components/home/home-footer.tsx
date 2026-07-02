@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Rosette } from "@/components/home/home-svg";
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { homeFooterLinks } from "@/lib/home/navigation";
 import { contactEmail } from "@/lib/site";
 
@@ -27,10 +27,7 @@ export function HomeFooter() {
       <div className="dh-container">
         <div className="mb-[clamp(40px,6vh,60px)] grid gap-[clamp(28px,5vw,64px)] min-[720px]:grid-cols-[1.6fr_1fr_1fr]">
           <div>
-            <div className="dh-display mb-3 flex items-center gap-2.5 text-[1.35rem] font-semibold tracking-[-0.01em]">
-              <Rosette className="h-[26px] w-[26px]" />
-              Digiteq<span className="font-normal italic text-[var(--ledger)]">.</span>
-            </div>
+            <BrandLogo variant="footer" display="lockup" theme="register" href={false} className="mb-3" />
             <p className="mb-5 max-w-[36ch] text-[0.95rem] text-[var(--ink-dim)]">
               We create, acquire and scale digital brands, products and media properties to build
               lasting digital equity.

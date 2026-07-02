@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { homeNavigation } from "@/lib/home/navigation";
-import { Rosette } from "@/components/home/home-svg";
 import { cn } from "@/lib/utils";
 
 export function HomeNav() {
@@ -15,10 +15,7 @@ export function HomeNav() {
   return (
     <nav className="sticky top-0 z-50 border-b border-[var(--rule)] bg-[rgb(246_244_238/0.85)] backdrop-blur-[12px]">
       <div className="dh-container flex h-[68px] items-center justify-between">
-        <Link href="/" className="dh-display flex items-center gap-2.5 text-[1.35rem] font-semibold tracking-[-0.01em] text-[var(--ink)]">
-          <Rosette className="h-[26px] w-[26px]" />
-          Digiteq<span className="font-normal italic text-[var(--ledger)]">.</span>
-        </Link>
+        <BrandLogo href="/" display="auto" theme="register" className="shrink-0" />
 
         <ul className="hidden items-center gap-[clamp(14px,2.4vw,30px)] lg:flex">
           {homeNavigation.map((item) => (
