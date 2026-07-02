@@ -1,212 +1,97 @@
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { Reveal, Stagger, StaggerItem } from "@/components/animation/motion";
+import { Reveal } from "@/components/animation/motion";
+import { DhCard, DhCtaBand, DhPageHero, DhSection } from "@/components/layout/dh-primitives";
 
-const pillars = [
-  {
-    title: 'Create',
-    description:
-      'Launch owned brands and products where Digiteq can compound audience, capability and data. Every new venture starts with a thesis on defensible organic demand.',
-    metrics: '2 brands launched',
-  },
-  {
-    title: 'Acquire',
-    description:
-      'Partner with founders or buy profitable digital assets with clear operational upside. We look for revenue durability, organic demand and clean financials.',
-    metrics: 'Active pipeline',
-  },
-  {
-    title: 'Scale',
-    description:
-      'Apply shared growth, content, automation and technology systems across the portfolio. Each company benefits from capabilities built across the group.',
-    metrics: 'Shared systems',
-  },
-  {
-    title: 'Integrate',
-    description:
-      'Turn separate ventures into a coordinated group with unified data, shared infrastructure and cross-portfolio intelligence.',
-    metrics: 'Single operating layer',
-  },
+const narrative = [
+  "Digiteq is a technology holding company registered in the UK. We build, acquire, supply, and invest in technology businesses.",
+  "The company was founded on a straightforward observation: technology creates the most value where the gap between demand and supply is widest. In mature markets, that gap is narrow. In high-growth markets, particularly across Africa, it is enormous and largely unaddressed by established players.",
+  "Digiteq operates a portfolio of companies spanning digital brand development, marketplace platforms, and enterprise technology supply. Each portfolio company is independently branded and operated, with Digiteq providing capital, strategic direction, and shared infrastructure.",
+  "Our supply division, Konduit, sources enterprise hardware and IT infrastructure from authorised European distributors and delivers it into Southern African markets with full manufacturer warranty, compliance documentation, and in-region support. It is our first expression of the thesis that technology supply chains in high-growth markets are ripe for professionalisation.",
+  "Digiteq Holdings Limited is the parent entity, registered at Companies House.",
 ];
 
-const principles = [
-  {
-    title: 'Own, don\'t rent',
-    body: 'We build owned assets that compound. Organic traffic over paid dependency. Subscriber lists over rented audiences. Brand equity over campaign spend.',
-  },
-  {
-    title: 'Systems over heroics',
-    body: 'Every repeatable process gets documented, automated and shared. The portfolio grows through systems, not through any individual working harder.',
-  },
-  {
-    title: 'Specific over abstract',
-    body: 'We measure outcomes in revenue, traffic, conversion and margin. Avoid adjectives. Show the numbers.',
-  },
-  {
-    title: 'Speed with intent',
-    body: 'We move quickly on decisions and slowly on commitments. Acquisition conversations conclude in weeks, not months. But due diligence is thorough.',
-  },
-  {
-    title: 'Compounding advantage',
-    body: 'Every decision is evaluated on whether it compounds. Content that ranks tomorrow. Audiences that grow without additional spend. Infrastructure that serves the next acquisition.',
-  },
+const portfolioList = [
+  { name: "BMKRS", description: "a brand company run by builders" },
+  { name: "FreelanceNearMe", description: "a marketplace connecting businesses with local freelancers" },
+  { name: "Konduit", description: "enterprise technology supply for Southern Africa" },
 ];
 
 export function AboutPageContent() {
   return (
     <>
-      {/* Hero */}
-      <section className="pt-32 pb-24 px-12">
-        <div className="max-w-[1200px] mx-auto">
-          <Reveal>
-            <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#00D4FF] mb-4">
-              About Digiteq
-            </p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h1 className="text-[52px] font-bold leading-[1.1] tracking-[-0.02em] text-white mb-6 max-w-[700px]">
-              A digital group built for compounding ownership.
-            </h1>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p className="text-lg leading-relaxed text-gray-400 max-w-[560px] mb-10">
-              Digiteq is the holding company layer for digital brands, products and media properties. We create, acquire and scale assets that compound into lasting digital equity.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <DhPageHero
+        eyebrow="About Digiteq"
+        title="A technology holding company."
+        titleClassName="max-w-[20ch]"
+      />
 
-      {/* Operating Model - 4 pillars */}
-      <section className="py-[100px] px-12">
-        <div className="max-w-[1200px] mx-auto">
-          <Reveal>
-            <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#00D4FF] mb-4">
-              Operating Model
-            </p>
-            <h2 className="text-[30px] font-semibold text-white mb-12">
-              Four stages. One compounding cycle.
-            </h2>
-          </Reveal>
-
-          <Stagger className="grid grid-cols-4 gap-5">
-            {pillars.map((p, i) => (
-              <StaggerItem key={p.title}>
-                <div className="bg-[#0E1020] border border-white/[0.06] rounded-xl p-6
-                  hover:bg-[#13152A] hover:border-white/[0.12] transition-all duration-200 h-full">
-                  <div className="text-[11px] font-semibold tracking-[0.14em] uppercase text-gray-500 mb-3">
-                    0{i + 1}
-                  </div>
-                  <h3 className="text-[18px] font-semibold text-white mb-3">{p.title}</h3>
-                  <p className="text-[13px] leading-[1.6] text-gray-400 mb-6">{p.description}</p>
-                  <div className="border-t border-white/[0.06] pt-3">
-                    <div className="text-[12px] font-medium text-[#00D4FF]">{p.metrics}</div>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* Thesis */}
-      <section className="py-[100px] px-12">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-[1.5fr_1fr] gap-20 items-start">
-            <Reveal>
-              <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#00D4FF] mb-4">
-                Our Thesis
-              </p>
-              <h2 className="text-[38px] font-bold leading-[1.18] text-white">
-                Most digital businesses are built to sell services. We build to own assets.
-              </h2>
+      <DhSection className="!pt-0">
+        <div className="max-w-[640px] space-y-5">
+          {narrative.map((paragraph, i) => (
+            <Reveal key={i} delay={0.05 * i}>
+              <p className="text-[15px] leading-[1.7] text-[var(--ink-dim)]">{paragraph}</p>
             </Reveal>
-            <Reveal delay={0.15}>
-              <p className="text-[15px] leading-[1.7] text-gray-400 pt-10">
-                The difference between a consultancy and a holding company is ownership. Consultancies sell time. Holding companies accumulate equity. Every company in the Digiteq portfolio is an owned asset with compounding value, not a service line that needs constant reselling.
-              </p>
-              <p className="text-[15px] leading-[1.7] text-gray-400 mt-4">
-                We invest in organic demand, structured content, audience ownership and operational systems. These compound. Paid campaigns do not.
-              </p>
-            </Reveal>
+          ))}
+        </div>
+      </DhSection>
+
+      <DhSection tinted>
+        <Reveal>
+          <div className="dh-eyebrow">
+            <span className="dh-mono">How we are structured</span>
           </div>
-        </div>
-      </section>
-
-      {/* Principles */}
-      <section className="py-[100px] px-12">
-        <div className="max-w-[1200px] mx-auto">
-          <Reveal>
-            <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#00D4FF] mb-4">
-              Principles
-            </p>
-            <h2 className="text-[30px] font-semibold text-white mb-12">
-              How we operate.
-            </h2>
-          </Reveal>
-
-          <Stagger className="grid grid-cols-1 gap-0 max-w-[720px]">
-            {principles.map((p) => (
-              <StaggerItem key={p.title}>
-                <div className="border-b border-white/[0.06] py-6">
-                  <h3 className="text-[16px] font-semibold text-white mb-2">{p.title}</h3>
-                  <p className="text-[14px] leading-[1.65] text-gray-400">{p.body}</p>
-                </div>
-              </StaggerItem>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <p className="mb-8 max-w-[640px] text-[15px] leading-[1.7] text-[var(--ink-dim)]">
+            Digiteq Holdings Limited is the parent company. Portfolio companies operate as
+            independent brands with their own identities, websites, and customer relationships.
+            The holding company provides capital allocation, strategic oversight, and shared
+            services including technology infrastructure, legal, and finance.
+          </p>
+        </Reveal>
+        <Reveal delay={0.12}>
+          <p className="mb-4 text-[14px] font-semibold text-[var(--ink)]">Current portfolio:</p>
+          <ul className="max-w-[640px] space-y-3">
+            {portfolioList.map((item) => (
+              <li key={item.name} className="text-[15px] leading-[1.7] text-[var(--ink-dim)]">
+                <span className="font-medium text-[var(--ink)]">{item.name}:</span> {item.description}
+              </li>
             ))}
-          </Stagger>
-        </div>
-      </section>
+          </ul>
+        </Reveal>
+      </DhSection>
 
-      {/* Team */}
-      <section className="py-[100px] px-12">
-        <div className="max-w-[1200px] mx-auto">
-          <Reveal>
-            <p className="text-[11px] font-semibold tracking-[0.14em] uppercase text-[#00D4FF] mb-4">
-              Team
+      <DhSection>
+        <Reveal>
+          <div className="dh-eyebrow">
+            <span className="dh-mono">Team</span>
+          </div>
+          <h2 className="dh-page-h2 mb-8">Built by operators.</h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <DhCard className="max-w-[480px]">
+            <h3 className="dh-page-h2 mb-1 text-[1.25rem]">Shane Powell</h3>
+            <p className="dh-mono mb-4 !text-[var(--brass)]">Founder</p>
+            <p className="mb-4 text-[14px] leading-[1.65] text-[var(--ink-dim)]">
+              17 years across product delivery, consulting and digital transformation. Director at
+              Turner and Townsend. Previously held directorial roles at AND Digital and RAD
+              Consulting Group. Built and scaled teams across public sector, utilities,
+              infrastructure and regulated industries.
             </p>
-            <h2 className="text-[30px] font-semibold text-white mb-12">
-              Built by operators.
-            </h2>
-          </Reveal>
+            <p className="text-[14px] leading-[1.65] text-[var(--ink-dim)]">
+              Building Digiteq as a technology holding company across digital brands, marketplace
+              platforms, and enterprise technology supply.
+            </p>
+          </DhCard>
+        </Reveal>
+      </DhSection>
 
-          <Reveal delay={0.1}>
-            <div className="bg-[#0E1020] border border-white/[0.06] rounded-xl p-8 max-w-[480px]">
-              <h3 className="text-[18px] font-semibold text-white mb-1">Shane Powell</h3>
-              <p className="text-[13px] text-[#00D4FF] mb-4">Founder</p>
-              <p className="text-[14px] leading-[1.65] text-gray-400 mb-4">
-                17 years across product delivery, consulting and digital transformation. Director at Turner and Townsend. Previously held directorial roles at AND Digital and RAD Consulting Group. Built and scaled teams across public sector, utilities, infrastructure and regulated industries.
-              </p>
-              <p className="text-[14px] leading-[1.65] text-gray-400">
-                Building Digiteq as the holding company layer for digital brands, products and media properties.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-[100px] px-12">
-        <div className="max-w-[1200px] mx-auto">
-          <Reveal>
-            <div className="bg-gradient-to-br from-[#0C0D1A] to-[#111330] rounded-2xl
-              p-16 border border-white/[0.06]">
-              <h2 className="text-[32px] font-bold text-white mb-4">
-                Interested in what we are building?
-              </h2>
-              <p className="text-[15px] text-gray-400 mb-8 max-w-[400px]">
-                Whether you are a founder, an investor, or a potential partner, we are always open to the right conversation.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-[10px] text-sm font-medium text-white"
-                style={{ background: 'linear-gradient(135deg, #00D4FF, #8B5CF6)' }}
-              >
-                Start a Conversation <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <DhCtaBand
+        eyebrow="Contact"
+        title="Interested in what we are building?"
+        body="Whether you are a founder, an investor, or a potential partner, we are always open to the right conversation."
+        href="/contact"
+        linkLabel="Start a conversation"
+      />
     </>
   );
 }

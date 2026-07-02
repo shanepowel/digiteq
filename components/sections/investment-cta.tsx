@@ -16,15 +16,15 @@ export function InvestmentCta() {
           <div className="relative flex flex-col items-center justify-between gap-10 overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#0C0D1A] to-[#111330] p-20 lg:flex-row">
             <div className="relative z-10 max-w-[420px]">
               <h2 className="mb-4 text-[clamp(1.75rem,3vw,2.375rem)] font-bold leading-tight text-white">
-                Looking to sell your digital business?
+                Partner with Digiteq
               </h2>
               <p className="mb-8 text-[15px] leading-relaxed text-gray-400">
-                We partner with founders to unlock the next chapter. Fair process. Fast decisions.
-                Aligned outcomes.
+                Whether you are selling a business, co-investing on an acquisition, or exploring
+                supply chain partnerships, we are open to the right conversation.
               </p>
               <Button variant="rose" asChild>
                 <Link href="/investment">
-                  Start a Conversation <ArrowRight className="h-4 w-4" />
+                  Learn about investing <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
             </div>

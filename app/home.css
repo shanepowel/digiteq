@@ -1,0 +1,409 @@
+/* Homepage register theme — scoped to .digiteq-home only */
+
+.digiteq-home {
+  --paper: #f6f4ee;
+  --paper-2: #eeeade;
+  --sage: #e4e9df;
+  --ink: #101623;
+  --ink-dim: #4c5361;
+  --ink-faint: #8a8f9a;
+  --ledger: #1e5c46;
+  --ledger-deep: #123c2e;
+  --ledger-soft: rgb(30 92 70 / 0.12);
+  --brass: #a8823f;
+  --brass-bright: #d9b56a;
+  --brass-soft: rgb(168 130 63 / 0.18);
+  --vault: #0b1420;
+  --vault-2: #0f1e2c;
+  --vault-text: #e8e6df;
+  --rule: rgb(16 22 35 / 0.14);
+  --rule-dark: rgb(232 230 223 / 0.14);
+  --home-max: 1160px;
+
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-instrument), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.digiteq-home ::selection {
+  background: var(--ledger);
+  color: var(--paper);
+}
+
+.digiteq-home a:focus-visible,
+.digiteq-home button:focus-visible,
+.digiteq-home tr:focus-visible,
+.digiteq-home input:focus-visible {
+  outline: 2px solid var(--ledger);
+  outline-offset: 3px;
+}
+
+.digiteq-home .dh-container {
+  max-width: var(--home-max);
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 48px);
+  position: relative;
+}
+
+.digiteq-home .dh-section {
+  padding-block: clamp(80px, 11vh, 140px);
+  position: relative;
+}
+
+.digiteq-home .dh-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.digiteq-home .dh-tabular {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.digiteq-home .dh-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.4rem;
+}
+
+.digiteq-home .dh-eyebrow::before {
+  content: "";
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(var(--ledger), var(--brass));
+  flex-shrink: 0;
+}
+
+.digiteq-home .dh-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+.digiteq-home .dh-h1 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(3rem, 7.5vw, 6.2rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 14ch;
+}
+
+.digiteq-home .dh-h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  max-width: 24ch;
+}
+
+.digiteq-home .dh-lede {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: var(--ink-dim);
+  max-width: 48ch;
+}
+
+.digiteq-home .dh-tlink {
+  color: var(--ledger);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.digiteq-home .dh-tlink:hover,
+.digiteq-home .dh-tlink:focus-visible {
+  border-bottom-color: var(--ledger);
+}
+
+.digiteq-home .dh-btn {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.digiteq-home .dh-btn:hover,
+.digiteq-home .dh-btn:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.digiteq-home .dh-btn-fill {
+  background: var(--ledger);
+  border-color: var(--ledger);
+  color: var(--paper);
+}
+
+.digiteq-home .dh-btn-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgb(217 181 106 / 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.digiteq-home .dh-btn-fill:hover::after {
+  left: 130%;
+}
+
+.digiteq-home .dh-btn-fill:hover,
+.digiteq-home .dh-btn-fill:focus-visible {
+  background: var(--ledger-deep);
+  border-color: var(--ledger-deep);
+  color: var(--paper);
+  box-shadow: 0 6px 18px rgb(30 92 70 / 0.28);
+}
+
+.digiteq-home .dh-btn-paper {
+  border-color: var(--vault-text);
+  background: var(--vault-text);
+  color: var(--vault);
+}
+
+.digiteq-home .dh-btn-paper:hover,
+.digiteq-home .dh-btn-paper:focus-visible {
+  background: transparent;
+  color: var(--vault-text);
+}
+
+.digiteq-home .dh-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.digiteq-home .dh-page-h1 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.digiteq-home .dh-page-h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.digiteq-home .dh-input {
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  padding: 0.65em 0.9em;
+  font-family: var(--font-instrument), system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.digiteq-home .dh-input:focus {
+  outline: 2px solid var(--ledger);
+  outline-offset: 2px;
+}
+
+.digiteq-home .dh-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-dim);
+}
+
+.digiteq-home .dh-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 2px;
+  border: 1px solid var(--rule);
+  padding: 0.2em 0.55em;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ledger);
+  background: var(--ledger-soft);
+}
+
+.digiteq-home .dh-filter {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-dim);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.digiteq-home .dh-filter:hover {
+  color: var(--ink);
+}
+
+.digiteq-home .dh-filter-active {
+  border-color: var(--rule);
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+.digiteq-home .prose-digiteq {
+  color: var(--ink-dim);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.digiteq-home .prose-digiteq h1,
+.digiteq-home .prose-digiteq h2 {
+  font-family: var(--font-display), Georgia, serif;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.digiteq-home .prose-digiteq h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.digiteq-home .prose-digiteq h3 {
+  font-family: var(--font-display), Georgia, serif;
+  color: var(--ink);
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.digiteq-home .prose-digiteq p {
+  margin-bottom: 1.25rem;
+}
+
+.digiteq-home .prose-digiteq strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.digiteq-home .prose-digiteq a {
+  color: var(--ledger);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.digiteq-home .prose-digiteq a:hover {
+  border-bottom-color: var(--ledger);
+}
+
+.digiteq-home .prose-digiteq ul,
+.digiteq-home .prose-digiteq ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.25rem;
+}
+
+.digiteq-home .prose-digiteq blockquote {
+  border-left: 2px solid var(--rule);
+  padding-left: 1.25rem;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.digiteq-home .prose-digiteq code {
+  background: var(--paper-2);
+  padding: 0.15em 0.4em;
+  border-radius: 2px;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.9em;
+  color: var(--ledger-deep);
+}
+
+.digiteq-home .prose-digiteq pre {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 1.25rem;
+  overflow-x: auto;
+}
+
+.digiteq-home .prose-digiteq hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 2.5rem 0;
+}
+
+.digiteq-home .dh-nav-active {
+  color: var(--ink);
+  box-shadow: inset 0 -8px 0 0 var(--ledger);
+}
+
+@keyframes dh-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dh-draw-line {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes dh-flourish {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dh-trace-equity {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dh-dot-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dh-pulse-ring {
+  0% {
+    opacity: 0.8;
+    r: 4;
+  }
+  70% {
+    opacity: 0;
+    r: 14;
+  }
+  100% {
+    opacity: 0;
+    r: 14;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .digiteq-home *,
+  .digiteq-home *::before,
+  .digiteq-home *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

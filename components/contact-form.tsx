@@ -1,11 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
+import { DhCard } from "@/components/layout/dh-primitives";
 import { contactTypes } from "@/data/site";
 
 export function ContactForm() {
@@ -25,32 +22,60 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="max-w-[720px]">
-      <form onSubmit={onSubmit} className="grid gap-4">
-        <div className="grid gap-2">
-          <Label htmlFor="name">Name</Label>
-          <Input id="name" name="name" required placeholder="Your name" />
+    <DhCard className="max-w-[720px]">
+      <form onSubmit={onSubmit} className="grid gap-5">
+        <div>
+          <label className="dh-label" htmlFor="contact-name">
+            Name
+          </label>
+          <input
+            id="contact-name"
+            name="name"
+            required
+            placeholder="Your name"
+            className="dh-input"
+          />
         </div>
-        <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" name="email" type="email" required placeholder="you@company.com" />
+        <div>
+          <label className="dh-label" htmlFor="contact-email">
+            Email
+          </label>
+          <input
+            id="contact-email"
+            name="email"
+            type="email"
+            required
+            placeholder="you@company.com"
+            className="dh-input"
+          />
         </div>
-        <div className="grid gap-2">
-          <Label htmlFor="company">Company</Label>
-          <Input id="company" name="company" placeholder="Company or asset name" />
+        <div>
+          <label className="dh-label" htmlFor="contact-company">
+            Company
+          </label>
+          <input
+            id="contact-company"
+            name="company"
+            placeholder="Company or asset name"
+            className="dh-input"
+          />
         </div>
-        <div className="grid gap-2">
-          <Label htmlFor="website">Website</Label>
-          <Input id="website" name="website" placeholder="https://example.com" />
+        <div>
+          <label className="dh-label" htmlFor="contact-website">
+            Website
+          </label>
+          <input
+            id="contact-website"
+            name="website"
+            placeholder="https://example.com"
+            className="dh-input"
+          />
         </div>
-        <div className="grid gap-2">
-          <Label htmlFor="interest">Interest</Label>
-          <select
-            id="interest"
-            name="interest"
-            defaultValue="Investment Enquiry"
-            className="flex h-11 w-full rounded-lg border border-border bg-surface px-3.5 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
-          >
+        <div>
+          <label className="dh-label" htmlFor="contact-interest">
+            Interest
+          </label>
+          <select id="contact-interest" name="interest" defaultValue="Investment Enquiry" className="dh-input">
             {contactTypes.map((type) => (
               <option key={type} value={type}>
                 {type}
@@ -58,25 +83,33 @@ export function ContactForm() {
             ))}
           </select>
         </div>
-        <div className="grid gap-2">
-          <Label htmlFor="message">Message</Label>
+        <div>
+          <label className="dh-label" htmlFor="contact-message">
+            Message
+          </label>
           <textarea
-            id="message"
+            id="contact-message"
             name="message"
             required
             rows={5}
             placeholder="Tell us what you are building, selling or exploring."
-            className="w-full rounded-lg border border-border bg-surface px-3.5 py-3 text-sm text-foreground placeholder:text-muted-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan"
+            className="dh-input resize-none"
           />
         </div>
-        <Button type="submit" disabled={status === "sending"}>
-          {status === "sending" ? "Sending" : "Send Enquiry"} <Send className="h-4 w-4" />
-        </Button>
-        {status === "sent" && <p className="text-sm text-cyan">Thanks. Your enquiry has been routed.</p>}
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          className="dh-btn dh-btn-fill inline-flex items-center gap-2"
+        >
+          {status === "sending" ? "Sending" : "Send Enquiry"} <ArrowRight className="h-4 w-4" />
+        </button>
+        {status === "sent" && (
+          <p className="text-sm text-[var(--ledger)]">Thanks. Your enquiry has been routed.</p>
+        )}
         {status === "error" && (
-          <p className="text-sm text-rose">Something went wrong. Please try again.</p>
+          <p className="text-sm text-[var(--ink-dim)]">Something went wrong. Please try again.</p>
         )}
       </form>
-    </Card>
+    </DhCard>
   );
 }

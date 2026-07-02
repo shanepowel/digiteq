@@ -6,44 +6,35 @@ import { Section } from "@/components/layout/section";
 import { Card } from "@/components/ui/card";
 import { EcoIcon } from "@/components/shared/eco-icon";
 import { SectionLabel } from "@/components/shared/section-label";
-import { TextLink } from "@/components/shared/text-link";
-import { ecoCards } from "@/lib/fallbacks/home";
+import { pillars } from "@/lib/fallbacks/home";
 
 export function Ecosystem() {
   return (
     <Section>
       <Container>
-        <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-4">
-          <Reveal className="pr-3">
-            <SectionLabel>Our Ecosystem</SectionLabel>
-            <h2 className="mb-2.5 text-[22px] font-semibold leading-snug text-foreground">
-              An integrated holding company ecosystem.
-            </h2>
-            <p className="mb-5 text-sm leading-relaxed text-gray-400">
-              Three pillars. One mission. Durable digital equity.
-            </p>
-            <TextLink href="/about" color="cyan">
-              Learn more about our approach
-            </TextLink>
-          </Reveal>
+        <Reveal className="mb-10 max-w-[720px]">
+          <SectionLabel>What we do</SectionLabel>
+          <p className="text-[15px] leading-[1.7] text-gray-400">
+            Digiteq is a technology holding company. We operate across four pillars: building
+            original products and brands, acquiring businesses with unrealised potential, supplying
+            enterprise technology into high-growth markets, and deploying capital where technology
+            meets unmet demand.
+          </p>
+        </Reveal>
 
-          <Stagger className="contents lg:col-span-3 lg:grid lg:grid-cols-3 lg:gap-5">
-            {ecoCards.map((card, i) => (
-              <StaggerItem key={card.name} className="lg:col-span-1">
-                <Card className="h-full">
-                  <div className="mb-4">
-                    <EcoIcon variant={i} size={44} />
-                  </div>
-                  <h3 className="mb-2 text-[15px] font-semibold text-foreground">{card.name}</h3>
-                  <p className="mb-5 min-h-10 text-[13px] leading-snug text-gray-400">{card.desc}</p>
-                  <TextLink href={card.href} color={card.color} external={card.href.startsWith("http")}>
-                    {card.link}
-                  </TextLink>
-                </Card>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
+        <Stagger className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {pillars.map((pillar, i) => (
+            <StaggerItem key={pillar.title}>
+              <Card className="h-full">
+                <div className="mb-4">
+                  <EcoIcon variant={i} size={44} />
+                </div>
+                <h3 className="mb-2 text-[15px] font-semibold text-foreground">{pillar.title}</h3>
+                <p className="text-[13px] leading-snug text-gray-400">{pillar.desc}</p>
+              </Card>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </Container>
     </Section>
   );
