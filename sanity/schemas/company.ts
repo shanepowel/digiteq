@@ -18,14 +18,39 @@ export const company = defineType({
     defineField({
       name: "category",
       type: "string",
-      description: "Portfolio category label (e.g. Supply, Brand, Marketplace)",
+      description: "Register category label",
+    }),
+    defineField({
+      name: "position",
+      type: "string",
+      description: "Holding position in the register",
       options: {
         list: [
-          { title: "Supply", value: "Supply" },
-          { title: "Brand", value: "Brand" },
-          { title: "Marketplace", value: "Marketplace" },
+          { title: "Operating", value: "Operating" },
+          { title: "Pre-seed", value: "Pre-seed" },
+          { title: "In evaluation", value: "In evaluation" },
         ],
       },
+    }),
+    defineField({
+      name: "keyFigure",
+      type: "object",
+      fields: [
+        { name: "label", type: "string", title: "Label" },
+        { name: "value", type: "string", title: "Value" },
+        {
+          name: "trend",
+          type: "string",
+          title: "Trend",
+          options: {
+            list: [
+              { title: "Positive", value: "positive" },
+              { title: "Flat", value: "flat" },
+              { title: "Evaluation", value: "eval" },
+            ],
+          },
+        },
+      ],
     }),
     defineField({ name: "services", type: "array", of: [{ type: "string" }] }),
     defineField({ name: "featured", type: "boolean", initialValue: false }),

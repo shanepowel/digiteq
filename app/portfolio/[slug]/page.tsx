@@ -5,7 +5,8 @@ import { Footer } from "@/components/layout/footer";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { portfolioCompanyBySlug, isPortfolioSlug, PORTFOLIO_SLUGS } from "@/lib/portfolio/companies";
+import { REGISTER_SLUGS, registerFallback } from "@/lib/home/register";
+import { isPortfolioSlug, portfolioCompanyBySlug } from "@/lib/portfolio/companies";
 import { getSanityClient } from "@/lib/sanity/client";
 import { ALL_COMPANY_SLUGS, COMPANY_BY_SLUG } from "@/lib/sanity/queries";
 import type { Company } from "@/lib/sanity/types";
@@ -20,12 +21,13 @@ export async function generateMetadata({ params }: Props) {
   } catch {
     // fall through
   }
-  const fallback = isPortfolioSlug(slug) ? portfolioCompanyBySlug[slug] : undefined;
+  const fallback = registerFallback.find((item) => item.slug === slug) ??
+    (isPortfolioSlug(slug) ? { name: portfolioCompanyBySlug[slug].name } : undefined);
   return { title: fallback?.name || "Company" };
 }
 
 export async function generateStaticParams() {
-  const slugSet = new Set<string>(PORTFOLIO_SLUGS);
+  const slugSet = new Set<string>(REGISTER_SLUGS);
 
   try {
     const slugs = await getSanityClient().fetch<{ slug: string }[]>(ALL_COMPANY_SLUGS);
@@ -37,8 +39,12 @@ export async function generateStaticParams() {
   return [...slugSet].map((slug) => ({ slug }));
 }
 
+function isRegisterSlug(slug: string): boolean {
+  return REGISTER_SLUGS.includes(slug);
+}
+
 async function getCompany(slug: string): Promise<Company | null> {
-  if (!isPortfolioSlug(slug)) return null;
+  if (!isRegisterSlug(slug)) return null;
 
   try {
     const company = await getSanityClient().fetch<Company | null>(COMPANY_BY_SLUG, { slug });
@@ -47,14 +53,28 @@ async function getCompany(slug: string): Promise<Company | null> {
     // Sanity not configured
   }
 
-  const fallback = portfolioCompanyBySlug[slug];
+  const row = registerFallback.find((item) => item.slug === slug);
+  if (!row) {
+    const portfolioMeta = isPortfolioSlug(slug) ? portfolioCompanyBySlug[slug] : undefined;
+    if (!portfolioMeta) return null;
+    return {
+      _id: `fallback-${slug}`,
+      name: portfolioMeta.name,
+      slug,
+      description: portfolioMeta.description,
+      website: portfolioMeta.website,
+      category: portfolioMeta.category,
+    };
+  }
+
   return {
     _id: `fallback-${slug}`,
-    name: fallback.name,
+    name: row.name,
     slug,
-    description: fallback.description,
-    website: fallback.website,
-    category: fallback.category,
+    description: row.category,
+    category: row.category,
+    position: row.position,
+    keyFigure: { label: row.figureLabel, value: row.figureValue, trend: row.trend },
   };
 }
 

@@ -36,9 +36,9 @@ export function buildMetadata(page: {
 
 export const pageMetadata = {
   home: {
-    title: "Technology holding company",
+    title: "Building Digital Equity",
     description:
-      "Digiteq builds, acquires, supplies, and invests in technology. From digital brands to enterprise hardware supply chains across high-growth markets.",
+      "Digiteq creates, acquires and scales digital brands, products and media properties to build lasting digital equity.",
     path: "/",
   },
   about: {

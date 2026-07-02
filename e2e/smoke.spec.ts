@@ -3,19 +3,19 @@ import { test, expect } from "@playwright/test";
 test.describe("marketing site smoke", () => {
   test("homepage loads with hero and sections", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: /we build, acquire, supply/i })).toBeVisible();
-    await expect(page.getByText("What we do", { exact: true })).toBeVisible();
-    await expect(page.getByText("Our thesis", { exact: true })).toBeVisible();
-    await expect(page.getByText("Portfolio", { exact: true }).first()).toBeVisible();
+    await expect(page.getByRole("heading", { name: /building digital equity/i })).toBeVisible();
+    await expect(page.getByText("Our ecosystem", { exact: true })).toBeVisible();
+    await expect(page.getByText("Our philosophy", { exact: true })).toBeVisible();
+    await expect(page.getByText("The register", { exact: true })).toBeVisible();
   });
 
   test("navigation reaches key pages", async ({ page }) => {
     await page.goto("/");
     await page.getByRole("link", { name: "About", exact: true }).click();
     await expect(page).toHaveURL(/\/about/);
-    await page.getByRole("link", { name: "Invest", exact: true }).click();
-    await expect(page).toHaveURL(/\/investment/);
-    await expect(page.getByRole("heading", { level: 1 })).toContainText(/invest with digiteq/i);
+    await page.getByRole("link", { name: "Ventures", exact: true }).click();
+    await expect(page).toHaveURL(/\/ventures/);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(/venture formation/i);
     await page.getByRole("link", { name: "Insights", exact: true }).click();
     await expect(page).toHaveURL(/\/insights/);
     await page.getByRole("link", { name: "Portfolio", exact: true }).click();

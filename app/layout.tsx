@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Instrument_Sans, Newsreader, Spline_Sans_Mono } from "next/font/google";
 import { Inter } from "next/font/google";
 import { Analytics } from "@/components/analytics";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
@@ -10,6 +11,22 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "600", "700"],
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+});
+
+const instrument = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument",
+});
+
+const splineMono = Spline_Sans_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -48,7 +65,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} min-h-screen bg-background font-sans antialiased`}>
+      <body
+        className={`${inter.variable} ${newsreader.variable} ${instrument.variable} ${splineMono.variable} min-h-screen bg-background font-sans antialiased`}
+      >
         <OrganizationJsonLd />
         <Analytics />
         {children}

@@ -4,13 +4,14 @@
  */
 const { createClient } = require("@sanity/client");
 
-const LEGACY_COMPANY_IDS = [
-  "company-future-venture",
-  "company-media-brand",
-  "company-acquisition-pipeline",
-];
+const LEGACY_COMPANY_IDS = [];
 
 async function main() {
+  if (LEGACY_COMPANY_IDS.length === 0) {
+    console.log("No legacy company documents configured for cleanup.");
+    return;
+  }
+
   const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
   const dataset = process.argv[2] || process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
   const token = process.env.SANITY_AUTH_TOKEN || process.env.SANITY_API_TOKEN;

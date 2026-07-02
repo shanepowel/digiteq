@@ -2,6 +2,12 @@ import type { PortableTextBlock } from "next-sanity";
 
 export type CompanyMetric = { label: string; value: string };
 
+export type CompanyKeyFigure = {
+  label?: string;
+  value?: string;
+  trend?: "positive" | "flat" | "eval";
+};
+
 export type Company = {
   _id: string;
   name: string;
@@ -12,6 +18,8 @@ export type Company = {
   metrics?: CompanyMetric[];
   services?: string[];
   category?: string;
+  position?: string;
+  keyFigure?: CompanyKeyFigure;
   order?: number;
 };
 
