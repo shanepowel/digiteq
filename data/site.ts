@@ -1,10 +1,8 @@
 export const navigation = [
-  { label: "About", href: "/about" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Ventures", href: "/ventures" },
+  { label: "Invest", href: "/investment" },
+  { label: "About", href: "/about" },
   { label: "Insights", href: "/insights" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Investment", href: "/investment" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -17,24 +15,24 @@ export const contactTypes = [
 
 export const pageContent = {
   about: {
-    title: "A digital group built for compounding ownership.",
-    body: "Digiteq is the holding company layer for digital brands, products and media properties. We create, acquire and scale assets that compound into lasting digital equity.",
+    title: "About Digiteq",
+    body: "Digiteq is a technology holding company registered in the UK. We build, acquire, supply, and invest in technology businesses.",
   },
   portfolio: {
-    title: "Companies we build and scale.",
-    body: "The portfolio combines agency capability, marketplace products, media assets and acquisition opportunities into a single operating system.",
+    title: "Portfolio",
+    body: "Companies across brand development, marketplace platforms, and enterprise technology supply.",
   },
   ventures: {
     title: "Venture formation without the theatre.",
     body: "Digiteq Ventures identifies useful digital business models, validates durable demand and builds or acquires the assets worth compounding.",
   },
   insights: {
-    title: "Thinking in digital equity.",
-    body: "Insights, case studies and operator notes on building, acquiring and scaling digital businesses.",
+    title: "Thinking in technology investment.",
+    body: "Insights on building, acquiring, supplying, and investing in technology businesses.",
   },
   investment: {
-    title: "Looking to sell your digital business?",
-    body: "We partner with founders to unlock the next chapter. Fair process. Fast decisions. Aligned outcomes.",
+    title: "Invest with Digiteq",
+    body: "We deploy capital into technology businesses and supply chains where the opportunity is clear and the competition is thin.",
   },
   contact: {
     title: "Start the right conversation.",
@@ -43,28 +41,26 @@ export const pageContent = {
 } as const;
 
 export const investmentCriteria = [
-  "Profitable digital businesses",
-  "Niche media and newsletter assets",
-  "Productised service brands",
-  "Marketplaces with organic demand",
-  "Software utilities with durable search intent",
+  "Digital businesses with proven revenue and operational inefficiency we can fix",
+  "Technology supply chain businesses with existing customer relationships in African markets",
+  "Complementary platforms that extend the Digiteq portfolio into adjacent verticals",
 ] as const;
 
 export const pillars = [
   {
-    title: "Create",
-    body: "Launch owned brands and products where Digiteq can compound audience, capability and data.",
+    title: "Build",
+    body: "We create digital products, brands, and platforms from scratch.",
   },
   {
     title: "Acquire",
-    body: "Partner with founders or buy profitable digital assets with a clear operational upside.",
+    body: "We identify businesses with strong fundamentals and unrealised growth potential.",
   },
   {
-    title: "Scale",
-    body: "Apply shared growth, product, content and automation systems across the portfolio.",
+    title: "Supply",
+    body: "We source enterprise hardware and infrastructure from authorised European distributors.",
   },
   {
-    title: "Integrate",
-    body: "Turn separate ventures into a coordinated group with unified intelligence.",
+    title: "Invest",
+    body: "We deploy capital into technology opportunities in high-growth markets.",
   },
 ] as const;

@@ -25,7 +25,7 @@ export default function PrivacyPage() {
           { name: "Privacy Policy", href: "/privacy" },
         ]}
       />
-      <MarkdownDocument content={content} />
+      <MarkdownDocument content={content} title={pageMetadata.privacy.title} />
     </PageShell>
   );
 }

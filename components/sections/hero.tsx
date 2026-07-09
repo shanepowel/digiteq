@@ -23,27 +23,28 @@ export function Hero() {
       />
 
       <Container className="relative z-10 flex flex-col items-start gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-        <div className="max-w-[540px] shrink-0">
-          <h1 className="mb-6 text-[clamp(2.5rem,5vw,68px)] font-bold leading-[1.04] tracking-[-0.02em] text-white">
-            <WordReveal text="Building" />
+        <div className="max-w-[600px] shrink-0">
+          <h1 className="mb-6 text-[clamp(2.25rem,4.5vw,56px)] font-bold leading-[1.08] tracking-[-0.02em] text-white">
+            <WordReveal text="We build, acquire, supply," />
             <br />
-            <WordReveal text="Digital Equity" delay={0.08} />
+            <WordReveal text="and invest in technology." delay={0.08} />
           </h1>
           <Reveal delay={0.1}>
-            <p className="mb-10 max-w-[400px] text-lg leading-relaxed text-gray-400">
-              We create, acquire and scale digital brands, products and media properties.
+            <p className="mb-10 max-w-[480px] text-lg leading-relaxed text-gray-400">
+              From digital brands to enterprise hardware supply chains, Digiteq creates value across
+              the technology spectrum.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
             <div className="flex flex-wrap gap-3.5">
               <Button asChild>
                 <Link href="/portfolio">
-                  Explore Portfolio <ArrowRight className="h-4 w-4" />
+                  Our portfolio <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
               <Button variant="ghost" asChild>
-                <Link href="/contact">
-                  Partner With Us <ArrowRight className="h-4 w-4" />
+                <Link href="/investment">
+                  Investment thesis <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
             </div>

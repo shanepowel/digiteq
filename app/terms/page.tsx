@@ -25,7 +25,7 @@ export default function TermsPage() {
           { name: "Terms of Service", href: "/terms" },
         ]}
       />
-      <MarkdownDocument content={content} />
+      <MarkdownDocument content={content} title={pageMetadata.terms.title} />
     </PageShell>
   );
 }

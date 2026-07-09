@@ -7,6 +7,7 @@ type BrandLogoProps = {
   variant?: "nav" | "footer";
   /** auto: icon on small screens, lockup on lg+ (nav header only) */
   display?: "auto" | "icon" | "lockup";
+  theme?: "dark" | "register";
   href?: string | false;
   className?: string;
 };
@@ -19,6 +20,7 @@ const sizes = {
 export function BrandLogo({
   variant = "nav",
   display = "auto",
+  theme = "register",
   href = "/",
   className,
 }: BrandLogoProps) {
@@ -26,12 +28,13 @@ export function BrandLogo({
   const isNavAuto = display === "auto" && variant === "nav";
   const showLockup = display === "lockup" || isNavAuto || (display === "auto" && variant === "footer");
   const showIcon = display === "icon" || isNavAuto;
+  const lockupSrc = theme === "register" ? brandAssets.lockupMono : brandAssets.lockup;
 
   const content = (
     <span className={cn("inline-flex items-center", className)}>
       {showLockup && (
         <Image
-          src={brandAssets.lockup}
+          src={lockupSrc}
           alt={brandAlt.lockup}
           width={dim.lockup.width}
           height={dim.lockup.height}

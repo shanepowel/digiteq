@@ -46,9 +46,9 @@ export function Footer() {
         <div className="mb-12 grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.6fr] lg:gap-14">
           <div>
             <BrandLogo variant="footer" display="lockup" href={false} className="mb-3.5" />
-            <p className="mb-4 max-w-[250px] text-[13px] leading-relaxed text-muted-dark">
-              We create, acquire and scale digital brands, products and media properties to build
-              lasting digital equity.
+            <p className="mb-4 max-w-[280px] text-[13px] leading-relaxed text-muted-dark">
+              Digiteq Holdings Limited. Building, acquiring, supplying, and investing in
+              technology.
             </p>
             <div className="flex gap-2">
               <SocialIcon
@@ -96,7 +96,7 @@ export function Footer() {
               Stay Informed
             </h4>
             <p className="mb-4 text-[13px] leading-relaxed text-muted-dark">
-              Insights on building, acquiring and scaling digital businesses.
+              Insights on building, acquiring, supplying, and investing in technology.
             </p>
             <form onSubmit={onSubscribe} className="flex gap-2">
               <Input
@@ -121,9 +121,14 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-start justify-between gap-4 border-t border-border pt-5 sm:flex-row sm:items-center">
-          <span className="text-xs text-muted-dark">
-            &copy; {new Date().getFullYear()} Digiteq Holdings. All rights reserved.
-          </span>
+          <div className="flex flex-col gap-1">
+            <span className="text-xs text-muted-dark">
+              &copy; {new Date().getFullYear()} Digiteq Holdings Limited. All rights reserved.
+            </span>
+            <span className="text-xs text-muted-dark">
+              Registered in England and Wales. Company number 03730207.
+            </span>
+          </div>
           <div className="flex gap-7">
             <Link href="/privacy" className="text-xs text-muted-dark hover:text-muted">
               Privacy Policy

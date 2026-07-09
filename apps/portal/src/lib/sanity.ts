@@ -36,7 +36,7 @@ export type SanityVenture = {
 
 export async function fetchPortfolioCompanies() {
   return getSanityClient().fetch<SanityCompany[]>(
-    `*[_type == "company"] | order(order asc) {
+    `*[_type == "company" && featured == true && slug.current in ["konduit", "bmkrs", "freelance-near-me"]] | order(order asc) {
       name, "slug": slug.current, description, metrics
     }`,
   );
@@ -44,7 +44,7 @@ export async function fetchPortfolioCompanies() {
 
 export async function fetchCompanyBySlug(slug: string) {
   return getSanityClient().fetch<SanityCompany | null>(
-    `*[_type == "company" && slug.current == $slug][0] {
+    `*[_type == "company" && slug.current == $slug && slug.current in ["konduit", "bmkrs", "freelance-near-me"]][0] {
       name, "slug": slug.current, description, metrics
     }`,
     { slug },
