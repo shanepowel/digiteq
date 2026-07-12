@@ -58,14 +58,6 @@ Or run locally:
 VERCEL_TOKEN=... node scripts/reconnect-portal-vercel.mjs
 ```
 
-After reconnecting, delete the orphan private repo **`shanepowel/digiteqapp`** if it still exists (created by Vercel's "New Project" flow):
-
-```bash
-./scripts/delete-orphan-digiteqapp-repo.sh
-```
-
-If the repo is already gone, the script exits successfully. The Vercel project name **digiteqapp** stays — only the orphan GitHub repo is removed.
-
 ## Troubleshooting
 
 **HTTP 500 / `MIDDLEWARE_INVOCATION_FAILED`:** Set both Clerk keys on the portal Vercel project, then redeploy:
