@@ -175,7 +175,7 @@ function findAndReplace(dir, replacements) {
 
 // ─── Build Replacements ───────────────────────────────────────
 
-function getReplacements(brand) {
+function getReplacements(_brand) {
   return [
     // Old company references
     ["Pile Test Ltd", COMPANY.legal],
