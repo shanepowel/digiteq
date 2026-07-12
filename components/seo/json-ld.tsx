@@ -1,22 +1,15 @@
 import { brandAssets } from "@/lib/brand";
+import { COMPANY, organizationJsonLd, PORTFOLIO } from "@/lib/company-config";
 import { contactEmail, siteUrl } from "@/lib/site";
 
 export function OrganizationJsonLd() {
+  const base = organizationJsonLd("digiteq");
   const data = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Digiteq Holdings",
-    alternateName: "Digiteq",
-    url: siteUrl,
+    ...base,
+    name: COMPANY.name,
+    alternateName: COMPANY.tradingAs,
     logo: `${siteUrl}${brandAssets.icon}`,
-    description:
-      "Digiteq Holdings Limited builds, acquires, supplies, and invests in technology across digital brands and enterprise supply chains.",
     foundingDate: "2026",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "London",
-      addressCountry: "GB",
-    },
     contactPoint: {
       "@type": "ContactPoint",
       email: contactEmail,
@@ -24,9 +17,18 @@ export function OrganizationJsonLd() {
     },
     sameAs: ["https://linkedin.com/company/digiteq", "https://x.com/digiteqhq"],
     owns: [
-      { "@type": "Organization", name: "Konduit", url: "https://konduit.tech" },
-      { "@type": "Organization", name: "BMKRS", url: "https://bmkrs.com" },
-      { "@type": "Organization", name: "FreelanceNearMe", url: "https://freelancenearme.com" },
+      { "@type": "Organization", name: PORTFOLIO.konduit.name, url: `https://${PORTFOLIO.konduit.domain}` },
+      { "@type": "Organization", name: PORTFOLIO.bmkrs.name, url: `https://${PORTFOLIO.bmkrs.domain}` },
+      {
+        "@type": "Organization",
+        name: PORTFOLIO.freelancenearme.name,
+        url: `https://${PORTFOLIO.freelancenearme.domain}`,
+      },
+      {
+        "@type": "Organization",
+        name: PORTFOLIO.three18media.name,
+        url: `https://${PORTFOLIO.three18media.domain}`,
+      },
     ],
   };
 
@@ -65,7 +67,7 @@ export function ArticleJsonLd({
     author: { "@type": "Person", name: author },
     publisher: {
       "@type": "Organization",
-      name: "Digiteq Holdings",
+      name: COMPANY.name,
       logo: { "@type": "ImageObject", url: `${siteUrl}${brandAssets.icon}` },
     },
     articleSection: category,

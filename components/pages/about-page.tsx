@@ -6,7 +6,7 @@ const narrative = [
   "The company was founded on a straightforward observation: technology creates the most value where the gap between demand and supply is widest. In mature markets, that gap is narrow. In high-growth markets, particularly across Africa, it is enormous and largely unaddressed by established players.",
   "Digiteq operates a portfolio of companies spanning digital brand development, marketplace platforms, and enterprise technology supply. Each portfolio company is independently branded and operated, with Digiteq providing capital, strategic direction, and shared infrastructure.",
   "Our supply division, Konduit, sources enterprise hardware and IT infrastructure from authorised European distributors and delivers it into Southern African markets with full manufacturer warranty, compliance documentation, and in-region support. It is our first expression of the thesis that technology supply chains in high-growth markets are ripe for professionalisation.",
-  "Digiteq Holdings Limited is the parent entity, registered at Companies House.",
+  "Digiteq Holdings Limited is the parent entity, registered in England and Wales under company number 03730207. Registered office: 66 Paul Street, London, EC2A 4NA, United Kingdom.",
 ];
 
 const portfolioList = [

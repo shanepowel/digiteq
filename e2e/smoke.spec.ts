@@ -33,7 +33,11 @@ test.describe("marketing site smoke", () => {
   test("legal pages resolve", async ({ page }) => {
     await page.goto("/privacy");
     await expect(page.locator(".prose-digiteq")).toBeVisible();
+    await expect(page.getByText("66 Paul Street")).toBeVisible();
     await page.goto("/terms");
     await expect(page.locator(".prose-digiteq")).not.toBeEmpty();
+    await expect(page.getByText("03730207")).toBeVisible();
+    await page.goto("/cookies");
+    await expect(page.locator(".prose-digiteq")).toBeVisible();
   });
 });

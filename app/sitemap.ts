@@ -14,6 +14,7 @@ const priorities: Record<string, number> = {
   "/contact": 0.6,
   "/privacy": 0.4,
   "/terms": 0.4,
+  "/cookies": 0.4,
 };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -30,6 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/contact",
     "/privacy",
     "/terms",
+    "/cookies",
   ];
 
   const staticEntries = routes.map((route) => ({

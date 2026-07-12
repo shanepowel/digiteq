@@ -1,21 +1,28 @@
 ---
 title: "Privacy Policy"
-lastUpdated: "2026-06-01"
+lastUpdated: "2026-07-12"
 ---
 
 # Privacy Policy
 
-Last updated: 1 June 2026
+Last updated: 12 July 2026
 
-Digiteq Holdings ("Digiteq", "we", "our") operates digiteq.io and related services. This policy explains what data we collect, why we collect it, and your rights regarding that data.
+Digiteq is operated by Digiteq Holdings Limited, a company registered in England and Wales (company number 03730207). Our registered office is 66 Paul Street, London, EC2A 4NA, United Kingdom.
+
+For the purposes of the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018, Digiteq Holdings Limited is the data controller.
 
 ## What we collect
 
-**Contact form submissions.** When you submit a form on our site, we collect the information you provide: name, email address, company name, website URL, area of interest, and your message. We use this information solely to respond to your enquiry and, where relevant, to manage an ongoing business relationship.
+When you use Digiteq, we may collect:
 
-**Newsletter subscriptions.** When you subscribe to our newsletter, we collect your email address. We use this to send you periodic updates about Digiteq, our portfolio companies, and our published insights. You can unsubscribe at any time using the link in every email.
+- Your name and company name
+- Email address
+- Phone number
+- Project requirements and any details you provide
+- Investment or acquisition enquiry details (business URL, revenue range, operating history, and related information you submit)
+- Newsletter subscription preferences
 
-**Analytics data.** We use Plausible Analytics, a privacy-focused analytics tool that does not use cookies and does not collect personal data. Plausible collects aggregate, anonymous usage data including page views, referral sources, browser type, and country. No individual visitors are identified or tracked. Full details of Plausible's privacy practices are available at plausible.io/data-policy.
+We also collect standard analytics data (pages visited, referral source, device type) through Plausible Analytics, which does not use cookies and does not collect personal data.
 
 **Technical data.** Our hosting provider (Vercel) processes standard server logs including IP addresses, request timestamps, and user agent strings. These are retained for operational and security purposes and are not used for marketing or profiling.
 
@@ -25,7 +32,9 @@ We do not use cookies for tracking or advertising. We do not use Google Analytic
 
 ## How we use your data
 
-We use the data we collect for the following purposes only:
+We use your information to respond to enquiries, deliver our services, and improve the Digiteq experience. We do not sell your data. We do not use it for automated decision-making.
+
+Specifically, we use data for:
 
 - responding to enquiries submitted through our contact or investment forms
 - sending newsletter updates to confirmed subscribers
@@ -36,10 +45,10 @@ We use the data we collect for the following purposes only:
 
 We use the following services to process data on our behalf:
 
-- **Vercel** (hosting and deployment) - processes technical request data
-- **HubSpot** (CRM and form handling) - stores contact form submissions and manages email communications
-- **Resend** (email delivery) - delivers transactional and newsletter emails
-- **Plausible Analytics** (website analytics) - processes anonymous usage data, hosted in the EU
+- **Vercel** (hosting and deployment) — processes technical request data
+- **HubSpot** (CRM and form handling) — stores contact form submissions and manages email communications
+- **Resend** (email delivery) — delivers transactional and newsletter emails
+- **Plausible Analytics** (website analytics) — processes anonymous usage data, hosted in the EU
 
 Each of these processors maintains their own privacy policies and operates under data processing agreements appropriate to the data they handle.
 
@@ -49,16 +58,7 @@ Contact form submissions and CRM records are retained for the duration of any ac
 
 ## Your rights
 
-Under UK GDPR and the Data Protection Act 2018, you have the right to:
-
-- access the personal data we hold about you
-- request correction of inaccurate data
-- request deletion of your data
-- withdraw consent for newsletter communications at any time
-- object to processing of your data
-- request a portable copy of your data
-
-To exercise any of these rights, contact us at hello@digiteq.io. We will respond within 30 days.
+Under UK GDPR, you have the right to access, correct, delete, or port your personal data. You can also object to processing or withdraw consent. Contact us at privacy@digiteq.io to exercise these rights. We will respond within 30 days.
 
 ## Children
 
@@ -70,8 +70,12 @@ We may update this policy from time to time. Material changes will be noted on t
 
 ## Contact
 
-For any privacy-related questions or requests:
+For privacy enquiries:
 
-Digiteq Holdings
-hello@digiteq.io
-London, UK
+Data Protection  
+Digiteq Holdings Limited  
+66 Paul Street  
+London, EC2A 4NA  
+United Kingdom
+
+privacy@digiteq.io

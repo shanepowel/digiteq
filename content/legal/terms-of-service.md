@@ -1,13 +1,15 @@
 ---
 title: "Terms of Service"
-lastUpdated: "2026-06-01"
+lastUpdated: "2026-07-12"
 ---
 
 # Terms of Service
 
-Last updated: 1 June 2026
+Last updated: 12 July 2026
 
-These terms govern your use of digiteq.io ("the Site"), operated by Digiteq Holdings ("Digiteq", "we", "our"). By accessing the Site, you agree to these terms.
+These terms govern your use of digiteq.io ("the Site"), operated by Digiteq Holdings Limited ("Digiteq", "we", "our"). Digiteq is operated by Digiteq Holdings Limited. Registered in England and Wales under company number 03730207. Registered office: 66 Paul Street, London, EC2A 4NA, United Kingdom.
+
+By accessing the Site, you agree to these terms.
 
 ## Use of the Site
 
@@ -15,13 +17,15 @@ The Site is provided for informational purposes. It describes Digiteq's business
 
 ## Intellectual property
 
-All content on the Site, including text, graphics, logos, the Digiteq brand mark, design elements, and source code, is owned by Digiteq Holdings or used under licence. The Digiteq name, logo, and "Building Digital Equity" tagline are trademarks of Digiteq Holdings.
+All content on the Site, including text, graphics, logos, the Digiteq brand mark, design elements, and source code, is owned by Digiteq Holdings Limited or used under licence. The Digiteq name and logo are trademarks of Digiteq Holdings Limited.
 
-You may not use our trademarks, logos, or brand assets without prior written consent. References to portfolio companies (BMKRS, FreelanceNearMe, and others) are trademarks of their respective entities within the Digiteq group.
+You may not use our trademarks, logos, or brand assets without prior written consent. References to portfolio companies (BMKRS, Konduit, FreelanceNearMe, Three18 Media, and others) are trading names or trademarks of Digiteq Holdings Limited or related entities within the Digiteq group.
 
 ## Insights and content
 
 Articles, case studies, and insights published on the Site are provided for general information only. They do not constitute professional, financial, legal, or investment advice. Digiteq makes no representations about the completeness, accuracy, or suitability of this content for any particular purpose.
+
+All content published on digiteq.io is owned by Digiteq Holdings Limited unless otherwise attributed. You may not reproduce, distribute, or create derivative works from our content without written permission.
 
 ## Contact forms and submissions
 
@@ -45,11 +49,11 @@ The Site is provided "as is" without warranties of any kind, whether express or 
 
 ## Limitation of liability
 
-To the maximum extent permitted by law, Digiteq Holdings shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Site or reliance on any content published on it.
+Our liability is limited to the fees paid for the relevant service or the value of goods supplied. We are not liable for indirect, consequential, or incidental losses. To the maximum extent permitted by law, Digiteq Holdings Limited shall not be liable for any punitive damages arising from your use of the Site or reliance on any content published on it.
 
 ## Governing law
 
-These terms are governed by the laws of England and Wales. Any disputes arising from these terms or your use of the Site shall be subject to the exclusive jurisdiction of the courts of England and Wales.
+These terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.
 
 ## Changes to these terms
 
@@ -57,8 +61,9 @@ We may update these terms from time to time. The "last updated" date at the top 
 
 ## Contact
 
-For questions about these terms:
+Digiteq Holdings Limited  
+66 Paul Street  
+London, EC2A 4NA  
+United Kingdom
 
-Digiteq Holdings
 hello@digiteq.io
-London, UK

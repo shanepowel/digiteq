@@ -1,0 +1,504 @@
+From 6f30acbf50f270b6ea475036c4fe663e712e5dee Mon Sep 17 00:00:00 2001
+From: Cursor Agent <cursoragent@cursor.com>
+Date: Sun, 12 Jul 2026 21:27:17 +0000
+Subject: [PATCH] Align Konduit legal pages with Digiteq Holdings company
+ details
+
+Wire company-config, Paul Street registered office, trading-name
+footer line, and brand-specific privacy/terms/cookies content.
+---
+ FOOTER_LEGAL.md                   |  38 ++++++++++++
+ content/legal/cookie-policy.md    |  31 ++++-----
+ content/legal/privacy-policy.md   |  58 ++++++++---------
+ content/legal/terms-of-service.md |  39 ++++++++----
+ src/app/about/page.tsx            |   3 +-
+ src/components/footer.tsx         |  10 +--
+ src/components/seo/json-ld.tsx    |  13 +---
+ src/lib/company-config.ts         | 100 ++++++++++++++++++++++++++++++
+ src/lib/site.ts                   |   4 +-
+ 9 files changed, 216 insertions(+), 80 deletions(-)
+ create mode 100644 FOOTER_LEGAL.md
+ create mode 100644 src/lib/company-config.ts
+
+diff --git a/FOOTER_LEGAL.md b/FOOTER_LEGAL.md
+new file mode 100644
+index 0000000..1da3886
+--- /dev/null
++++ b/FOOTER_LEGAL.md
+@@ -0,0 +1,38 @@
++
++<!-- ═══════════════════════════════════════════════════════════ -->
++<!-- Konduit — Footer Legal Line                          -->
++<!-- Drop this into your footer component.                      -->
++<!-- ═══════════════════════════════════════════════════════════ -->
++
++<!-- React/JSX version -->
++<p className="text-xs text-gray-400">
++  Konduit is a trading name of Digiteq Holdings Limited. Registered in England and Wales. Company number 03730207. Registered office: 66 Paul Street, London, EC2A 4NA, United Kingdom.
++</p>
++
++<!-- Plain HTML version -->
++<p style="font-size: 12px; color: #94a3b8;">
++  Konduit is a trading name of Digiteq Holdings Limited. Registered in England and Wales. Company number 03730207. Registered office: 66 Paul Street, London, EC2A 4NA, United Kingdom.
++</p>
++
++<!-- JSON-LD (add to <head> or root layout) -->
++<script type="application/ld+json">
++{
++  "@context": "https://schema.org",
++  "@type": "Organization",
++  "name": "Konduit",
++  "url": "https://konduit.tech",
++  "description": "Enterprise technology supply for Southern African markets.",
++  "address": {
++    "@type": "PostalAddress",
++    "streetAddress": "66 Paul Street",
++    "addressLocality": "London",
++    "postalCode": "EC2A 4NA",
++    "addressCountry": "GB"
++  },
++  "parentOrganization": {
++    "@type": "Organization",
++    "name": "Digiteq Holdings Limited",
++    "url": "https://digiteq.io"
++  }
++}
++</script>
+diff --git a/content/legal/cookie-policy.md b/content/legal/cookie-policy.md
+index 8cb321d..6a29deb 100644
+--- a/content/legal/cookie-policy.md
++++ b/content/legal/cookie-policy.md
+@@ -1,36 +1,29 @@
+ ---
+ title: "Cookie Policy"
+-lastUpdated: "2026-06-01"
++lastUpdated: "2026-07-12"
+ ---
+ 
+ # Cookie Policy
+ 
+-Last updated: 1 June 2026
++Last updated: 12 July 2026
+ 
+-This policy explains how Konduit uses cookies and similar technologies on konduit.tech.
++## Our approach
+ 
+-## What are cookies?
++Konduit uses Plausible Analytics, a privacy-focused analytics tool that does not use cookies and does not collect personal data. We do not serve advertising and do not use tracking cookies.
+ 
+-Cookies are small text files stored on your device when you visit a website. They are widely used to make websites work and to provide information to site owners.
++## Essential cookies
+ 
+-## How we use cookies
+-
+-Konduit uses minimal cookies:
+-
+-**Essential cookies.** We store a local preference when you accept our cookie notice. This is stored in your browser's local storage, not a tracking cookie.
+-
+-**Analytics.** We use Plausible Analytics, which does not use cookies and does not track individual visitors. Plausible collects only aggregate, anonymous usage data.
+-
+-We do not use advertising cookies, retargeting pixels, or third-party tracking cookies.
++We may use strictly necessary cookies for site functionality (such as form submission state and the cookie notice preference stored in local storage). These do not track you and cannot be disabled without breaking core features.
+ 
+ ## Managing cookies
+ 
+ Because we do not use tracking cookies, there is nothing to opt out of beyond clearing your browser's local storage. You can configure your browser to block all cookies, though this may affect site functionality.
+ 
+-## Changes
+-
+-We may update this policy from time to time. The date at the top indicates when it was last revised.
+-
+ ## Contact
+ 
+-Konduit Ltd, London, United Kingdom. Email: hello@konduit.tech
++Questions about cookies? Contact us at privacy@konduit.tech.
++
++Digiteq Holdings Limited  
++66 Paul Street  
++London, EC2A 4NA  
++United Kingdom
+diff --git a/content/legal/privacy-policy.md b/content/legal/privacy-policy.md
+index 5d211ba..2bf56d6 100644
+--- a/content/legal/privacy-policy.md
++++ b/content/legal/privacy-policy.md
+@@ -1,21 +1,28 @@
+ ---
+ title: "Privacy Policy"
+-lastUpdated: "2026-06-01"
++lastUpdated: "2026-07-12"
+ ---
+ 
+ # Privacy Policy
+ 
+-Last updated: 1 June 2026
++Last updated: 12 July 2026
+ 
+-Konduit Ltd ("Konduit", "we", "our") operates konduit.tech and related services. This policy explains what data we collect, why we collect it, and your rights regarding that data. We align our practices with UK GDPR and South Africa's Protection of Personal Information Act (POPIA).
++Konduit is a trading name of Digiteq Holdings Limited, a company registered in England and Wales (company number 03730207). Our registered office is 66 Paul Street, London, EC2A 4NA, United Kingdom.
++
++For the purposes of the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018, Digiteq Holdings Limited is the data controller. We also align our practices with South Africa's Protection of Personal Information Act (POPIA).
+ 
+ ## What we collect
+ 
+-**Quote and contact form submissions.** When you submit a form on our site, we collect the information you provide: name, email address, company name, phone number, country of delivery, product requirements, and your message. We use this information solely to respond to your enquiry and manage an ongoing business relationship.
++When you use Konduit, we may collect:
+ 
+-**Partner applications.** When you apply to join our partner network, we collect company details, country, services offered, team size, certifications, and contact information.
++- Your name and company name
++- Email address
++- Phone or WhatsApp number
++- Country of delivery
++- Product requirements and any details you provide
++- Partner application details (services offered, team size, certifications)
+ 
+-**Analytics data.** We use Plausible Analytics, a privacy-focused analytics tool that does not use cookies and does not collect personal data. Plausible collects aggregate, anonymous usage data including page views, referral sources, browser type, and country. No individual visitors are identified or tracked.
++We also collect standard analytics data (pages visited, referral source, device type) through Plausible Analytics, which does not use cookies and does not collect personal data.
+ 
+ **Technical data.** Our hosting provider (Vercel) processes standard server logs including IP addresses, request timestamps, and user agent strings. These are retained for operational and security purposes.
+ 
+@@ -25,7 +32,9 @@ We do not use cookies for tracking or advertising. We do not use Google Analytic
+ 
+ ## How we use your data
+ 
+-We use the data we collect for the following purposes only:
++We use your information to respond to enquiries, deliver our services, and improve the Konduit experience. We do not sell your data. We do not use it for automated decision-making.
++
++Specifically, we use data for:
+ 
+ - responding to quote requests and contact enquiries
+ - processing partner applications
+@@ -38,34 +47,21 @@ We use the following services to process data on our behalf:
+ 
+ - **Vercel** (hosting and deployment)
+ - **HubSpot** (CRM and form handling)
+-- **Resend** (transactional email delivery)
+-- **Plausible Analytics** (website analytics, hosted in the EU)
+-- **Sanity** (content management, no personal data stored)
+-
+-## Data retention
+-
+-Quote requests and CRM records are retained for the duration of any active business relationship, plus 24 months after the last interaction. Analytics data is retained in aggregate form and cannot be linked to individuals.
++- **Resend** (email delivery)
++- **Plausible Analytics** (website analytics)
+ 
+ ## Your rights
+ 
+-Under UK GDPR and POPIA, you have the right to:
+-
+-- access the personal data we hold about you
+-- request correction of inaccurate data
+-- request deletion of your data where there is no legitimate reason to retain it
+-- object to processing or request restriction
+-- lodge a complaint with the Information Commissioner's Office (UK) or the Information Regulator (South Africa)
++Under UK GDPR, you have the right to access, correct, delete, or port your personal data. You can also object to processing or withdraw consent. Contact us at privacy@konduit.tech to exercise these rights.
+ 
+-To exercise any of these rights, contact us at hello@konduit.tech.
+-
+-## International transfers
+-
+-Konduit operates from the United Kingdom. Data may be processed in the UK, EU, and United States through our service providers. We ensure appropriate safeguards are in place for any international transfers.
+-
+-## Changes to this policy
++## Contact
+ 
+-We may update this policy from time to time. The date at the top of this page indicates when it was last revised.
++For privacy enquiries:
+ 
+-## Contact
++Data Protection  
++Digiteq Holdings Limited  
++66 Paul Street  
++London, EC2A 4NA  
++United Kingdom
+ 
+-Konduit Ltd, London, United Kingdom. Email: hello@konduit.tech
++privacy@konduit.tech
+diff --git a/content/legal/terms-of-service.md b/content/legal/terms-of-service.md
+index a530b9f..67e17bb 100644
+--- a/content/legal/terms-of-service.md
++++ b/content/legal/terms-of-service.md
+@@ -1,27 +1,35 @@
+ ---
+ title: "Terms and Conditions"
+-lastUpdated: "2026-06-01"
++lastUpdated: "2026-07-12"
+ ---
+ 
+ # Terms and Conditions
+ 
+-Last updated: 1 June 2026
++Last updated: 12 July 2026
+ 
+ These terms govern your use of konduit.tech and our quote-based supply services. By using this website, you agree to these terms.
+ 
+-## About Konduit
++## Company information
+ 
+-Konduit Ltd is an enterprise technology supply company. We source hardware and infrastructure from authorised European distributors and deliver to Southern African markets. Konduit is a Digiteq Holdings company.
++Konduit is a trading name of Digiteq Holdings Limited. Registered in England and Wales under company number 03730207. Registered office: 66 Paul Street, London, EC2A 4NA, United Kingdom.
+ 
+ ## Website use
+ 
+ You may use this website for lawful purposes only. You must not attempt to gain unauthorised access to our systems, scrape content at scale, or use the site in any way that could damage or impair its operation.
+ 
+-## Quotes and orders
++## Quotations
+ 
+-All pricing is provided on a quote basis. A quote is not a binding contract until accepted in writing by both parties. Prices are subject to change based on distributor pricing, exchange rates, and availability at the time of order confirmation.
++All quotations are valid for 14 days from the date of issue unless otherwise stated. Prices are quoted in USD unless otherwise agreed and are exclusive of import duties, taxes, and shipping costs unless explicitly included.
+ 
+-We quote what we can deliver. If we cannot source a product through authorised channels, we will say so.
++A quote is not a binding contract until accepted in writing by both parties. We quote what we can deliver. If we cannot source a product through authorised channels, we will say so.
++
++## Orders and payment
++
++Orders are confirmed upon receipt of a signed purchase order or written acceptance. Payment terms are pro-forma for new customers. Credit terms may be offered to established customers at our discretion.
++
++## Delivery
++
++Delivery timelines are estimated and not guaranteed. Risk transfers to the buyer upon delivery to the agreed destination.
+ 
+ ## Product information
+ 
+@@ -29,20 +37,25 @@ Product specifications, availability, and lead times displayed on this site are
+ 
+ ## Warranty
+ 
+-All products are sourced through authorised distributor channels with valid manufacturer warranty unless otherwise stated in writing. Warranty terms are set by the manufacturer and vary by product.
++All products are supplied with the manufacturer's standard warranty. We assist with warranty claims but are not the warrantor. Products are sourced through authorised distributor channels with valid manufacturer warranty unless otherwise stated in writing.
+ 
+-## Liability
++## Limitation of liability
+ 
+-To the fullest extent permitted by law, Konduit shall not be liable for indirect, incidental, or consequential damages arising from use of this website or reliance on information provided here. Our liability in connection with any supply contract is limited to the terms agreed in that contract.
++Our liability is limited to the fees paid for the relevant service or the value of goods supplied. We are not liable for indirect, consequential, or incidental losses. To the fullest extent permitted by law, Digiteq Holdings Limited shall not be liable for punitive damages arising from use of this website or reliance on information provided here.
+ 
+ ## Intellectual property
+ 
+-All content on this website, including text, logos, and design, is owned by Konduit Ltd or its licensors. You may not reproduce or distribute it without our written permission.
++All content on this website, including text, logos, and design, is owned by Digiteq Holdings Limited or its licensors. You may not reproduce or distribute it without our written permission.
+ 
+ ## Governing law
+ 
+-These terms are governed by the laws of England and Wales. Disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.
++These terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.
+ 
+ ## Contact
+ 
+-Konduit Ltd, London, United Kingdom. Email: hello@konduit.tech
++Digiteq Holdings Limited  
++66 Paul Street  
++London, EC2A 4NA  
++United Kingdom
++
++hello@konduit.tech
+diff --git a/src/app/about/page.tsx b/src/app/about/page.tsx
+index d92189f..4df9a2d 100644
+--- a/src/app/about/page.tsx
++++ b/src/app/about/page.tsx
+@@ -38,7 +38,8 @@ export default function AboutPage() {
+               installation and ongoing support.
+             </p>
+             <p>
+-              Konduit is part of Digiteq Holdings, a digital holding company building and operating
++              Konduit is a trading name of Digiteq Holdings Limited, a UK technology holding company
++              building and operating
+               technology businesses across multiple markets.
+             </p>
+           </div>
+diff --git a/src/components/footer.tsx b/src/components/footer.tsx
+index c08e1d8..7901197 100644
+--- a/src/components/footer.tsx
++++ b/src/components/footer.tsx
+@@ -2,11 +2,11 @@ import Link from "next/link";
+ import Image from "next/image";
+ import { DigiteqBadge } from "@/components/digiteq-badge";
+ import { WhatsAppButton } from "@/components/whatsapp-button";
++import { COMPANY, legalFooter } from "@/lib/company-config";
+ import {
+   contactEmail,
+   footerLinks,
+   officeHours,
+-  ukOfficeAddress,
+   whatsappUrl,
+ } from "@/lib/site";
+ 
+@@ -45,9 +45,11 @@ export function Footer() {
+             <h3 className="text-sm font-semibold text-gray-800">Contact</h3>
+             <address className="mt-4 space-y-2 text-sm not-italic text-gray-600">
+               <p>
+-                {ukOfficeAddress.line1}
++                {COMPANY.address.line1}
+                 <br />
+-                {ukOfficeAddress.line2}
++                {COMPANY.address.city}, {COMPANY.address.postcode}
++                <br />
++                {COMPANY.address.country}
+               </p>
+               <p>
+                 <a href={`mailto:${contactEmail}`} className="hover:text-blue">
+@@ -68,7 +70,7 @@ export function Footer() {
+         </div>
+ 
+         <div className="mt-12 flex flex-col gap-4 border-t border-gray-200 pt-8 text-sm text-gray-400 md:flex-row md:items-center md:justify-between">
+-          <p>© {new Date().getFullYear()} Konduit Ltd. All rights reserved.</p>
++          <p className="max-w-2xl text-xs">{legalFooter("Konduit")}</p>
+           <div className="flex flex-wrap gap-4">
+             <Link href="/privacy" className="hover:text-blue">
+               Privacy Policy
+diff --git a/src/components/seo/json-ld.tsx b/src/components/seo/json-ld.tsx
+index a808840..7e2a581 100644
+--- a/src/components/seo/json-ld.tsx
++++ b/src/components/seo/json-ld.tsx
+@@ -1,24 +1,17 @@
++import { COMPANY, organizationJsonLd } from "@/lib/company-config";
+ import { contactEmail, siteName, siteUrl } from "@/lib/site";
+ 
+ export function OrganizationJsonLd() {
+   const data = {
+-    "@context": "https://schema.org",
+-    "@type": "Organization",
+-    name: siteName,
+-    url: siteUrl,
++    ...organizationJsonLd("konduit"),
+     logo: `${siteUrl}/images/logo/konduit-logo.svg`,
+     description:
+       "European-sourced hardware and infrastructure for Southern African businesses. Full warranty, compliance-ready, in-region support.",
+     parentOrganization: {
+       "@type": "Organization",
+-      name: "Digiteq Holdings",
++      name: COMPANY.name,
+       url: "https://digiteq.io",
+     },
+-    address: {
+-      "@type": "PostalAddress",
+-      addressLocality: "London",
+-      addressCountry: "GB",
+-    },
+     contactPoint: {
+       "@type": "ContactPoint",
+       email: contactEmail,
+diff --git a/src/lib/company-config.ts b/src/lib/company-config.ts
+new file mode 100644
+index 0000000..134c2fd
+--- /dev/null
++++ b/src/lib/company-config.ts
+@@ -0,0 +1,100 @@
++/**
++ * Digiteq Holdings Limited — Company Configuration
++ * Shared across all portfolio properties.
++ *
++ * Company: Digiteq Holdings Limited
++ * Number:  03730207
++ * Address: 66 Paul Street, London, EC2A 4NA, United Kingdom
++ */
++
++export const COMPANY = {
++  name: "Digiteq Holdings Limited",
++  tradingAs: "Digiteq",
++  number: "03730207",
++  jurisdiction: "England and Wales",
++  address: {
++    line1: "66 Paul Street",
++    city: "London",
++    postcode: "EC2A 4NA",
++    country: "United Kingdom",
++    countryCode: "GB",
++    formatted: "66 Paul Street, London, EC2A 4NA, United Kingdom",
++  },
++} as const;
++
++export const PORTFOLIO = {
++  digiteq: {
++    name: "Digiteq",
++    domain: "digiteq.io",
++    type: "parent" as const,
++    description: "We build, acquire, supply, and invest in technology.",
++  },
++  bmkrs: {
++    name: "BMKRS",
++    domain: "bmkrs.co",
++    type: "trading name" as const,
++    description: "A brand company run by builders.",
++  },
++  konduit: {
++    name: "Konduit",
++    domain: "konduit.tech",
++    type: "trading name" as const,
++    description: "Enterprise technology supply for Southern Africa.",
++  },
++  freelancenearme: {
++    name: "FreelanceNearMe",
++    domain: "freelancenearme.co.uk",
++    type: "trading name" as const,
++    description: "Local freelancers, found faster.",
++  },
++  three18media: {
++    name: "Three18 Media",
++    domain: "three18media.com",
++    type: "trading name" as const,
++    description: "Content that connects.",
++  },
++} as const;
++
++/**
++ * Generate standard legal footer text for any Digiteq property.
++ */
++export function legalFooter(tradingName?: string) {
++  const prefix = tradingName
++    ? `${tradingName} is a trading name of ${COMPANY.name}.`
++    : `${COMPANY.name}.`;
++
++  return `${prefix} Registered in ${COMPANY.jurisdiction}. Company number ${COMPANY.number}. Registered office: ${COMPANY.address.formatted}.`;
++}
++
++/**
++ * Structured data for JSON-LD Organization schema.
++ * Include on every property's root layout.
++ */
++export function organizationJsonLd(brand: keyof typeof PORTFOLIO) {
++  const b = PORTFOLIO[brand];
++  const isParent = b.type === "parent";
++
++  return {
++    "@context": "https://schema.org",
++    "@type": "Organization",
++    name: b.name,
++    url: `https://${b.domain}`,
++    description: b.description,
++    address: {
++      "@type": "PostalAddress",
++      streetAddress: COMPANY.address.line1,
++      addressLocality: COMPANY.address.city,
++      postalCode: COMPANY.address.postcode,
++      addressCountry: COMPANY.address.countryCode,
++    },
++    ...(isParent
++      ? {}
++      : {
++          parentOrganization: {
++            "@type": "Organization",
++            name: COMPANY.name,
++            url: "https://digiteq.io",
++          },
++        }),
++  };
++}
+diff --git a/src/lib/site.ts b/src/lib/site.ts
+index 8abc36a..5aa41ba 100644
+--- a/src/lib/site.ts
++++ b/src/lib/site.ts
+@@ -18,8 +18,8 @@ export const footerLinks = [
+ ] as const;
+ 
+ export const ukOfficeAddress = {
+-  line1: "Konduit Ltd",
+-  line2: "London, United Kingdom",
++  line1: "66 Paul Street",
++  line2: "London, EC2A 4NA, United Kingdom",
+ };
+ 
+ export const officeHours = "Monday to Friday, 09:00 to 17:00 (UK time)";
+-- 
+2.43.0
+

@@ -95,4 +95,10 @@ export const pageMetadata = {
       "Terms governing the use of digiteq.io, including intellectual property, content disclaimers and liability.",
     path: "/terms",
   },
+  cookies: {
+    title: "Cookie Policy",
+    description:
+      "How Digiteq uses cookies and similar technologies. We use Plausible Analytics and do not serve advertising cookies.",
+    path: "/cookies",
+  },
 } as const;

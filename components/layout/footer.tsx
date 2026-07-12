@@ -7,6 +7,7 @@ import { BrandLogo } from "@/components/brand/brand-logo";
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { COMPANY, legalFooter } from "@/lib/company-config";
 import { contactEmail } from "@/lib/site";
 
 function SocialIcon({ d, href }: { d: string; href: string }) {
@@ -75,7 +76,11 @@ export function Footer() {
             <div className="flex flex-col gap-3.5">
               {[
                 { Icon: Mail, text: contactEmail, href: `mailto:${contactEmail}` },
-                { Icon: MapPin, text: "London, UK", href: undefined },
+                {
+                  Icon: MapPin,
+                  text: `${COMPANY.address.line1}, ${COMPANY.address.city}`,
+                  href: undefined,
+                },
               ].map(({ Icon, text, href }) => (
                 <div key={text} className="flex items-center gap-2.5">
                   <Icon className="h-3.5 w-3.5 text-muted-dark" />
@@ -125,16 +130,17 @@ export function Footer() {
             <span className="text-xs text-muted-dark">
               &copy; {new Date().getFullYear()} Digiteq Holdings Limited. All rights reserved.
             </span>
-            <span className="text-xs text-muted-dark">
-              Registered in England and Wales. Company number 03730207.
-            </span>
+            <span className="max-w-xl text-xs text-muted-dark">{legalFooter()}</span>
           </div>
-          <div className="flex gap-7">
+          <div className="flex flex-wrap gap-7">
             <Link href="/privacy" className="text-xs text-muted-dark hover:text-muted">
               Privacy Policy
             </Link>
             <Link href="/terms" className="text-xs text-muted-dark hover:text-muted">
               Terms of Service
+            </Link>
+            <Link href="/cookies" className="text-xs text-muted-dark hover:text-muted">
+              Cookie Policy
             </Link>
             <Link href="/case-studies" className="text-xs text-muted-dark hover:text-muted">
               Case Studies

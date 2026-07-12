@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { BrandLogo } from "@/components/brand/brand-logo";
+import { legalFooter } from "@/lib/company-config";
 import { homeFooterLinks } from "@/lib/home/navigation";
 import { contactEmail } from "@/lib/site";
 
@@ -110,8 +111,8 @@ export function HomeFooter() {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[var(--rule)] pt-5">
-          <span className="dh-mono text-[0.66rem] tracking-[0.1em] text-[var(--ink-faint)]">
-            © {new Date().getFullYear()} Digiteq Holdings · Registered in England &amp; Wales
+          <span className="dh-mono max-w-2xl text-[0.66rem] tracking-[0.1em] text-[var(--ink-faint)]">
+            © {new Date().getFullYear()} {legalFooter()}
           </span>
           <div className="flex gap-5">
             <Link href="/privacy" className="dh-mono text-[0.66rem] tracking-[0.1em] text-[var(--ink-faint)] hover:text-[var(--ledger)]">
@@ -119,6 +120,9 @@ export function HomeFooter() {
             </Link>
             <Link href="/terms" className="dh-mono text-[0.66rem] tracking-[0.1em] text-[var(--ink-faint)] hover:text-[var(--ledger)]">
               Terms
+            </Link>
+            <Link href="/cookies" className="dh-mono text-[0.66rem] tracking-[0.1em] text-[var(--ink-faint)] hover:text-[var(--ledger)]">
+              Cookies
             </Link>
             <Link href="/case-studies" className="dh-mono text-[0.66rem] tracking-[0.1em] text-[var(--ink-faint)] hover:text-[var(--ledger)]">
               Case studies
