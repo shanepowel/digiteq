@@ -24,7 +24,7 @@ export function HomeInsights({ insights }: HomeInsightsProps) {
   const items =
     insights.length >= 3
       ? insights.slice(0, 3)
-      : insightsFallback.slice(0, 3).map((item, i) => ({
+      : insightsFallback.slice(0, 3).map((item) => ({
           _id: item.slug,
           title: item.title,
           slug: item.slug,
