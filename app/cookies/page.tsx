@@ -1,21 +1,13 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import { MarkdownDocument } from "@/components/legal/markdown-document";
 import { PageShell } from "@/components/layout/page-shell";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { buildMetadata, pageMetadata } from "@/components/seo/metadata";
+import { getLegalDocument } from "@/lib/legal/markdown";
 
 export const metadata = buildMetadata(pageMetadata.cookies);
 
-function getLegalContent(filename: string) {
-  const filePath = path.join(process.cwd(), "content/legal", filename);
-  const raw = fs.readFileSync(filePath, "utf8");
-  return matter(raw).content;
-}
-
 export default function CookiesPage() {
-  const content = getLegalContent("cookie-policy.md");
+  const { content, updatedLabel } = getLegalDocument("cookie-policy.md");
 
   return (
     <PageShell>
@@ -25,7 +17,11 @@ export default function CookiesPage() {
           { name: "Cookie Policy", href: "/cookies" },
         ]}
       />
-      <MarkdownDocument content={content} title={pageMetadata.cookies.title} />
+      <MarkdownDocument
+        content={content}
+        title={pageMetadata.cookies.title}
+        updatedLabel={updatedLabel}
+      />
     </PageShell>
   );
 }

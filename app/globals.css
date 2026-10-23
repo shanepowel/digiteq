@@ -44,9 +44,11 @@
   }
 
   body {
-    background-color: rgb(8 10 17);
-    @apply text-foreground antialiased;
-    font-family: var(--font-inter), system-ui, sans-serif;
+    /* Marketing site is register-themed site-wide; avoid a dark flash before shell paint. */
+    background-color: #f6f4ee;
+    color: #101623;
+    @apply antialiased;
+    font-family: var(--font-instrument), var(--font-inter), system-ui, sans-serif;
   }
 }
 

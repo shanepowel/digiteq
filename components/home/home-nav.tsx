@@ -13,7 +13,11 @@ export function HomeNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-[var(--rule)] bg-[rgb(246_244_238/0.85)] backdrop-blur-[12px]">
+    <nav className="sticky top-0 z-50 border-b border-[var(--rule)] bg-[rgb(246_244_238/0.88)] backdrop-blur-[14px]">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--ledger),var(--brass),transparent)] opacity-70"
+        aria-hidden="true"
+      />
       <div className="dh-container flex h-[68px] items-center justify-between">
         <BrandLogo href="/" display="auto" theme="register" className="shrink-0" />
 
@@ -32,7 +36,7 @@ export function HomeNav() {
             </li>
           ))}
           <li>
-            <Link href="/contact" className="dh-btn">
+            <Link href="/contact" className="dh-btn dh-btn-fill">
               Partner with us
             </Link>
           </li>
@@ -49,7 +53,7 @@ export function HomeNav() {
       </div>
 
       {open && (
-        <div className="border-t border-[var(--rule)] bg-[var(--paper)] px-5 py-6 lg:hidden">
+        <div className="border-t border-[var(--rule)] bg-[var(--paper)] px-5 py-6 lg:hidden animate-[dh-nav-in_0.28s_ease]">
           <ul className="flex flex-col gap-4">
             {homeNavigation.map((item) => (
               <li key={item.href}>
@@ -63,7 +67,11 @@ export function HomeNav() {
               </li>
             ))}
             <li>
-              <Link href="/contact" className="dh-btn mt-2 inline-block" onClick={() => setOpen(false)}>
+              <Link
+                href="/contact"
+                className="dh-btn dh-btn-fill mt-2 inline-block"
+                onClick={() => setOpen(false)}
+              >
                 Partner with us
               </Link>
             </li>

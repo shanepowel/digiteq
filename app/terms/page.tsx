@@ -1,21 +1,13 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import { MarkdownDocument } from "@/components/legal/markdown-document";
 import { PageShell } from "@/components/layout/page-shell";
 import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 import { buildMetadata, pageMetadata } from "@/components/seo/metadata";
+import { getLegalDocument } from "@/lib/legal/markdown";
 
 export const metadata = buildMetadata(pageMetadata.terms);
 
-function getLegalContent(filename: string) {
-  const filePath = path.join(process.cwd(), "content/legal", filename);
-  const raw = fs.readFileSync(filePath, "utf8");
-  return matter(raw).content;
-}
-
 export default function TermsPage() {
-  const content = getLegalContent("terms-of-service.md");
+  const { content, updatedLabel } = getLegalDocument("terms-of-service.md");
 
   return (
     <PageShell>
@@ -25,7 +17,11 @@ export default function TermsPage() {
           { name: "Terms of Service", href: "/terms" },
         ]}
       />
-      <MarkdownDocument content={content} title={pageMetadata.terms.title} />
+      <MarkdownDocument
+        content={content}
+        title={pageMetadata.terms.title}
+        updatedLabel={updatedLabel}
+      />
     </PageShell>
   );
 }

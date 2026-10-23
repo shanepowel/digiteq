@@ -52,9 +52,9 @@ export function HomeEcosystem() {
         <div className="mt-[clamp(40px,6vh,64px)] grid gap-4 min-[820px]:grid-cols-3 min-[820px]:gap-7">
           {ecosystemPillars.map((pillar) => (
             <HomeReveal key={pillar.name}>
-              <article className="group relative overflow-hidden rounded-[2px] border border-[var(--rule)] bg-[var(--paper)] p-[clamp(26px,3vw,38px)] transition-[transform,box-shadow] duration-250 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgb(16_22_35/0.09)]">
+              <article className="group relative overflow-hidden rounded-[2px] border border-[var(--rule)] bg-[linear-gradient(165deg,var(--paper)_0%,rgb(246_244_238)_70%,var(--sage))] p-[clamp(26px,3vw,38px)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-[rgb(30_92_70/0.28)] hover:shadow-[0_16px_40px_rgb(16_22_35/0.1)]">
                 <span
-                  className="pointer-events-none absolute -right-2 -top-6 font-[family-name:var(--font-display)] text-[7rem] font-normal italic leading-none text-[var(--brass)] opacity-[0.08]"
+                  className="pointer-events-none absolute -right-2 -top-6 font-[family-name:var(--font-display)] text-[7rem] font-normal italic leading-none text-[var(--brass)] opacity-[0.1] transition-opacity duration-300 group-hover:opacity-[0.16]"
                   aria-hidden="true"
                 >
                   {pillar.numeral}

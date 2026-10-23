@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { BrandLogo } from "@/components/brand/brand-logo";
 import { Rosette } from "@/components/home/home-svg";
 
 type IndexReading = {
@@ -97,9 +98,10 @@ export function HomeHero({ holdingsCount, disciplinesCount = 3 }: HomeHeroProps)
   ];
 
   return (
-    <header className="relative pt-[clamp(80px,13vh,150px)]">
+    <header className="dh-hero relative overflow-hidden pt-[clamp(72px,11vh,128px)]">
+      <div className="dh-hero-wash" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute top-[clamp(30px,6vh,70px)] right-[max(-14vw,calc((100vw-var(--home-max))/2-140px))] h-[clamp(340px,42vw,620px)] w-[clamp(340px,42vw,620px)] opacity-90 max-[820px]:right-[-32vw] max-[820px]:top-0 max-[820px]:h-[80vw] max-[820px]:w-[80vw] max-[820px]:opacity-45"
+        className="pointer-events-none absolute top-[clamp(24px,5vh,56px)] right-[max(-14vw,calc((100vw-var(--home-max))/2-140px))] h-[clamp(340px,42vw,620px)] w-[clamp(340px,42vw,620px)] opacity-[0.88] max-[820px]:right-[-32vw] max-[820px]:top-0 max-[820px]:h-[80vw] max-[820px]:w-[80vw] max-[820px]:opacity-40"
         style={{ transform: `translateY(${parallaxY}px)` }}
         aria-hidden="true"
       >
@@ -110,11 +112,30 @@ export function HomeHero({ holdingsCount, disciplinesCount = 3 }: HomeHeroProps)
       </div>
 
       <div className="dh-container relative z-[1]">
-        <div className="dh-eyebrow">
-          <span className="dh-mono">Digiteq Holdings · Est. London</span>
-        </div>
+        <motion.div
+          className="mb-8 flex flex-col gap-3"
+          initial={{ opacity: reduced ? 1 : 0, y: reduced ? 0 : 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reduced ? 0 : 0.55, ease: [0.6, 0, 0.2, 1] }}
+        >
+          <BrandLogo
+            variant="nav"
+            display="lockup"
+            theme="register"
+            href={false}
+            className="dh-hero-brand"
+          />
+          <div className="dh-eyebrow !mb-0">
+            <span className="dh-mono">Holdings · Est. London · MMXXI</span>
+          </div>
+        </motion.div>
 
-        <h1 className="dh-h1 relative z-[1]">
+        <motion.h1
+          className="dh-h1 relative z-[1]"
+          initial={{ opacity: reduced ? 1 : 0, y: reduced ? 0 : 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reduced ? 0 : 0.65, delay: reduced ? 0 : 0.08, ease: [0.6, 0, 0.2, 1] }}
+        >
           Building digital{" "}
           <span className="relative inline-block font-normal italic">
             <span
@@ -139,29 +160,39 @@ export function HomeHero({ holdingsCount, disciplinesCount = 3 }: HomeHeroProps)
                 strokeDashoffset={active || reduced ? 0 : 600}
                 style={
                   active && !reduced
-                    ? { animation: "dh-flourish 1.2s cubic-bezier(.6,0,.2,1) 1.5s forwards" }
+                    ? { animation: "dh-flourish 1.2s cubic-bezier(.6,0,.2,1) 1.35s forwards" }
                     : undefined
                 }
               />
             </svg>
           </span>
           .
-        </h1>
+        </motion.h1>
 
-        <p className="dh-lede relative z-[1] my-[1.8rem] max-w-[46ch]">
+        <motion.p
+          className="dh-lede relative z-[1] my-[1.6rem] max-w-[44ch]"
+          initial={{ opacity: reduced ? 1 : 0, y: reduced ? 0 : 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reduced ? 0 : 0.55, delay: reduced ? 0 : 0.16, ease: [0.6, 0, 0.2, 1] }}
+        >
           We create, acquire and scale digital brands, products and media properties.
-        </p>
+        </motion.p>
 
-        <div className="relative z-[1] mb-[clamp(56px,9vh,96px)] flex flex-wrap gap-3.5">
+        <motion.div
+          className="relative z-[1] mb-[clamp(48px,8vh,88px)] flex flex-wrap gap-3.5"
+          initial={{ opacity: reduced ? 1 : 0, y: reduced ? 0 : 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reduced ? 0 : 0.5, delay: reduced ? 0 : 0.24, ease: [0.6, 0, 0.2, 1] }}
+        >
           <Link href="#register" className="dh-btn dh-btn-fill">
             Explore portfolio
           </Link>
           <Link href="#vault" className="dh-btn">
             Partner with us
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="relative z-[1] pb-[clamp(64px,9vh,100px)]">
+        <div className="relative z-[1] pb-[clamp(56px,8vh,88px)]">
           <div className="relative h-px overflow-hidden bg-[var(--rule)]">
             <motion.i
               className="absolute inset-0 block origin-left bg-[linear-gradient(90deg,var(--ledger),var(--brass))]"
@@ -178,7 +209,7 @@ export function HomeHero({ holdingsCount, disciplinesCount = 3 }: HomeHeroProps)
                 animate={{ opacity: active || reduced ? 1 : 0, y: active || reduced ? 0 : 6 }}
                 transition={{
                   duration: reduced ? 0 : 0.5,
-                  delay: reduced ? 0 : 1.05 + i * 0.15,
+                  delay: reduced ? 0 : 0.95 + i * 0.12,
                   ease: "easeOut",
                 }}
               >

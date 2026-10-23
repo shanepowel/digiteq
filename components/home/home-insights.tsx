@@ -49,13 +49,15 @@ export function HomeInsights({ insights }: HomeInsightsProps) {
             <HomeReveal key={item._id} delay={index * 0.05}>
               <Link
                 href={`/insights/${item.slug}`}
-                className="grid grid-cols-[auto_1fr_auto] items-baseline gap-[clamp(16px,3vw,40px)] border-b border-[var(--rule)] py-5 transition-[padding,background] duration-250 hover:bg-[linear-gradient(90deg,var(--ledger-soft),transparent_60%)] hover:pl-3 max-[600px]:grid-cols-[1fr_auto]"
+                className="group grid grid-cols-[auto_1fr_auto] items-baseline gap-[clamp(16px,3vw,40px)] border-b border-[var(--rule)] py-5 transition-[padding,background] duration-250 hover:bg-[linear-gradient(90deg,var(--ledger-soft),transparent_60%)] hover:pl-3 max-[600px]:grid-cols-[1fr_auto]"
               >
                 <span className="dh-mono text-[0.72rem] tracking-[0.1em] text-[var(--brass)] max-[600px]:col-span-2">
                   {formatInsightDate(item.publishedAt, index)}
                 </span>
                 <span className="dh-display text-[1.25rem] font-medium">{item.title}</span>
-                <span className="text-[var(--ink-faint)] transition-colors hover:text-[var(--ledger)]">→</span>
+                <span className="text-[var(--ink-faint)] transition-[color,transform] duration-200 group-hover:translate-x-0.5 group-hover:text-[var(--ledger)]">
+                  →
+                </span>
               </Link>
             </HomeReveal>
           ))}

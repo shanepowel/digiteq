@@ -20,12 +20,74 @@
   --rule-dark: rgb(232 230 223 / 0.14);
   --home-max: 1160px;
 
-  background: var(--paper);
+  background:
+    radial-gradient(120% 80% at 100% -10%, rgb(168 130 63 / 0.08), transparent 52%),
+    radial-gradient(90% 60% at -10% 20%, rgb(30 92 70 / 0.06), transparent 45%),
+    var(--paper);
   color: var(--ink);
   font-family: var(--font-instrument), system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+}
+
+.digiteq-home .dh-hero-wash {
+  pointer-events: none;
+  position: absolute;
+  inset: 0 0 auto;
+  height: min(92vh, 920px);
+  background:
+    linear-gradient(180deg, rgb(246 244 238 / 0.2), transparent 70%),
+    repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent 31px,
+      rgb(16 22 35 / 0.035) 31px,
+      rgb(16 22 35 / 0.035) 32px
+    );
+  mask-image: linear-gradient(180deg, #000 40%, transparent 100%);
+}
+
+.digiteq-home .dh-hero-brand img {
+  height: clamp(2.75rem, 5vw, 3.75rem) !important;
+  width: auto !important;
+  max-width: none;
+}
+
+.digiteq-home .dh-legal-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.25rem;
+}
+
+.digiteq-home .dh-legal-copy {
+  max-width: 52rem;
+  color: var(--ink-faint);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+.digiteq-home .dh-legal-copy p + p {
+  margin-top: 0.2rem;
+}
+
+.digiteq-home .dh-legal-doc {
+  border-top: 1px solid var(--rule);
+  padding-top: 0.25rem;
+}
+
+.digiteq-home .dh-legal-doc::before {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 2px;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, var(--ledger), var(--brass));
 }
 
 .digiteq-home ::selection {
@@ -356,6 +418,17 @@
 @keyframes dh-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes dh-nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
