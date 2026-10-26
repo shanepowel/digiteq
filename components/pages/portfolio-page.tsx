@@ -10,7 +10,7 @@ export function PortfolioPageContent({ companies }: { companies: PortfolioCompan
       <DhPageHero
         eyebrow="Portfolio"
         title="Companies we build and scale."
-        lede="Independent brands across brand development, marketplace platforms, and enterprise technology supply."
+        lede="Konduit, BMKRS and FreelanceNearMe — independent brands across supply, brand and marketplace, owned for the long term."
         titleClassName="max-w-[16ch]"
       />
 

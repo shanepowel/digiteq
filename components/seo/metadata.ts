@@ -38,19 +38,19 @@ export const pageMetadata = {
   home: {
     title: "Building Digital Equity",
     description:
-      "Digiteq creates, acquires and scales digital brands, products and media properties to build lasting digital equity.",
+      "Digiteq builds, acquires, supplies and invests in technology — operating Konduit, BMKRS and FreelanceNearMe with long-term ownership.",
     path: "/",
   },
   about: {
     title: "About",
     description:
-      "Digiteq is a UK-registered technology holding company. We build, acquire, supply, and invest in technology businesses across digital brands and enterprise supply.",
+      "Digiteq Holdings Limited is a UK technology holding company. Independent brands, shared capital, registered in England and Wales.",
     path: "/about",
   },
   portfolio: {
     title: "Portfolio",
     description:
-      "Digiteq portfolio companies spanning brand development, marketplace platforms, and enterprise technology supply for Southern Africa.",
+      "Konduit, BMKRS and FreelanceNearMe — Digiteq portfolio companies across enterprise supply, brand, and marketplace.",
     path: "/portfolio",
   },
   ventures: {

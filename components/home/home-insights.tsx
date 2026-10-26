@@ -41,7 +41,10 @@ export function HomeInsights({ insights }: HomeInsightsProps) {
           <div className="dh-eyebrow">
             <span className="dh-mono">From the insights desk</span>
           </div>
-          <h2 className="dh-h2">Insights on building, acquiring and scaling.</h2>
+          <h2 className="dh-h2">Notes from the holding desk.</h2>
+          <p className="dh-lede mt-4 max-w-[44ch] text-[var(--ink-dim)]">
+            Operator writing on acquisition, supply chains and building digital equity.
+          </p>
         </HomeReveal>
 
         <div className="mt-[clamp(36px,5vh,56px)] border-t border-[var(--rule)]">

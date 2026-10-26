@@ -32,7 +32,7 @@ function PillarMark({ type }: { type: "build" | "connect" | "back" }) {
 
 export function HomeEcosystem() {
   return (
-    <section className="cert relative border-y border-[var(--rule)] bg-[var(--sage)] py-[clamp(80px,11vh,140px)]">
+    <section className="cert relative border-y border-[var(--rule)] bg-[var(--sage)] py-[clamp(72px,10vh,120px)]">
       <CornerOrnament className="pointer-events-none absolute left-3.5 top-3.5 h-[26px] w-[26px] [&_path]:stroke-[var(--brass)] [&_path]:opacity-75" />
       <CornerOrnament className="pointer-events-none absolute right-3.5 top-3.5 h-[26px] w-[26px] rotate-90 [&_path]:stroke-[var(--brass)] [&_path]:opacity-75" />
       <CornerOrnament className="pointer-events-none absolute bottom-3.5 right-3.5 h-[26px] w-[26px] rotate-180 [&_path]:stroke-[var(--brass)] [&_path]:opacity-75" />
@@ -43,16 +43,17 @@ export function HomeEcosystem() {
           <div className="dh-eyebrow">
             <span className="dh-mono">Our ecosystem</span>
           </div>
-          <h2 className="dh-h2">An integrated holding company ecosystem.</h2>
-          <p className="dh-lede mt-4 text-[var(--ink-dim)]">
-            Three pillars. One mission. Durable digital equity.
+          <h2 className="dh-h2">Three operating brands. One holding thesis.</h2>
+          <p className="dh-lede mt-4 max-w-[48ch] text-[var(--ink-dim)]">
+            Build brands, supply technology, and connect talent — each company stands alone, with
+            Digiteq behind the capital and direction.
           </p>
         </HomeReveal>
 
-        <div className="mt-[clamp(40px,6vh,64px)] grid gap-4 min-[820px]:grid-cols-3 min-[820px]:gap-7">
+        <div className="mt-[clamp(36px,5vh,56px)] grid gap-4 min-[820px]:grid-cols-3 min-[820px]:gap-6">
           {ecosystemPillars.map((pillar) => (
             <HomeReveal key={pillar.name}>
-              <article className="group relative overflow-hidden rounded-[2px] border border-[var(--rule)] bg-[linear-gradient(165deg,var(--paper)_0%,rgb(246_244_238)_70%,var(--sage))] p-[clamp(26px,3vw,38px)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-[rgb(30_92_70/0.28)] hover:shadow-[0_16px_40px_rgb(16_22_35/0.1)]">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-[2px] border border-[var(--rule)] bg-[linear-gradient(165deg,var(--paper)_0%,rgb(246_244_238)_70%,var(--sage))] p-[clamp(24px,3vw,34px)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-[rgb(30_92_70/0.28)] hover:shadow-[0_16px_40px_rgb(16_22_35/0.1)]">
                 <span
                   className="pointer-events-none absolute -right-2 -top-6 font-[family-name:var(--font-display)] text-[7rem] font-normal italic leading-none text-[var(--brass)] opacity-[0.1] transition-opacity duration-300 group-hover:opacity-[0.16]"
                   aria-hidden="true"
@@ -64,12 +65,16 @@ export function HomeEcosystem() {
                 <span className="dh-mono mb-2 block text-[var(--brass)]">
                   {pillar.numeral} · {pillar.verb}
                 </span>
-                <h3 className="dh-display mb-2.5 text-[1.6rem] font-medium">{pillar.name}</h3>
-                <p className="mb-5 max-w-[32ch] text-[0.98rem] text-[var(--ink-dim)]">{pillar.description}</p>
+                <h3 className="dh-display mb-2.5 text-[1.55rem] font-medium">{pillar.name}</h3>
+                <p className="mb-5 max-w-[34ch] flex-1 text-[0.98rem] text-[var(--ink-dim)]">
+                  {pillar.description}
+                </p>
                 <Link
                   href={pillar.href}
                   className="dh-tlink"
-                  {...(pillar.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  {...(pillar.href.startsWith("http")
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                 >
                   {pillar.linkLabel} →
                 </Link>

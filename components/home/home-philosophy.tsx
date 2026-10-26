@@ -35,16 +35,15 @@ export function HomePhilosophy() {
             <span className="dh-mono">Our philosophy</span>
           </div>
           <h2 className="dh-h2 mb-5 max-w-[30ch]">
-            Most businesses invest in campaigns. We invest in{" "}
+            Most businesses rent attention. We build{" "}
             <em className="font-normal not-italic text-[var(--ledger)]">digital equity</em>.
           </h2>
-          <p className="mb-7 max-w-[52ch] text-[var(--ink-dim)]">
-            Digital equity is ownership, scale and compounding advantage in the digital economy. We
-            build and acquire assets that create long-term value for our companies, partners and
-            investors.
+          <p className="mb-7 max-w-[50ch] text-[var(--ink-dim)]">
+            Ownership compounds. Digiteq holds and operates brands, supply chains and platforms that
+            create durable value — not campaigns that reset every quarter.
           </p>
           <Link href="/about" className="dh-tlink">
-            More about our philosophy →
+            How Digiteq is structured →
           </Link>
         </HomeReveal>
 

@@ -108,6 +108,10 @@ export function EquityRegister({ rows }: EquityRegisterProps) {
             <span className="dh-mono">The register</span>
           </div>
           <h2 className="dh-h2">Companies we build and scale.</h2>
+          <p className="dh-lede mt-4 max-w-[46ch] text-[var(--ink-dim)]">
+            The operating register — holdings across supply, brand and marketplace, plus an open
+            acquisition mandate.
+          </p>
         </HomeReveal>
 
         <div ref={ref} className="relative mt-[clamp(40px,6vh,64px)] border-t border-[var(--rule)] before:absolute before:inset-x-0 before:top-[3px] before:h-px before:bg-[var(--ink)]">

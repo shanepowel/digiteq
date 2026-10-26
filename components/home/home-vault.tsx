@@ -46,15 +46,16 @@ export function HomeVault() {
               <h2 className="dh-h2 mb-6 max-w-[18ch] text-[var(--vault-text)]">
                 Looking to sell your digital business?
               </h2>
-              <p className="mb-8 max-w-[48ch] text-[rgb(232_230_223/0.7)]">
-                We partner with founders to unlock the next chapter.
+              <p className="mb-8 max-w-[46ch] text-[rgb(232_230_223/0.72)]">
+                We acquire profitable digital and supply-chain businesses where operators want a
+                clean exit and buyers who keep building.
               </p>
               <div className="dh-mono mb-9 max-w-[560px] border-y border-[var(--rule-dark)] py-4 text-[0.75rem] tracking-[0.14em] text-[rgb(232_230_223/0.65)]">
                 <b className="font-normal text-[var(--brass-bright)]">Fair process</b>
                 <span className="px-3">·</span>
                 <b className="font-normal text-[var(--brass-bright)]">Fast decisions</b>
                 <span className="px-3">·</span>
-                <b className="font-normal text-[var(--brass-bright)]">Aligned outcomes</b>
+                <b className="font-normal text-[var(--brass-bright)]">Operator-led</b>
               </div>
               <Link href="/investment" className="dh-btn dh-btn-paper">
                 Start a conversation

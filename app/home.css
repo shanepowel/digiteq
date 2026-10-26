@@ -49,8 +49,7 @@
 }
 
 .digiteq-home .dh-hero-brand {
-  max-width: min(420px, 78vw);
-  filter: drop-shadow(0 18px 40px rgb(16 22 35 / 0.12));
+  max-width: min(420px, 86vw);
 }
 
 .digiteq-home .dh-legal-strip {

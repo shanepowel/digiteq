@@ -29,9 +29,9 @@ export function HomeFooter() {
         <div className="mb-[clamp(40px,6vh,60px)] grid gap-[clamp(28px,5vw,64px)] min-[720px]:grid-cols-[1.6fr_1fr_1fr]">
           <div>
             <BrandLogo variant="footer" display="lockup" theme="register" href={false} className="mb-3" />
-            <p className="mb-5 max-w-[36ch] text-[0.95rem] text-[var(--ink-dim)]">
-              We create, acquire and scale digital brands, products and media properties to build
-              lasting digital equity.
+            <p className="mb-5 max-w-[38ch] text-[0.95rem] text-[var(--ink-dim)]">
+              Digiteq builds, acquires, supplies and invests in technology — independent brands with
+              long-term ownership.
             </p>
             <div className="flex flex-wrap gap-5">
               <a
