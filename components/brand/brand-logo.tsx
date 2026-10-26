@@ -13,8 +13,9 @@ type BrandLogoProps = {
 };
 
 const sizes = {
-  nav: { lockup: { width: 148, height: 40 }, icon: { width: 32, height: 32 } },
-  footer: { lockup: { width: 120, height: 32 }, icon: { width: 22, height: 22 } },
+  // Wordmark lockup is wide (~3.7:1); keep height fixed and let width flow.
+  nav: { lockup: { width: 168, height: 44 }, icon: { width: 32, height: 32 } },
+  footer: { lockup: { width: 140, height: 36 }, icon: { width: 28, height: 28 } },
 } as const;
 
 export function BrandLogo({

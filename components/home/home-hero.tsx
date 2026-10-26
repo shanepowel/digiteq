@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { BrandLogo } from "@/components/brand/brand-logo";
+import { brandAlt, brandAssets } from "@/lib/brand";
 import { Rosette } from "@/components/home/home-svg";
 
 type IndexReading = {
@@ -118,12 +119,13 @@ export function HomeHero({ holdingsCount, disciplinesCount = 3 }: HomeHeroProps)
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduced ? 0 : 0.55, ease: [0.6, 0, 0.2, 1] }}
         >
-          <BrandLogo
-            variant="nav"
-            display="lockup"
-            theme="register"
-            href={false}
-            className="dh-hero-brand"
+          <Image
+            src={brandAssets.hero3d}
+            alt={brandAlt.hero3d}
+            width={420}
+            height={314}
+            priority
+            className="dh-hero-brand h-[clamp(5.5rem,14vw,9.5rem)] w-auto object-contain object-left"
           />
           <div className="dh-eyebrow !mb-0">
             <span className="dh-mono">Holdings · Est. London · MMXXI</span>
