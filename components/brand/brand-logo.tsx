@@ -7,15 +7,16 @@ type BrandLogoProps = {
   variant?: "nav" | "footer";
   /** auto: icon on small screens, lockup on lg+ (nav header only) */
   display?: "auto" | "icon" | "lockup";
+  /** register = color lockup on paper; dark = mono lockup on vault/dark */
   theme?: "dark" | "register";
   href?: string | false;
   className?: string;
 };
 
 const sizes = {
-  // Wordmark lockup is wide (~3.7:1); keep height fixed and let width flow.
-  nav: { lockup: { width: 168, height: 44 }, icon: { width: 32, height: 32 } },
-  footer: { lockup: { width: 140, height: 36 }, icon: { width: 28, height: 28 } },
+  // Stacked lockup is ~1:1 (emblem over DIGITEQ wordmark).
+  nav: { lockup: { width: 56, height: 54 }, icon: { width: 36, height: 36 } },
+  footer: { lockup: { width: 72, height: 69 }, icon: { width: 28, height: 28 } },
 } as const;
 
 export function BrandLogo({
@@ -29,7 +30,7 @@ export function BrandLogo({
   const isNavAuto = display === "auto" && variant === "nav";
   const showLockup = display === "lockup" || isNavAuto || (display === "auto" && variant === "footer");
   const showIcon = display === "icon" || isNavAuto;
-  const lockupSrc = theme === "register" ? brandAssets.lockupMono : brandAssets.lockup;
+  const lockupSrc = theme === "dark" ? brandAssets.lockupMono : brandAssets.lockup;
 
   const content = (
     <span className={cn("inline-flex items-center", className)}>
@@ -41,7 +42,7 @@ export function BrandLogo({
           height={dim.lockup.height}
           className={cn(
             "object-contain object-left",
-            variant === "footer" ? "h-8 w-auto" : "h-9 w-auto",
+            variant === "footer" ? "h-14 w-auto" : "h-12 w-auto",
             display === "auto" && variant === "nav" && "hidden lg:block",
           )}
           priority={variant === "nav"}
@@ -55,7 +56,7 @@ export function BrandLogo({
           height={dim.icon.height}
           className={cn(
             "object-contain",
-            variant === "footer" ? "h-[22px] w-[22px]" : "h-8 w-8",
+            variant === "footer" ? "h-7 w-7" : "h-9 w-9",
             display === "auto" && variant === "nav" && "lg:hidden",
           )}
           priority={variant === "nav"}

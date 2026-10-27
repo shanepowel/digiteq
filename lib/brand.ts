@@ -1,15 +1,15 @@
 export const brandAssets = {
-  /** Standalone D/pixel emblem */
+  /** Icon-only pixel D — favicon / compact mark */
   icon: "/brand/icon.png",
-  /** Full primary lockup (emblem + wordmark + tagline) */
+  /** Color stacked lockup (D + DIGITEQ) for register/paper */
   lockup: "/brand/lockup.png",
-  /** Register/paper surfaces — same primary lockup (no separate mono in suite) */
+  /** Mono stacked lockup for dark / vault surfaces */
   lockupMono: "/brand/lockup-mono.png",
-  /** Emblem-only export */
+  /** Color emblem cropped tight (no wordmark) */
   emblem: "/brand/emblem.png",
-  /** Wordmark + DIGITAL EQUITY tagline */
+  /** Alias of color lockup for alternate placements */
   wordmark: "/brand/wordmark.png",
-  /** Large primary lockup for hero / 3D treatments */
+  /** Large color lockup for hero */
   hero3d: "/brand/hero-3d.png",
   /** Open Graph share image (1200×630) */
   og: "/brand/og.png",
@@ -23,6 +23,6 @@ export const brandAlt = {
   lockup: "Digiteq",
   lockupMono: "Digiteq logo",
   emblem: "Digiteq emblem",
-  wordmark: "Digiteq — Digital Equity",
-  hero3d: "Digiteq logo with Digital Equity tagline",
+  wordmark: "Digiteq",
+  hero3d: "Digiteq",
 } as const;

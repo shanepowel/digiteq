@@ -210,9 +210,9 @@ export function HomeHero({ holdingsCount, disciplinesCount = 3 }: HomeHeroProps)
               src={brandAssets.hero3d}
               alt={brandAlt.hero3d}
               width={520}
-              height={390}
+              height={498}
               priority
-              className="dh-hero-brand relative z-[1] h-auto w-[min(100%,420px)] object-contain drop-shadow-[0_24px_50px_rgb(16_22_35/0.16)] max-[900px]:w-[min(78%,340px)]"
+              className="dh-hero-brand relative z-[1] h-auto w-[min(100%,360px)] object-contain drop-shadow-[0_24px_50px_rgb(16_22_35/0.16)] max-[900px]:w-[min(72%,300px)]"
             />
           </motion.div>
         </div>

@@ -18,7 +18,7 @@ export function Nav() {
   return (
     <nav className="fixed inset-x-0 top-0 z-50 h-16 border-b border-white/[0.06] bg-[#080A11]/92 backdrop-blur-xl">
       <Container className="flex h-16 items-center justify-between">
-        <BrandLogo display="auto" />
+        <BrandLogo display="auto" theme="dark" />
 
         <div className="hidden items-center gap-9 lg:flex">
           {navigation.map((item) => (
@@ -43,7 +43,7 @@ export function Nav() {
           </SheetTrigger>
           <SheetContent>
             <div className="mt-8 flex flex-col gap-6">
-              <BrandLogo href="/" display="lockup" />
+              <BrandLogo href="/" display="lockup" theme="dark" />
               {navigation.map((item) => (
                 <Link
                   key={item.href}

@@ -46,7 +46,7 @@ export function Footer() {
       <Container className="border-t border-white/[0.06] pt-14">
         <div className="mb-12 grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.6fr] lg:gap-14">
           <div>
-            <BrandLogo variant="footer" display="lockup" href={false} className="mb-3.5" />
+            <BrandLogo variant="footer" display="lockup" theme="dark" href={false} className="mb-3.5" />
             <p className="mb-4 max-w-[280px] text-[13px] leading-relaxed text-muted-dark">
               Digiteq Holdings Limited. Building, acquiring, supplying, and investing in
               technology.

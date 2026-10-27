@@ -50,7 +50,7 @@ export const metadata: Metadata = {
         url: brandAssets.og,
         width: 1200,
         height: 630,
-        alt: "Digiteq 3D logo",
+        alt: "Digiteq",
       },
     ],
   },
